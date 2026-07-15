@@ -1,0 +1,9 @@
+models/
+outputs/
+temp_results/
+temp_predictions/
+logs/
+finetuned_roberta_lora_model/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

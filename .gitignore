@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Generated model artifacts
+models/
+outputs/
+logs/
+temp_results/
+temp_predictions/
+finetuned_roberta_lora_model/
+checkpoint-*/
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Downloaded course bundles
+*.zip
+frankenstein-finetuning-portfolio/starter/
+frankenstein-finetuning-portfolio/gpu-starter/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
