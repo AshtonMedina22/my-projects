@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="AI engineering portfolio projects by Ashton Medina: banking intent classification, transformer finetuning, neural networks, and responsible AI guardrails."
+    />
+    <title>Ashton Medina | AI Engineering Projects</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Ashton Medina AI Engineering Projects">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#evidence">Evidence</a>
+          <a href="#deploy">Deploy</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Portfolio-ready machine learning work</p>
+          <h1>Applied AI projects with real datasets, model comparisons, and responsible data handling.</h1>
+          <p class="hero-text">
+            This repository documents a growing AI engineering track: PyTorch neural networks, Hugging Face
+            transformers, LoRA/QLoRA finetuning, model evaluation, and privacy guardrails.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View projects</a>
+            <a class="button secondary" href="https://github.com/AshtonMedina22/my-projects">GitHub repo</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Project metrics summary">
+          <div class="metric large">
+            <span class="metric-value">77</span>
+            <span class="metric-label">Banking intent classes</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">93.47%</span>
+            <span class="metric-label">LoRA-RoBERTa macro F1</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">87.73%</span>
+            <span class="metric-label">MLP baseline accuracy</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">PII</span>
+            <span class="metric-label">Redaction and hashing guardrails</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Featured work</p>
+          <h2>Portfolio Projects</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card featured">
+            <div class="project-visual banking-visual" aria-hidden="true">
+              <div class="intent-chip">cash withdrawal</div>
+              <div class="intent-chip">card arrival</div>
+              <div class="intent-chip">identity verification</div>
+              <div class="intent-chip">cash withdrawal card arrival</div>
+              <div class="intent-chip">direct debit issue</div>
+            </div>
+            <div class="project-body">
+              <p class="project-type">NLP classification capstone</p>
+              <h3>Banking Intent Classifier</h3>
+              <p>
+                End-to-end Banking77 classifier comparing a TF-IDF + PyTorch MLP baseline against a
+                LoRA-finetuned RoBERTa model, with PII redaction for customer banking text.
+              </p>
+              <dl class="project-stats">
+                <div><dt>Classes</dt><dd>77</dd></div>
+                <div><dt>MLP Accuracy</dt><dd>87.73%</dd></div>
+                <div><dt>RoBERTa F1</dt><dd>93.47%</dd></div>
+              </dl>
+              <div class="card-actions">
+                <a href="engineer-neural-networks-portfolio/">Open project</a>
+                <a href="engineer-neural-networks-portfolio/RESULTS.md">Results</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-visual text-visual" aria-hidden="true">
+              <p>I'm afraid I've created a...</p>
+              <span>DistilGPT-2 finetune</span>
+            </div>
+            <div class="project-body">
+              <p class="project-type">Generative transformer finetuning</p>
+              <h3>Frankenstein Fanfiction Model</h3>
+              <p>
+                A language-model finetuning project with prompt generation, perplexity comparison, and
+                optional GPU QLoRA notebook coverage.
+              </p>
+              <dl class="project-stats">
+                <div><dt>Base PPL</dt><dd>66.73</dd></div>
+                <div><dt>Fine-tuned PPL</dt><dd>66.53</dd></div>
+              </dl>
+              <div class="card-actions">
+                <a href="frankenstein-finetuning-portfolio/">Open project</a>
+                <a href="frankenstein-finetuning-portfolio/RESULTS.md">Results</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="nn-architectures-project2/cifar10_preview.png"
+              alt="CIFAR-10 preview used in neural network architecture exercises"
+            />
+            <div class="project-body">
+              <p class="project-type">Computer vision architecture work</p>
+              <h3>Neural Network Architectures</h3>
+              <p>
+                Course project bundle covering CNNs, autoencoders, CLIP-style multimodal ideas, and
+                evaluation notebooks.
+              </p>
+              <div class="card-actions">
+                <a href="nn-architectures-project2/">Open bundle</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="evidence" class="section split-section">
+        <div>
+          <p class="eyebrow">What this proves</p>
+          <h2>Evidence for employers</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>Baseline-first ML workflow with documented comparison against transformer finetuning.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Practical Hugging Face, PyTorch, PEFT, tokenization, training, and evaluation code.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Responsible AI handling for sensitive financial text through redaction and hashing.</p>
+          </div>
+          <div class="evidence-item">
+            <span>04</span>
+            <p>Runnable scripts, notebooks, datasets, project frameworks, and results documentation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="deploy" class="section deploy-card">
+        <div>
+          <p class="eyebrow">Static deploy ready</p>
+          <h2>Deploy this repository as a portfolio landing page.</h2>
+          <p>
+            Netlify and Vercel can serve this repository from the root directory because it now includes a
+            static `index.html` and `styles.css`. The model artifacts are intentionally ignored so deployment
+            stays lightweight.
+          </p>
+        </div>
+        <div class="deploy-steps">
+          <span>Root directory: /</span>
+          <span>Build command: none</span>
+          <span>Publish directory: /</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,6 +1,16 @@
-# Codecademy PyTorch Projects
+# Ashton Medina AI Engineering Projects
 
-This repo keeps Codecademy notebook and markdown exports as flat files. When a new lesson/project file is added, the file is saved here and updated in place as checkpoints are completed.
+This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfolio-ready machine learning projects. It now also includes a static portfolio landing page that can be deployed from the repository root with Netlify or Vercel.
+
+## Portfolio Site
+
+- Entry point: `index.html`
+- Styles: `styles.css`
+- Netlify publish directory: `.`
+- Vercel root directory: `.`
+- Build command: none
+
+The homepage highlights the Banking77 intent classification capstone, the Frankenstein language-model finetuning project, and neural-network architecture work.
 
 Current files:
 
