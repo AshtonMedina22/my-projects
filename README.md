@@ -51,4 +51,4 @@ Current files:
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.
-- `requirements.txt` - local Python dependencies.
+- `codecademy-requirements.txt` - optional local dependencies for running course notebooks.
