@@ -14,6 +14,7 @@ The homepage highlights the Banking77 intent classification capstone, the Franke
 
 Current files:
 
+- `ai-engineer-lessons/` - organized lesson work for AI Engineer course tasks, including OpenAI Python API, LLM evaluation, and LLM benchmark lessons.
 - `codecademy-jupyter-project.ipynb` - model profiling lesson with model size, latency, and GPU memory checkpoints.
 - `hotel-bookings-mlp.ipynb` - hotel booking MLP training lesson with three completed checkpoints.
 - `notebook.md` - hotel booking MLP evaluation lesson with completed prediction and reporting checkpoints.
