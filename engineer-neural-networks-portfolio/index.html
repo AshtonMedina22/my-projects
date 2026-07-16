@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Banking Intent Classifier | Ashton Medina</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Project navigation">
+        <a class="brand" href="../">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../">Home</a>
+          <a href="RESULTS.md">Results</a>
+          <a href="PROJECT_FRAMEWORK.md">Framework</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">NLP classification capstone</p>
+          <h1>Banking Intent Classifier</h1>
+          <p class="hero-text">
+            A customer-support AI project that classifies banking questions into 77 intent categories,
+            compares a fast MLP baseline against LoRA-RoBERTa, and includes PII guardrails for sensitive
+            customer text.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="RESULTS.md">Read results</a>
+            <a class="button secondary" href="notebooks/banking_intent_classification_solution.ipynb">Open notebook</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="metric large">
+            <span class="metric-value">77</span>
+            <span class="metric-label">Banking intents classified</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">87.73%</span>
+            <span class="metric-label">MLP baseline accuracy</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">93.47%</span>
+            <span class="metric-label">LoRA-RoBERTa macro F1</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">PII</span>
+            <span class="metric-label">Redaction and hashing layer</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Function</p>
+          <h2>What this project does</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>Routes customer banking questions to the right support intent.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Compares a lightweight baseline model with a more advanced transformer workflow.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Protects sensitive banking text before inference with PII redaction and hashing.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

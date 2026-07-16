@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Frankenstein Fanfiction Model | Ashton Medina</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Project navigation">
+        <a class="brand" href="../">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../">Home</a>
+          <a href="RESULTS.md">Results</a>
+          <a href="notebooks/FrankensteinMPSCPU.ipynb">Notebook</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Generative transformer finetuning</p>
+          <h1>Frankenstein Fanfiction Model</h1>
+          <p class="hero-text">
+            A creative AI project that fine-tunes a language model on Frankenstein-style text, generates
+            original spooky continuations, and compares the base and fine-tuned model with perplexity.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="RESULTS.md">Read results</a>
+            <a class="button secondary" href="src/train_distilgpt2.py">Training script</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="metric large">
+            <span class="metric-value">66.73</span>
+            <span class="metric-label">Base model perplexity</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">66.53</span>
+            <span class="metric-label">Fine-tuned perplexity</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">GPT-2</span>
+            <span class="metric-label">CPU-friendly finetuning path</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">QLoRA</span>
+            <span class="metric-label">Optional GPU notebook path</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Function</p>
+          <h2>What this project does</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>Adapts a general language model toward a specific writing style.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Generates new text from prompts for a creative writing use case.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Uses perplexity and informal output review to compare model behavior.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
