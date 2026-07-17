@@ -14,3 +14,14 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `llm-benchmarks/evaluating-llms-on-qa-tasks/` - LLM benchmark lesson evaluating SQuAD Q&A with F1 and Exact Match.
 - `llm-benchmarks/general-knowledge-benchmark-datasets/` - LLM benchmark lesson evaluating MMLU general knowledge with FLAN-T5.
 - `llm-benchmarks/benchmarking-llms-on-multiple-nlp-tasks/` - LLM benchmark project evaluating DistilBERT across sentiment analysis and Q&A.
+- `build-ai-applications-with-streamlit/running-your-first-streamlit-app/` - Streamlit intro lesson running the built-in `streamlit hello` demo.
+- `build-ai-applications-with-streamlit/using-python-in-streamlit/` - Streamlit lesson building the first sentiment analysis dashboard script.
+- `build-ai-applications-with-streamlit/buttons-sliders-and-other-ui-components/` - Streamlit lesson adding model selection, sliders, and button-triggered feedback.
+- `build-ai-applications-with-streamlit/displaying-data-and-visualizations/` - Streamlit lesson displaying sentiment KPI metrics, charts, and result tables.
+- `build-ai-applications-with-streamlit/user-input-and-app-state/` - Streamlit lesson adding user text input, CSV upload, and app-state behavior notes.
+- `build-ai-applications-with-streamlit/using-session-state-for-app-persistence/` - Streamlit lesson persisting text analysis history with `st.session_state`.
+- `build-ai-applications-with-streamlit/building-multi-page-applications/` - Streamlit lesson organizing the sentiment analysis app with tabs.
+- `build-ai-applications-with-streamlit/connecting-to-databases/` - Streamlit lesson saving and loading sentiment results with SQLite.
+- `build-ai-applications-with-streamlit/loading-and-running-models/` - Streamlit lesson loading Hugging Face sentiment models and running predictions.
+- `build-ai-applications-with-streamlit/interactive-ml-applications/` - Streamlit lesson comparing preprocessing choices and model predictions.
+- `build-ai-applications-with-streamlit/deploying-ai-applications-to-streamlit-community-cloud/` - Streamlit deployment notes for GitHub and Community Cloud.

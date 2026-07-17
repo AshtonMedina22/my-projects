@@ -14,7 +14,7 @@ The homepage highlights the Banking77 intent classification capstone, the Franke
 
 Current files:
 
-- `ai-engineer-lessons/` - organized lesson work for AI Engineer course tasks, including OpenAI Python API, LLM evaluation, and LLM benchmark lessons.
+- `ai-engineer-lessons/` - organized lesson work for AI Engineer course tasks, including OpenAI Python API, LLM evaluation, LLM benchmark, and Streamlit lessons.
 - `codecademy-jupyter-project.ipynb` - model profiling lesson with model size, latency, and GPU memory checkpoints.
 - `hotel-bookings-mlp.ipynb` - hotel booking MLP training lesson with three completed checkpoints.
 - `notebook.md` - hotel booking MLP evaluation lesson with completed prediction and reporting checkpoints.
@@ -49,6 +49,7 @@ Current files:
 - `notebook (29).md` - generative model perplexity lesson with completed cross-entropy loss and perplexity checkpoints.
 - `frankenstein-finetuning-portfolio/` - portfolio-ready Frankenstein language model finetuning project with CPU DistilGPT-2 scripts, completed notebooks, dataset, and optional GPU QLoRA notebook.
 - `engineer-neural-networks-portfolio/` - portfolio-ready Banking77 intent classification project with datasets, MLP baseline script, transformer notebook, and PII guardrails.
+- `streamlit-image-classification-dashboard/` - portfolio-ready Streamlit AI image classification dashboard using Hugging Face ViT and ResNet models.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.

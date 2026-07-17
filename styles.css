@@ -291,6 +291,52 @@ h3 {
   font-weight: 800;
 }
 
+.vision-visual {
+  display: grid;
+  gap: 18px;
+  align-content: center;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.88), rgba(13, 148, 136, 0.9)),
+    var(--panel-strong);
+  color: white;
+}
+
+.vision-frame {
+  display: grid;
+  min-height: 118px;
+  align-content: end;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.06)),
+    rgba(17, 24, 39, 0.28);
+}
+
+.vision-label,
+.vision-score {
+  font-weight: 900;
+}
+
+.vision-score {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.vision-bars {
+  display: grid;
+  gap: 8px;
+}
+
+.vision-bars span {
+  display: block;
+  width: var(--w);
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
 .project-image {
   display: block;
   width: 100%;

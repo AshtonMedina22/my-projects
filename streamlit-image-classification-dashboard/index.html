@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="AI Image Classification Dashboard portfolio project by Ashton Medina using Streamlit and Hugging Face computer vision models."
+    />
+    <title>AI Image Classification Dashboard | Ashton Medina</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Project navigation">
+        <a class="brand" href="../index.html#projects" aria-label="Back to portfolio projects">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="streamlit_app.py">Source</a>
+          <a href="README.md">README</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Streamlit computer vision portfolio project</p>
+          <h1>AI Image Classification Dashboard</h1>
+          <p class="hero-text">
+            A deploy-ready Streamlit application that classifies uploaded images with Hugging Face
+            computer vision models, tracks prediction history, visualizes confidence, compares model
+            performance, and exports classification results.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="streamlit_app.py">View source</a>
+            <a class="button secondary" href="README.md">Project README</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="Image classification project summary">
+          <div class="metric large">
+            <span class="metric-value">1k</span>
+            <span class="metric-label">ImageNet categories</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">ViT</span>
+            <span class="metric-label">Google Vision Transformer option</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">R50</span>
+            <span class="metric-label">Microsoft ResNet-50 option</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">CSV</span>
+            <span class="metric-label">Exportable prediction analytics</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">What it demonstrates</p>
+          <h2>Applied AI deployment skills</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>Loads Hugging Face image-classification pipelines with Streamlit resource caching.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Supports top-k prediction display, confidence thresholds, and processing time tracking.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Stores in-session classification history with image previews and model metadata.</p>
+          </div>
+          <div class="evidence-item">
+            <span>04</span>
+            <p>Builds analytics charts and downloadable CSV results for professional reporting.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section deploy-card">
+        <div>
+          <p class="eyebrow">Live app note</p>
+          <h2>Streamlit apps deploy separately from this static Vercel portfolio.</h2>
+          <p>
+            Vercel serves this project page as a static portfolio artifact. The interactive Python app
+            runs with Streamlit and should be deployed to Streamlit Community Cloud using
+            <strong>streamlit_app.py</strong> as the entry point.
+          </p>
+        </div>
+        <div class="deploy-steps">
+          <span>Main file: streamlit_app.py</span>
+          <span>Dependencies: requirements.txt</span>
+          <span>Target host: Streamlit Community Cloud</span>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
