@@ -2,6 +2,8 @@
 
 A Streamlit portfolio project for real-time image classification using Hugging Face computer vision models.
 
+Live app: https://my-projects-zevpdgm6zdck7cmmhgwr4r.streamlit.app/
+
 ## Features
 
 - Upload `jpg`, `jpeg`, `png`, or `webp` images.
@@ -42,4 +44,3 @@ This project is ready for Streamlit Community Cloud.
 ## Notes
 
 The first model load can take time because Streamlit downloads and caches model weights from Hugging Face.
-
