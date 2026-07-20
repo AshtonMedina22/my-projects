@@ -33,3 +33,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `building-a-rag-app/similarity-search-in-streamlit/` - RAG app lesson wiring Streamlit controls to a Chroma similarity search query.
 - `building-a-rag-app/prompt-engineering-in-streamlit/` - RAG app lesson combining Chroma search results with OpenAI prompt engineering.
 - `rag-techniques/setting-up-our-rag-workspace/` - Advanced RAG setup lesson initializing OpenAI, Chroma, textbook chunks, and RAG prompt helpers.
+- `rag-techniques/decoupling/` - Advanced RAG lesson expanding retrieved chunks with neighboring context before generation.
