@@ -52,3 +52,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `agentic-systems/augmented-llms-function-calling/` - OpenAI function calling lesson defining tools, parsing tool calls, executing local functions, and returning tool results.
 - `agentic-systems/function-calling-in-streamlit/` - Streamlit Chat UI lesson adding tool-call registry support, dice rolling, and rendered tool outputs.
 - `agentic-systems/rag-as-llm-tool/` - Streamlit Chat UI lesson exposing a help-center FAQ lookup as a simple RAG tool for the LLM.
+- `agentic-systems/llm-training-manual-creator/` - Augmented LLM app project using tool calling to read, write, delete, and enrich training manual sections.
