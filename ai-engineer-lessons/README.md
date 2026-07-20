@@ -27,3 +27,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `build-ai-applications-with-streamlit/deploying-ai-applications-to-streamlit-community-cloud/` - Streamlit deployment notes for GitHub and Community Cloud.
 - `creating-ai-applications-using-rag/rag-foundations-search-with-chroma/` - RAG foundations lesson using Chroma collections, embeddings, and semantic search.
 - `creating-ai-applications-using-rag/rag-foundations-document-chunking-with-rag/` - RAG foundations lesson chunking a llama article and storing chunks in Chroma.
+- `creating-ai-applications-using-rag/prompt-engineering-for-rag/` - RAG lesson formatting search results into prompts and adding source citations.
