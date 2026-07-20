@@ -13,6 +13,7 @@ Reusable references for course checkpoints and future portfolio projects.
 | Resource | Use |
 | --- | --- |
 | [LangChain RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/) | RAG app architecture, document loading, chunking, retrieval, prompt assembly, and generation flow. |
+| [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction) | LangChain fundamentals for prompts, models, chains, tools, memory, retrieval, and app composition. |
 | [LangChain Google GenAI Integration](https://docs.langchain.com/oss/python/integrations/chat/google_generative_ai) | Current LangChain setup for connecting Python apps to Google Gemini models. |
 | [Google Gemini API Documentation](https://ai.google.dev/gemini-api/docs) | Gemini model setup, API key handling, and provider-specific configuration. |
 | [Google AI Studio API Keys](https://aistudio.google.com/app/api-keys) | Create a Gemini API key for local notebooks and Streamlit app deployment secrets. |
@@ -22,6 +23,9 @@ Reusable references for course checkpoints and future portfolio projects.
 | Resource | Use |
 | --- | --- |
 | [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) | Practical guidance for designing agentic workflows, including when to use simple workflows, routing, evaluation, orchestration, and autonomous agents. |
+| [DeepLearning.AI: Building Systems with the ChatGPT API](https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/) | Short course reference for chaining, routing, evaluation, moderation, and building multi-step LLM systems. |
+| [Anthropic Guide to Building with Claude](https://docs.anthropic.com/claude/docs) | Claude-focused development guidance for prompts, tool use, safety, and LLM app patterns. |
+| [LangGraph for Building Agents](https://langchain-ai.github.io/langgraph/) | Framework reference for graph-based agent workflows, stateful orchestration, and durable multi-step agent apps. |
 
 ## MLOps And Production AI
 
