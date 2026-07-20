@@ -53,3 +53,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `agentic-systems/function-calling-in-streamlit/` - Streamlit Chat UI lesson adding tool-call registry support, dice rolling, and rendered tool outputs.
 - `agentic-systems/rag-as-llm-tool/` - Streamlit Chat UI lesson exposing a help-center FAQ lookup as a simple RAG tool for the LLM.
 - `agentic-systems/llm-training-manual-creator/` - Augmented LLM app project using tool calling to read, write, delete, and enrich training manual sections.
+- `agentic-systems/trip-planner-ai-agent-capstone/` - Main capstone project building a Streamlit trip planner agent with OpenAI tool calling, OpenStreetMap data, Wikivoyage RAG, maps, persistence, and feedback.

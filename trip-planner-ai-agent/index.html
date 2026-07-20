@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trip Planner AI Agent | AI Engineering Project</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Project navigation">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="app.py">Source</a>
+          <a href="README.md">Setup</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Main capstone project</p>
+          <h1>Trip Planner AI Agent with live travel data.</h1>
+          <p class="hero-text">
+            A production-style Streamlit agent that calls live OpenStreetMap tools, retrieves Wikivoyage context,
+            validates itinerary JSON, renders interactive maps, persists state, and learns from user feedback.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="app.py">View source</a>
+            <a class="button secondary" href="PROJECT_BRIEF.md">Project brief</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="metric large">
+            <span class="metric-value">2</span>
+            <span class="metric-label">Agent tools: POI search and guide retrieval</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">OSM</span>
+            <span class="metric-label">Live geocoding and POI data</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Map</span>
+            <span class="metric-label">PyDeck route visualization</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Architecture</p>
+          <h2>Agentic planning with reliability controls.</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>OpenAI Responses API tool loop with strict schemas and max-step limits.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Nominatim and Overpass requests include User-Agent headers, retries, timeouts, and caching.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Wikivoyage RAG chunks are retrieved with TF-IDF ranking and source metadata.</p>
+          </div>
+          <div class="evidence-item">
+            <span>04</span>
+            <p>Generated itinerary POI IDs are validated against actual tool-returned records.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Implementation</p>
+            <h2>Project Artifacts</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr>
+                <th>Artifact</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="app.py">app.py</a></td>
+                <td>Streamlit app, tools, agent loop, RAG, validation, map, and feedback UI.</td>
+              </tr>
+              <tr>
+                <td><a href="README.md">README.md</a></td>
+                <td>Setup, external API notes, and demo guidance.</td>
+              </tr>
+              <tr>
+                <td><a href="data/app_state.json">app_state.json</a></td>
+                <td>Local persistence target for the latest generated itinerary.</td>
+              </tr>
+              <tr>
+                <td><a href="data/feedback.jsonl">feedback.jsonl</a></td>
+                <td>Feedback event stream used to boost or demote POIs over time.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

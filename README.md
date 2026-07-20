@@ -54,6 +54,7 @@ Current files:
 - `recommendation-system-performance/` - recommendation system model-version analysis covering conversion lift, ROI, segment performance, and fairness checks.
 - `langchain-quiz-generator/` - portfolio-ready Streamlit app using LangChain `LLMChain` and `SequentialChain` composition to generate quiz questions and answer keys with Gemini.
 - `training-manual-creator/` - portfolio-ready Streamlit LLM app using OpenAI function calling to read, write, delete, and enrich training manual sections.
+- `trip-planner-ai-agent/` - main capstone Streamlit AI agent integrating OpenAI Responses tool calling, OpenStreetMap POI search, Wikivoyage RAG, maps, persistence, and feedback.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.
