@@ -1,0 +1,93 @@
+Best Practices in AI Deployment
+Data Hygiene & Privacy Basics
+38 min
+Before our AI chatbot can assist customers, we need to make sure it handles their data responsibly. Customer conversations can contain sensitive personal information, including email addresses, phone numbers, account details, and sometimes even payment information. If this data isn’t protected properly, we could expose customers to identity theft, violate privacy laws, and destroy trust.
+
+Why Data Protection Matters
+Imagine a customer contacts our chatbot saying: “I can’t log into my account. My email is sarah.johnson@email.com, and I’m trying to use my credit card ending in 4532.” This conversation gets stored in our system for training and improving the AI model. Without proper data safeguards in place:
+
+Sarah’s email could be leaked in a data breach, leading to spam or phishing attacks
+Her payment details might be exposed to unauthorized employees or contractors
+The AI model might accidentally repeat Sarah’s information to other customers
+The company could face legal penalties for mishandling personal data
+Customers lose trust when they discover their private information wasn’t protected
+Data Safeguard Steps
+1. Redact Sensitive Information
+
+Personally Identifiable Information (PII) is any data that could identify a specific person. Our chatbot logs shouldn’t store this information in plain 
+[text](https://www.codecademy.com/resources/docs/ai/generative-ai/text)
+Preview: Docs Loading link description
+. Instead, we’ll detect and replace it with placeholders:
+
+Email addresses: sarah.johnson@email.com → [EMAIL]
+Phone numbers: 555-123-4567 → [PHONE]
+Credit card numbers: 1234-5678-9012-3456 → [CREDIT_CARD]
+Social Security Numbers: 123-45-6789 → [SSN]
+When engineers review conversations to improve the AI, they see: “I can’t log into my account. My email is [EMAIL] and I’m trying to use my card ending in [CREDIT_CARD].” They can still understand the conversation context without accessing sensitive data. For standard numerical formats, often regular expressions can be used to identify such content, which you will try in the checkpoints.
+
+2. Remove Identity Traces
+
+Even without obvious PII, data can still be used to identify individuals. Anonymization adds extra protection, for example:
+
+Hash customer IDs: Transform “customer_12345” into “a3f8d9e1b2c4” (one-way conversion that can’t be reversed)
+Remove names: Strip out any customer names from the conversation
+Convert absolute to relative time: Instead of “2025-01-15 3:42 PM,” use “3 days ago”.
+3. Apply Differential Privacy to Statistics
+
+Imagine we’re analyzing which ZIP codes have the most billing issues and publish this report:
+
+ZIP Code    Billing Issues
+94102       247
+94103       189
+94104       1
+94105       312
+
+Copy to Clipboard
+
+ZIP 
+[code](https://www.codecademy.com/resources/docs/ai/generative-ai/code)
+Preview: Docs Loading link description
+ 94104 only has one customer with billing issues. If anyone knows that Sarah from 94104 uses our service, they now know Sarah had a billing problem. We’ve accidentally exposed private information about an individual, despite publishing only aggregate statistics. This can occur when groups contain only a few examples. To avoid this, we can add random “noise” to statistics and refrain from publishing statistics when the elements in a group are too few.
+
+In the checkpoints, you’ll learn to implement some basic methods for handling sensitive data!
+
+Instructions
+Checkpoint 1 Enabled
+1.
+Your goal is to build a complete data protection pipeline that validates data quality, removes PII, anonymizes customer identities, and applies differential privacy to statistics. As a first step, you will validate the data and remove invalid records.
+
+Check for and remove records with missing (or blank) timestamps. Update the dictionary issues to save the number of records with a missing timestamp using the key missing_timestamp.
+Check for and remove records with invalid customer IDs (should start with cust_). Update issues to save the number of records with an invalid customer ID.
+Check for and remove records with instructions less than three characters long (after removing whitespace). Update issues to save the number of records with a near-empty message.
+Print how many records were removed for each reason and the total number of clean records remaining.
+Checkpoint 2 Step instruction is unavailable until previous steps are completed
+2.
+In this checkpoint, you will look specifically for email and phone patterns in the chat instructions or responses. Use the supplied regular expression patterns, and complete the function remove_pii, which will replace the email and phone patterns with placeholders, [EMAIL] and [PHONE].
+
+Complete the remove_pii() function that replaces emails with [EMAIL] and phones with [PHONE]. To use the regular expression pattern, use re.sub(pattern, replacement_text, text).
+Apply to the function to both the instruction and response columns to create new columns, instruction_cleaned and response_cleaned.
+Print two before/after examples to verify the function worked correctly.
+Checkpoint 3 Step instruction is unavailable until previous steps are completed
+3.
+In this checkpoint, you will anonymize customer identities by creating a new hashed customer ID and removing identifying columns.
+
+Complete the hash_customer_id() function to:
+Return None if the customer_id is missing
+Use SHA-256 hashing to convert customer IDs into anonymous codes. Use hashlib.sha256(), but make sure to convert the original customer ID to a string and then encode before passing. Once the ID is hashed, apply .hexdigest() to get the hexadecimal representation.
+Return only the first 16 characters of the hash.
+Create the customer_id_hashed using the function above.
+Drop the PII columns: customer_id, customer_name, email, and phone.
+Show an example of original vs hashed ID to verify the function worked correctly.
+Why Hashing Works: A hash function is one-way—you can turn cust_12345 into a3f8d9e1b2c4f7a9, but you can’t reverse it. This means:
+
+The same customer always gets the same hash (you can still track their conversations)
+Different customers get different hashes
+Nobody can figure out the original customer ID from the hash
+Checkpoint 4 Step instruction is unavailable until previous steps are completed
+4.
+Last, you will apply differential privacy using random noise and identify low-count groups. When groups are small, aggregate statistics can still reveal individual identities. You will add random noise to the zip code statistics to protect individuals and identify low-count zip codes that are most at risk of exposing individuals.
+
+Count the number of conversations by zipcode and save as zipcode_counts
+Create noise using np.random.laplace(0,5.0, size) using the length of zipcode_counts as the size
+Create private_counts by adding the random noise to zipcode_counts and clipping values less than zero and rounding to integers
+Identify zip codes with fewer than five conversations as at_risk and print the at-risk zip codes.

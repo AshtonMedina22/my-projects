@@ -37,3 +37,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `rag-techniques/contextual-query-rewriting/` - Advanced RAG lesson rewriting chat-dependent questions before vector retrieval.
 - `rag-techniques/hypothetical-document-embeddings/` - Advanced RAG lesson using HyDE to retrieve chunks from a hypothetical answer.
 - `rag-techniques/fusion-search/` - Advanced RAG lesson decomposing complex questions into subquestions before synthesis.
+- `best-practices-in-ai-deployment/data-hygiene-and-privacy-basics/` - Deployment lesson validating data, redacting PII, hashing IDs, and adding private count noise.
