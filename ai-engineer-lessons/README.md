@@ -50,3 +50,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `agentic-systems/building-agentic-meal-planner/` - Agentic workflow project for drafting, critiquing, revising, and grocery-listing meal plans with JSON mode.
 - `agentic-systems/augmented-llms-streamlit-chat-ui/` - Streamlit Chat UI lesson using session state, chat messages, chat input, and OpenAI chat completions.
 - `agentic-systems/augmented-llms-function-calling/` - OpenAI function calling lesson defining tools, parsing tool calls, executing local functions, and returning tool results.
+- `agentic-systems/function-calling-in-streamlit/` - Streamlit Chat UI lesson adding tool-call registry support, dice rolling, and rendered tool outputs.
