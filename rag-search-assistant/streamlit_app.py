@@ -191,6 +191,47 @@ def keyword_summary(results):
     return pd.DataFrame(common, columns=["term", "count"])
 
 
+def estimate_monthly_cost(conversations, tier1_pct, tier2_pct, cache_hit_rate):
+    tier1_count = conversations * (tier1_pct / 100)
+    tier2_count = conversations * (tier2_pct / 100)
+    tier3_count = max(0, conversations - tier1_count - tier2_count)
+
+    cost_per_conversation = {
+        "Rule-based": 0.0,
+        "GPT-3.5": 0.004,
+        "GPT-4": 0.018,
+    }
+    routed_cost = (
+        tier1_count * cost_per_conversation["Rule-based"]
+        + tier2_count * cost_per_conversation["GPT-3.5"]
+        + tier3_count * cost_per_conversation["GPT-4"]
+    )
+    cache_savings = routed_cost * (cache_hit_rate / 100)
+    optimized_cost = routed_cost - cache_savings
+    baseline_cost = conversations * cost_per_conversation["GPT-4"]
+    savings = baseline_cost - optimized_cost
+
+    rows = pd.DataFrame(
+        [
+            {"tier": "Tier 1", "system": "Rule-based", "conversations": tier1_count, "cost": 0.0},
+            {
+                "tier": "Tier 2",
+                "system": "GPT-3.5",
+                "conversations": tier2_count,
+                "cost": tier2_count * cost_per_conversation["GPT-3.5"],
+            },
+            {
+                "tier": "Tier 3",
+                "system": "GPT-4",
+                "conversations": tier3_count,
+                "cost": tier3_count * cost_per_conversation["GPT-4"],
+            },
+        ]
+    )
+
+    return rows, baseline_cost, routed_cost, optimized_cost, cache_savings, savings
+
+
 st.title("RAG Search Assistant")
 st.markdown(
     "Upload text files, chunk documents, retrieve relevant context, and inspect the source-backed answer."
@@ -219,7 +260,7 @@ upload_source_url = st.sidebar.text_input(
 uploaded_documents = read_uploaded_documents(uploaded_files, upload_source_url)
 active_documents = DOCUMENTS + uploaded_documents
 
-tab1, tab2 = st.tabs(["Ask Questions", "Document Library"])
+tab1, tab2, tab3 = st.tabs(["Ask Questions", "Document Library", "Cost Controls"])
 
 with tab1:
     example = st.selectbox(
@@ -337,3 +378,47 @@ with tab2:
             use_container_width=True,
             hide_index=True,
         )
+
+with tab3:
+    st.subheader("Routing and Cache Cost Estimator")
+    st.write("Estimate how much a RAG chatbot can save by routing simple requests away from premium models.")
+
+    cost_cols = st.columns(4)
+    monthly_conversations = cost_cols[0].number_input(
+        "Monthly conversations",
+        min_value=1000,
+        max_value=500000,
+        value=100000,
+        step=5000,
+    )
+    tier1_pct = cost_cols[1].slider("Tier 1 rule-based %", min_value=0, max_value=70, value=20)
+    tier2_pct = cost_cols[2].slider("Tier 2 GPT-3.5 %", min_value=0, max_value=90, value=65)
+    cache_hit_rate = cost_cols[3].slider("Cache hit rate %", min_value=0, max_value=80, value=15)
+
+    if tier1_pct + tier2_pct > 100:
+        st.warning("Tier 1 and Tier 2 percentages cannot exceed 100% combined.")
+    else:
+        cost_rows, baseline_cost, routed_cost, optimized_cost, cache_savings, savings = estimate_monthly_cost(
+            monthly_conversations,
+            tier1_pct,
+            tier2_pct,
+            cache_hit_rate,
+        )
+
+        summary_cols = st.columns(4)
+        summary_cols[0].metric("All GPT-4 baseline", f"${baseline_cost:,.0f}")
+        summary_cols[1].metric("Routed cost", f"${routed_cost:,.0f}")
+        summary_cols[2].metric("Routing + cache", f"${optimized_cost:,.0f}")
+        summary_cols[3].metric("Total savings", f"${savings:,.0f}")
+
+        st.dataframe(
+            cost_rows.assign(
+                conversations=cost_rows["conversations"].round(0).astype(int),
+                cost=cost_rows["cost"].round(2),
+            ),
+            use_container_width=True,
+            hide_index=True,
+        )
+
+        st.bar_chart(cost_rows.set_index("tier")["cost"])
+        st.caption(f"Estimated cache savings: ${cache_savings:,.0f}. Quality still needs to be tracked by resolution rate and CSAT.")

@@ -30,6 +30,7 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `creating-ai-applications-using-rag/prompt-engineering-for-rag/` - RAG lesson formatting search results into prompts and adding source citations.
 - `building-a-rag-app/streamlit-introduction/` - RAG app lesson building the first Streamlit UI with widgets, columns, sidebar, and button output.
 - `building-a-rag-app/uploading-documents/` - RAG app lesson uploading chunked anthropology text files into a persistent Chroma collection.
+- `cost-control-in-practice/` - AI chatbot cost-control lesson analyzing tier routing, caching, and quality metrics.
 - `building-a-rag-app/similarity-search-in-streamlit/` - RAG app lesson wiring Streamlit controls to a Chroma similarity search query.
 - `building-a-rag-app/prompt-engineering-in-streamlit/` - RAG app lesson combining Chroma search results with OpenAI prompt engineering.
 - `rag-techniques/setting-up-our-rag-workspace/` - Advanced RAG setup lesson initializing OpenAI, Chroma, textbook chunks, and RAG prompt helpers.

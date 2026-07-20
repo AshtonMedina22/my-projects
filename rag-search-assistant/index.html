@@ -28,7 +28,7 @@
           <h1>RAG Search Assistant</h1>
           <p class="hero-text">
             A deploy-ready Streamlit prototype that uploads text documents, chunks them with overlap,
-            retrieves relevant source passages, assembles a RAG prompt, and visualizes the retrieved context.
+            retrieves source passages, assembles a RAG prompt, and estimates routing/cache cost savings.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="streamlit_app.py">View source</a>
@@ -47,6 +47,10 @@
           <div class="metric">
             <span class="metric-value">Upload</span>
             <span class="metric-label">Session-based text document indexing</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Costs</span>
+            <span class="metric-label">Routing and cache savings estimator</span>
           </div>
         </div>
       </section>
@@ -67,7 +71,7 @@
           </div>
           <div class="evidence-item">
             <span>03</span>
-            <p>Structured so later course lessons can replace TF-IDF with Chroma and add an LLM completion layer.</p>
+            <p>Includes a cost-control view for routing traffic between rule-based answers, cheaper models, and premium models.</p>
           </div>
         </div>
       </section>
