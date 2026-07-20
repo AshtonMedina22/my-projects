@@ -116,7 +116,7 @@ def split_text_with_overlap(text, chunk_size, chunk_overlap):
     return [chunk for chunk in chunks if chunk]
 
 
-def read_uploaded_documents(uploaded_files):
+def read_uploaded_documents(uploaded_files, source_url):
     documents = []
     for uploaded_file in uploaded_files:
         try:
@@ -128,7 +128,7 @@ def read_uploaded_documents(uploaded_files):
             {
                 "title": uploaded_file.name,
                 "source": "Uploaded file",
-                "url": "local-upload",
+                "url": source_url or f"uploaded://{uploaded_file.name}",
                 "text": text,
             }
         )
@@ -209,8 +209,13 @@ uploaded_files = st.sidebar.file_uploader(
     accept_multiple_files=True,
     help="Upload .txt or .md files to add them to the retriever for this session.",
 )
+upload_source_url = st.sidebar.text_input(
+    "Uploaded document source URL",
+    value="https://openstax.org/details/books/introduction-anthropology",
+    help="Used as citation metadata for uploaded chunks.",
+)
 
-uploaded_documents = read_uploaded_documents(uploaded_files)
+uploaded_documents = read_uploaded_documents(uploaded_files, upload_source_url)
 active_documents = DOCUMENTS + uploaded_documents
 
 tab1, tab2 = st.tabs(["Ask Questions", "Document Library"])
