@@ -52,16 +52,8 @@ print(f"Yearly projection: ${yearly_projection:,.2f}")
 
 
 # Checkpoint 3
-# Create week number if the dataset does not already include one
-if "week" not in df.columns:
-    date_columns = [col for col in ["timestamp", "date", "created_at", "conversation_date"] if col in df.columns]
-    if date_columns:
-        df["week"] = pd.to_datetime(df[date_columns[0]]).dt.isocalendar().week
-    else:
-        df["week"] = (np.arange(len(df)) // max(1, len(df) // 4)) + 1
-
 # Group by week and calculate metrics
-weekly_metrics = df.groupby("week")[["resolved", "csat_score", "latency_seconds"]].mean().reset_index()
+weekly_metrics = df.groupby("week_number")[["resolved", "csat_score", "latency_seconds"]].mean().reset_index()
 
 # Rename columns for clarity
 weekly_metrics.columns = ["week", "resolution_rate", "avg_csat", "avg_latency"]
