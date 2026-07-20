@@ -77,7 +77,7 @@ def load_llm(api_key: str, temperature: float):
     )
 
 
-def build_quiz_chain(llm):
+def build_quiz_chain(llm, verbose: bool):
     question_prompt = PromptTemplate(
         input_variables=["topic", "audience"],
         template=QUESTION_TEMPLATE,
@@ -104,7 +104,7 @@ def build_quiz_chain(llm):
         chains=[question_chain, answer_chain],
         input_variables=["topic", "audience"],
         output_variables=["question", "answer"],
-        verbose=False,
+        verbose=verbose,
     )
 
 
@@ -130,14 +130,14 @@ def demo_quiz(topic: str, audience: str) -> QuizResult:
     )
 
 
-def generate_quiz(topic: str, audience: str, temperature: float) -> QuizResult:
+def generate_quiz(topic: str, audience: str, temperature: float, verbose: bool) -> QuizResult:
     api_key = get_api_key()
 
     if not api_key or not all([LLMChain, SequentialChain, PromptTemplate, ChatGoogleGenerativeAI]):
         return demo_quiz(topic, audience)
 
     llm = load_llm(api_key, temperature)
-    quiz_chain = build_quiz_chain(llm)
+    quiz_chain = build_quiz_chain(llm, verbose=verbose)
     result = quiz_chain.invoke({"topic": topic, "audience": audience})
 
     return QuizResult(
@@ -164,6 +164,7 @@ with st.sidebar:
     st.write("Answer LLMChain")
     st.write("SequentialChain output")
     temperature = st.slider("Creativity", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
+    verbose = st.toggle("Show chain execution steps", value=True)
 
     if get_api_key():
         st.success("Google API key detected")
@@ -192,7 +193,7 @@ with tab_generate:
         st.subheader("Quiz Output")
         if generate:
             with st.spinner("Running sequential chain..."):
-                quiz = generate_quiz(topic, audience, temperature)
+                quiz = generate_quiz(topic, audience, temperature, verbose)
             st.session_state.history.insert(0, quiz)
             st.markdown("**Question**")
             st.info(quiz.question)
@@ -257,6 +258,7 @@ quiz_chain = SequentialChain(
     chains=[question_chain, answer_chain],
     input_variables=["topic", "audience"],
     output_variables=["question", "answer"],
+    verbose=True,
 )""",
         language="python",
     )
