@@ -53,7 +53,11 @@ print(f"Yearly projection: ${yearly_projection:,.2f}")
 
 # Checkpoint 3
 # Group by week and calculate metrics
-weekly_metrics = df.groupby("week_number")[["resolved", "csat_score", "latency_seconds"]].mean().reset_index()
+weekly_metrics = df.groupby("week_number").agg({
+    "resolved": "mean",
+    "csat_score": "mean",
+    "latency_seconds": "mean",
+}).reset_index()
 
 # Rename columns for clarity
 weekly_metrics.columns = ["week", "resolution_rate", "avg_csat", "avg_latency"]
