@@ -49,3 +49,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `langchain-components/mini-quiz-generator/` - LangChain project notes for building a SequentialChain quiz generator with Gemini.
 - `agentic-systems/building-agentic-meal-planner/` - Agentic workflow project for drafting, critiquing, revising, and grocery-listing meal plans with JSON mode.
 - `agentic-systems/augmented-llms-streamlit-chat-ui/` - Streamlit Chat UI lesson using session state, chat messages, chat input, and OpenAI chat completions.
+- `agentic-systems/augmented-llms-function-calling/` - OpenAI function calling lesson defining tools, parsing tool calls, executing local functions, and returning tool results.
