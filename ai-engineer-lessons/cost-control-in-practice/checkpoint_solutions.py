@@ -8,7 +8,7 @@ df = pd.read_csv("customer_support_clean.csv", on_bad_lines="skip", encoding="ut
 
 # Checkpoint 1
 tier_counts = df["model_tier"].value_counts()
-tier_percentages = df["model_tier"].value_counts(normalize=True) * 100
+tier_percentages = tier_counts / len(df) * 100
 
 tier_costs = df.groupby("model_tier")["cost"].sum()
 tier_avg_costs = df.groupby("model_tier")["cost"].mean()
@@ -57,4 +57,3 @@ quality_by_tier = df.groupby("model_tier").agg(
         "csat_score": "mean",
     }
 )
-
