@@ -10,7 +10,7 @@ This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfol
 - Vercel root directory: `.`
 - Build command: none
 
-The homepage highlights the Banking77 intent classification capstone, the Frankenstein language-model finetuning project, and neural-network architecture work.
+The homepage highlights Banking77 intent classification, transformer finetuning, neural-network architecture work, Streamlit AI apps, RAG prototypes, LangChain chain composition, and production AI analysis projects.
 
 Current files:
 
@@ -52,6 +52,7 @@ Current files:
 - `streamlit-image-classification-dashboard/` - portfolio-ready Streamlit AI image classification dashboard using Hugging Face ViT and ResNet models.
 - `rag-search-assistant/` - deploy-ready Streamlit RAG search assistant scaffold with lightweight retrieval, cited chunks, and prompt preview.
 - `recommendation-system-performance/` - recommendation system model-version analysis covering conversion lift, ROI, segment performance, and fairness checks.
+- `langchain-quiz-generator/` - portfolio-ready Streamlit app using LangChain `LLMChain` and `SequentialChain` composition to generate quiz questions and answer keys with Gemini.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.

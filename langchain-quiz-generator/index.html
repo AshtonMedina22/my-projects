@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LangChain Quiz Generator | Ashton Medina</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="PROJECT_BRIEF.md">Brief</a>
+          <a href="streamlit_app.py">Source</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">LangChain app project</p>
+          <h1>Sequential quiz generation with focused AI chains.</h1>
+          <p class="hero-text">
+            A Streamlit application that turns a topic into a quiz question, then passes that
+            generated question into a second chain for a detailed answer and explanation.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="streamlit_app.py">View source</a>
+            <a class="button secondary" href="README.md">Run instructions</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="LangChain quiz generator summary">
+          <div class="metric large">
+            <span class="metric-value">2</span>
+            <span class="metric-label">Specialized LLMChain steps</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Gemini</span>
+            <span class="metric-label">2.0 Flash model path</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">CSV</span>
+            <span class="metric-label">Generation history export</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Safe</span>
+            <span class="metric-label">Environment-variable key handling</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Problem</p>
+          <h2>Educational content generation is repetitive but quality-sensitive.</h2>
+        </div>
+        <div class="case-callout">
+          <p>
+            This project breaks quiz generation into two auditable steps: question creation and
+            answer explanation. The smaller chain responsibilities make the workflow easier to test,
+            improve, and later expand into more advanced educational content tools.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Architecture</p>
+          <h2>SequentialChain Data Flow</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p><strong>PromptTemplate:</strong> formats topic, difficulty, and audience into a controlled question-generation prompt.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p><strong>Question LLMChain:</strong> uses Gemini to generate one clear learner-facing quiz question.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p><strong>Answer LLMChain:</strong> receives the generated question and returns an answer, explanation, and key takeaway.</p>
+          </div>
+          <div class="evidence-item">
+            <span>04</span>
+            <p><strong>SequentialChain:</strong> passes the question output into the answer chain automatically through output keys.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">App features</p>
+          <h2>Portfolio-Ready Controls</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-body">
+              <p class="project-type">Generation</p>
+              <h3>Topic, level, and audience controls</h3>
+              <p>
+                The app lets users tune quiz generation for different learners instead of hardcoding
+                one generic prompt.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-body">
+              <p class="project-type">Operations</p>
+              <h3>Demo mode without exposing secrets</h3>
+              <p>
+                Public reviewers can inspect the interface without API keys, while the real Gemini
+                path runs when environment variables are configured.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-body">
+              <p class="project-type">Evidence</p>
+              <h3>History and export</h3>
+              <p>
+                Generated quizzes are stored in session history and can be exported as CSV for review
+                or downstream content workflows.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="deploy-card">
+          <div>
+            <p class="eyebrow">Artifacts</p>
+            <h2>Source, setup, and implementation notes.</h2>
+            <p>
+              The repository includes a Streamlit app, requirements file, environment example, and
+              project brief. The live app URL can be added after deployment to Streamlit Community Cloud.
+            </p>
+          </div>
+          <div class="artifact-links">
+            <a href="streamlit_app.py">Streamlit source</a>
+            <a href="requirements.txt">Requirements</a>
+            <a href="env.example">Environment example</a>
+            <a href="PROJECT_BRIEF.md">Project brief</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -400,6 +400,44 @@ h3 {
   text-align: center;
 }
 
+.quiz-visual {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(13, 148, 136, 0.9)),
+    var(--panel-strong);
+  color: white;
+}
+
+.quiz-flow {
+  display: grid;
+  gap: 10px;
+}
+
+.quiz-flow span,
+.quiz-output {
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 900;
+}
+
+.quiz-flow span:nth-child(2) {
+  margin-left: 18px;
+}
+
+.quiz-flow span:nth-child(3) {
+  margin-left: 36px;
+}
+
+.quiz-output {
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--panel-strong);
+}
+
 .project-image {
   display: block;
   width: 100%;

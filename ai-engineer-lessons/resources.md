@@ -13,6 +13,9 @@ Reusable references for course checkpoints and future portfolio projects.
 | Resource | Use |
 | --- | --- |
 | [LangChain RAG Tutorial](https://python.langchain.com/docs/tutorials/rag/) | RAG app architecture, document loading, chunking, retrieval, prompt assembly, and generation flow. |
+| [LangChain Google GenAI Integration](https://docs.langchain.com/oss/python/integrations/chat/google_generative_ai) | Current LangChain setup for connecting Python apps to Google Gemini models. |
+| [Google Gemini API Documentation](https://ai.google.dev/gemini-api/docs) | Gemini model setup, API key handling, and provider-specific configuration. |
+| [Google AI Studio API Keys](https://aistudio.google.com/app/api-keys) | Create a Gemini API key for local notebooks and Streamlit app deployment secrets. |
 
 ## MLOps And Production AI
 
