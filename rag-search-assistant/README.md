@@ -15,6 +15,7 @@ This version is intentionally lightweight: it uses a small built-in course-note 
 - Document library and chunk preview
 - Keyword chart for retrieved context
 - Optional assembled RAG prompt preview
+- Optional raw retrieval output preview
 
 ## Run Locally
 

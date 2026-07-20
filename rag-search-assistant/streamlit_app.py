@@ -202,6 +202,7 @@ n_results = st.sidebar.slider("Number of retrieved chunks", min_value=1, max_val
 chunk_size = st.sidebar.slider("Chunk size", min_value=300, max_value=2000, value=1500, step=100)
 chunk_overlap = st.sidebar.slider("Chunk overlap", min_value=0, max_value=500, value=200, step=50)
 show_prompt = st.sidebar.toggle("Show assembled RAG prompt", value=True)
+show_raw_results = st.sidebar.toggle("Show raw retrieval output", value=False)
 
 uploaded_files = st.sidebar.file_uploader(
     "Upload text documents",
@@ -276,6 +277,18 @@ with tab1:
             if not chart_data.empty:
                 st.subheader("Retrieved Context Keywords")
                 st.bar_chart(chart_data.set_index("term"))
+
+            if show_raw_results:
+                st.subheader("Raw Retrieval Output")
+                st.json(
+                    {
+                        "documents": [results["chunk"].tolist()],
+                        "metadatas": [
+                            results[["title", "source", "url", "chunk_index"]].to_dict("records")
+                        ],
+                        "distances": [results["score"].tolist()],
+                    }
+                )
 
             if show_prompt:
                 st.subheader("Assembled RAG Prompt")
