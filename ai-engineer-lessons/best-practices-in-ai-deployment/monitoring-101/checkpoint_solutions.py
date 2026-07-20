@@ -52,6 +52,10 @@ print(f"Yearly projection: ${yearly_projection:,.2f}")
 
 
 # Checkpoint 3
+# Create week number from timestamp
+df["timestamp"] = pd.to_datetime(df["timestamp"])
+df["week"] = df["timestamp"].dt.isocalendar().week
+
 # Group by week and calculate metrics
 weekly_metrics = df.groupby("week")[["resolved", "csat_score", "latency_seconds"]].mean().reset_index()
 
