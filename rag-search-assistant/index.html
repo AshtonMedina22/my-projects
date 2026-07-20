@@ -27,8 +27,8 @@
           <p class="eyebrow">Streamlit RAG app</p>
           <h1>RAG Search Assistant</h1>
           <p class="hero-text">
-            A deploy-ready Streamlit prototype that retrieves relevant course-note chunks, assembles a RAG
-            prompt, displays source-backed answers, and visualizes the retrieved context.
+            A deploy-ready Streamlit prototype that uploads text documents, chunks them with overlap,
+            retrieves relevant source passages, assembles a RAG prompt, and visualizes the retrieved context.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="streamlit_app.py">View source</a>
@@ -45,8 +45,8 @@
             <span class="metric-label">Lightweight retrieval for no-key deployment</span>
           </div>
           <div class="metric">
-            <span class="metric-value">Cites</span>
-            <span class="metric-label">Source URLs shown with retrieved context</span>
+            <span class="metric-value">Upload</span>
+            <span class="metric-label">Session-based text document indexing</span>
           </div>
         </div>
       </section>
@@ -59,11 +59,11 @@
         <div class="evidence-list">
           <div class="evidence-item">
             <span>01</span>
-            <p>Runs without secrets so visitors can test the retrieval experience immediately.</p>
+            <p>Runs without secrets so visitors can upload text files and test retrieval immediately.</p>
           </div>
           <div class="evidence-item">
             <span>02</span>
-            <p>Shows retrieved chunks, source URLs, top similarity scores, and assembled prompt context.</p>
+            <p>Shows chunk previews, source URLs, top similarity scores, and assembled prompt context.</p>
           </div>
           <div class="evidence-item">
             <span>03</span>
@@ -74,4 +74,3 @@
     </main>
   </body>
 </html>
-

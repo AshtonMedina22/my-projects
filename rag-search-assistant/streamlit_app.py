@@ -9,7 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(
     page_title="RAG Search Assistant",
-    page_icon="🔎",
+    page_icon="Search",
     layout="wide",
 )
 
@@ -66,36 +66,105 @@ DOCUMENTS = [
             "for quickly sharing machine learning and RAG prototypes."
         ),
     },
+    {
+        "title": "Anthropology of Food",
+        "source": "OpenStax Demo Note",
+        "url": "https://openstax.org/details/books/introduction-anthropology",
+        "text": (
+            "Anthropologists study food as a cultural system that connects identity, ritual, economy, "
+            "environment, and social relationships. Food practices can show how communities organize "
+            "meaning, status, exchange, family life, and belonging."
+        ),
+    },
+    {
+        "title": "Anthropology of Art, Music, and Sport",
+        "source": "OpenStax Demo Note",
+        "url": "https://openstax.org/details/books/introduction-anthropology",
+        "text": (
+            "Anthropology approaches art, music, and sport as cultural expressions. These practices can "
+            "communicate values, reinforce social bonds, express identity, and reveal how people create "
+            "meaning through performance and shared experience."
+        ),
+    },
 ]
 
 
-def split_sentences(text):
-    return [sentence.strip() for sentence in re.split(r"(?<=[.!?])\s+", text) if sentence.strip()]
+def split_text_with_overlap(text, chunk_size, chunk_overlap):
+    text = re.sub(r"\s+", " ", text).strip()
+    if not text:
+        return []
+
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = min(start + chunk_size, len(text))
+        window = text[start:end]
+        split_at = max(
+            window.rfind(". "),
+            window.rfind("? "),
+            window.rfind("! "),
+            window.rfind("\n"),
+        )
+        if split_at > chunk_size * 0.45 and end < len(text):
+            end = start + split_at + 1
+
+        chunks.append(text[start:end].strip())
+        if end >= len(text):
+            break
+        start = max(0, end - chunk_overlap)
+
+    return [chunk for chunk in chunks if chunk]
+
+
+def read_uploaded_documents(uploaded_files):
+    documents = []
+    for uploaded_file in uploaded_files:
+        try:
+            text = uploaded_file.getvalue().decode("utf-8")
+        except UnicodeDecodeError:
+            text = uploaded_file.getvalue().decode("latin-1")
+
+        documents.append(
+            {
+                "title": uploaded_file.name,
+                "source": "Uploaded file",
+                "url": "local-upload",
+                "text": text,
+            }
+        )
+    return documents
 
 
 @st.cache_data
-def build_index(documents):
+def build_index(documents, chunk_size, chunk_overlap):
     rows = []
     for document in documents:
-        for chunk_index, sentence in enumerate(split_sentences(document["text"])):
+        chunks = split_text_with_overlap(document["text"], chunk_size, chunk_overlap)
+        for chunk_index, chunk in enumerate(chunks):
             rows.append(
                 {
                     "title": document["title"],
                     "source": document["source"],
                     "url": document["url"],
                     "chunk_index": chunk_index,
-                    "chunk": sentence,
+                    "chunk": chunk,
                 }
             )
 
     df = pd.DataFrame(rows)
+    if df.empty:
+        return df, None, None
+
     vectorizer = TfidfVectorizer(stop_words="english")
     matrix = vectorizer.fit_transform(df["chunk"])
     return df, vectorizer, matrix
 
 
-def search_chunks(query, n_results):
-    df, vectorizer, matrix = build_index(DOCUMENTS)
+def search_chunks(query, n_results, documents, chunk_size, chunk_overlap):
+    df, vectorizer, matrix = build_index(documents, chunk_size, chunk_overlap)
+    if df.empty:
+        return df
+
     query_vector = vectorizer.transform([query])
     scores = cosine_similarity(query_vector, matrix).flatten()
     ranked_indices = scores.argsort()[::-1][:n_results]
@@ -104,9 +173,9 @@ def search_chunks(query, n_results):
     return results
 
 
-def synthesize_answer(query, results):
+def synthesize_answer(results):
     if results.empty or results["score"].max() <= 0:
-        return "I don't know based on the available course notes."
+        return "I don't know based on the available documents."
 
     top_rows = results[results["score"] > 0]
     evidence = " ".join(top_rows["chunk"].tolist())
@@ -124,68 +193,92 @@ def keyword_summary(results):
 
 st.title("RAG Search Assistant")
 st.markdown(
-    "Ask a course-style RAG question, retrieve relevant chunks, and inspect the source-backed answer."
+    "Upload text files, chunk documents, retrieve relevant context, and inspect the source-backed answer."
 )
 
 st.sidebar.title("Retrieval Settings")
-st.sidebar.markdown("Tune how many chunks the retriever sends into the answer step.")
+st.sidebar.markdown("Tune chunking and retrieval before asking a question.")
 n_results = st.sidebar.slider("Number of retrieved chunks", min_value=1, max_value=6, value=3)
+chunk_size = st.sidebar.slider("Chunk size", min_value=300, max_value=2000, value=1500, step=100)
+chunk_overlap = st.sidebar.slider("Chunk overlap", min_value=0, max_value=500, value=200, step=50)
 show_prompt = st.sidebar.toggle("Show assembled RAG prompt", value=True)
 
-example = st.selectbox(
-    "Try an example",
-    [
-        "Custom question",
-        "Why do RAG apps use vector databases?",
-        "Why should chunks overlap?",
-        "How does prompt engineering help RAG answers?",
-        "What makes Streamlit useful for AI demos?",
-    ],
+uploaded_files = st.sidebar.file_uploader(
+    "Upload text documents",
+    type=["txt", "md"],
+    accept_multiple_files=True,
+    help="Upload .txt or .md files to add them to the retriever for this session.",
 )
 
-default_question = "" if example == "Custom question" else example
-user_question = st.text_area(
-    "Ask a question",
-    value=default_question,
-    height=120,
-    placeholder="Example: Why do RAG apps use chunking?",
-    key="user_question",
-)
+uploaded_documents = read_uploaded_documents(uploaded_files)
+active_documents = DOCUMENTS + uploaded_documents
 
-if st.button("Get Answer", type="primary"):
-    if not user_question.strip():
-        st.warning("Enter a question first.")
-    else:
-        results = search_chunks(user_question, n_results)
-        answer = synthesize_answer(user_question, results)
+tab1, tab2 = st.tabs(["Ask Questions", "Document Library"])
 
-        st.subheader("Answer")
-        st.write(answer)
+with tab1:
+    example = st.selectbox(
+        "Try an example",
+        [
+            "Custom question",
+            "How do anthropologists study food?",
+            "How do anthropologists think about music and art?",
+            "Why do RAG apps use vector databases?",
+            "Why should chunks overlap?",
+            "How does prompt engineering help RAG answers?",
+        ],
+    )
 
-        metric_cols = st.columns(3)
-        metric_cols[0].metric("Chunks searched", len(build_index(DOCUMENTS)[0]))
-        metric_cols[1].metric("Chunks returned", len(results))
-        metric_cols[2].metric("Top score", f"{results['score'].max():.3f}")
+    default_question = "" if example == "Custom question" else example
+    user_question = st.text_area(
+        "Ask a question",
+        value=default_question,
+        height=120,
+        placeholder="Example: Why do RAG apps use chunking?",
+        key="user_question",
+    )
 
-        st.subheader("Retrieved Chunks")
-        st.dataframe(
-            results[["score", "title", "source", "chunk_index", "chunk", "url"]],
-            use_container_width=True,
-            hide_index=True,
-        )
-
-        chart_data = keyword_summary(results)
-        if not chart_data.empty:
-            st.subheader("Retrieved Context Keywords")
-            st.bar_chart(chart_data.set_index("term"))
-
-        if show_prompt:
-            st.subheader("Assembled RAG Prompt")
-            context = "\n\n".join(
-                f"[{row.title} | {row.url}] {row.chunk}" for row in results.itertuples()
+    if st.button("Get Answer", type="primary"):
+        if not user_question.strip():
+            st.warning("Enter a question first.")
+        else:
+            results = search_chunks(
+                user_question,
+                n_results,
+                active_documents,
+                chunk_size,
+                chunk_overlap,
             )
-            st.code(
-                f"""Instructions:
+            answer = synthesize_answer(results)
+
+            st.subheader("Answer")
+            st.write(answer)
+
+            chunk_df, _, _ = build_index(active_documents, chunk_size, chunk_overlap)
+            metric_cols = st.columns(4)
+            metric_cols[0].metric("Documents", len(active_documents))
+            metric_cols[1].metric("Uploaded", len(uploaded_documents))
+            metric_cols[2].metric("Chunks searched", len(chunk_df))
+            metric_cols[3].metric("Top score", f"{results['score'].max():.3f}")
+
+            st.subheader("Retrieved Chunks")
+            st.dataframe(
+                results[["score", "title", "source", "chunk_index", "chunk", "url"]],
+                use_container_width=True,
+                hide_index=True,
+            )
+
+            chart_data = keyword_summary(results)
+            if not chart_data.empty:
+                st.subheader("Retrieved Context Keywords")
+                st.bar_chart(chart_data.set_index("term"))
+
+            if show_prompt:
+                st.subheader("Assembled RAG Prompt")
+                context = "\n\n".join(
+                    f"[{row.title} | {row.url}] {row.chunk}" for row in results.itertuples()
+                )
+                st.code(
+                    f"""Instructions:
 Answer the user question using only the search results. If the search results do not answer the question, say "I don't know." Cite the source URL.
 
 User question:
@@ -195,9 +288,34 @@ Search Results:
 {context}
 
 Your answer:""",
-                language="text",
-            )
+                    language="text",
+                )
+    else:
+        st.info("Enter a question and click Get Answer to run the retrieval demo.")
 
-else:
-    st.info("Enter a question and click Get Answer to run the retrieval demo.")
+with tab2:
+    st.subheader("Document Library")
+    st.write("Built-in course notes are always available. Uploaded files are added for this session.")
 
+    doc_rows = [
+        {
+            "title": document["title"],
+            "source": document["source"],
+            "characters": len(document["text"]),
+            "url": document["url"],
+        }
+        for document in active_documents
+    ]
+    st.dataframe(pd.DataFrame(doc_rows), use_container_width=True, hide_index=True)
+
+    chunk_df, _, _ = build_index(active_documents, chunk_size, chunk_overlap)
+    st.subheader("Chunk Preview")
+    st.write(f"Using chunk size `{chunk_size}` and overlap `{chunk_overlap}`.")
+    if chunk_df.empty:
+        st.warning("No chunks available.")
+    else:
+        st.dataframe(
+            chunk_df[["title", "source", "chunk_index", "chunk", "url"]].head(20),
+            use_container_width=True,
+            hide_index=True,
+        )
