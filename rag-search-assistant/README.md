@@ -17,6 +17,7 @@ This version is intentionally lightweight: it uses a small built-in course-note 
 - Optional assembled RAG prompt preview
 - Optional raw retrieval output preview
 - Cost-control estimator for routing simple requests, cheaper model use, premium model fallback, and caching
+- Safety scanner for jailbreak phrases and PII leakage patterns
 
 ## Run Locally
 

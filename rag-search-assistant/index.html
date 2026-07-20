@@ -28,7 +28,7 @@
           <h1>RAG Search Assistant</h1>
           <p class="hero-text">
             A deploy-ready Streamlit prototype that uploads text documents, chunks them with overlap,
-            retrieves source passages, assembles a RAG prompt, and estimates routing/cache cost savings.
+            retrieves source passages, assembles a RAG prompt, estimates routing/cache cost savings, and scans for misuse patterns.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="streamlit_app.py">View source</a>
@@ -52,6 +52,10 @@
             <span class="metric-value">Costs</span>
             <span class="metric-label">Routing and cache savings estimator</span>
           </div>
+          <div class="metric">
+            <span class="metric-value">Safety</span>
+            <span class="metric-label">Jailbreak and PII pattern checks</span>
+          </div>
         </div>
       </section>
 
@@ -71,7 +75,7 @@
           </div>
           <div class="evidence-item">
             <span>03</span>
-            <p>Includes a cost-control view for routing traffic between rule-based answers, cheaper models, and premium models.</p>
+            <p>Includes safety checks for prompt-injection phrases and leaked personal information patterns.</p>
           </div>
         </div>
       </section>
