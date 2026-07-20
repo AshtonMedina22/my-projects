@@ -17,6 +17,12 @@ Reusable references for course checkpoints and future portfolio projects.
 | [Google Gemini API Documentation](https://ai.google.dev/gemini-api/docs) | Gemini model setup, API key handling, and provider-specific configuration. |
 | [Google AI Studio API Keys](https://aistudio.google.com/app/api-keys) | Create a Gemini API key for local notebooks and Streamlit app deployment secrets. |
 
+## Agentic Systems
+
+| Resource | Use |
+| --- | --- |
+| [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) | Practical guidance for designing agentic workflows, including when to use simple workflows, routing, evaluation, orchestration, and autonomous agents. |
+
 ## MLOps And Production AI
 
 | Resource | Use |
@@ -29,5 +35,6 @@ Reusable references for course checkpoints and future portfolio projects.
 
 - Use Streamlit docs when improving the course Streamlit apps into polished interactive demos.
 - Use LangChain RAG docs when extending the RAG assistant with better retrieval, citations, chunk controls, and query rewriting.
+- Use Anthropic's agent-building guide when deciding whether a project should be a simple workflow, routed chain, evaluator loop, orchestrated workflow, or more autonomous agent.
 - Use MLOps references when turning course notebooks into portfolio case studies with monitoring, evaluation, deployment, cost control, safety, and governance sections.
 - Use Google ML monitoring guidance when adding production-readiness language to model evaluation and recommendation-system portfolio projects.

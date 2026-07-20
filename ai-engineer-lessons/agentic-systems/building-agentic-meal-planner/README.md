@@ -20,6 +20,10 @@ Build an agentic meal planner that:
 - Evaluation/refinement loops
 - Agentic workflow control
 
+## Helpful Resources
+
+- [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents) - reference for designing agentic workflows, evaluator loops, routing, and deciding when autonomy is actually needed.
+
 ## Notebook Source
 
 The original markdown export for this lesson was reviewed from:
