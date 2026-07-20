@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RAG Search Assistant | Ashton Medina</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="streamlit_app.py">Source</a>
+          <a href="README.md">README</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Streamlit RAG app</p>
+          <h1>RAG Search Assistant</h1>
+          <p class="hero-text">
+            A deploy-ready Streamlit prototype that retrieves relevant course-note chunks, assembles a RAG
+            prompt, displays source-backed answers, and visualizes the retrieved context.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="streamlit_app.py">View source</a>
+            <a class="button secondary" href="README.md">Deployment notes</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="RAG app summary">
+          <div class="metric large">
+            <span class="metric-value">RAG</span>
+            <span class="metric-label">Retrieval augmented generation workflow</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">TF-IDF</span>
+            <span class="metric-label">Lightweight retrieval for no-key deployment</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Cites</span>
+            <span class="metric-label">Source URLs shown with retrieved context</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Build path</p>
+          <h2>Ready for Streamlit Cloud now, upgradeable later.</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>Runs without secrets so visitors can test the retrieval experience immediately.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Shows retrieved chunks, source URLs, top similarity scores, and assembled prompt context.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Structured so later course lessons can replace TF-IDF with Chroma and add an LLM completion layer.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+

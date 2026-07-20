@@ -50,6 +50,7 @@ Current files:
 - `frankenstein-finetuning-portfolio/` - portfolio-ready Frankenstein language model finetuning project with CPU DistilGPT-2 scripts, completed notebooks, dataset, and optional GPU QLoRA notebook.
 - `engineer-neural-networks-portfolio/` - portfolio-ready Banking77 intent classification project with datasets, MLP baseline script, transformer notebook, and PII guardrails.
 - `streamlit-image-classification-dashboard/` - portfolio-ready Streamlit AI image classification dashboard using Hugging Face ViT and ResNet models.
+- `rag-search-assistant/` - deploy-ready Streamlit RAG search assistant scaffold with lightweight retrieval, cited chunks, and prompt preview.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.

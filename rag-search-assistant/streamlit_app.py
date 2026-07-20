@@ -1,0 +1,203 @@
+import re
+from collections import Counter
+
+import pandas as pd
+import streamlit as st
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+
+st.set_page_config(
+    page_title="RAG Search Assistant",
+    page_icon="🔎",
+    layout="wide",
+)
+
+
+DOCUMENTS = [
+    {
+        "title": "RAG Overview",
+        "source": "Course Notes",
+        "url": "https://www.codecademy.com/resources/docs/ai/prompt-engineering",
+        "text": (
+            "Retrieval augmented generation, or RAG, combines search with language generation. "
+            "A retriever finds relevant source chunks, and the generator uses those chunks as context "
+            "when answering the user question. RAG helps reduce hallucinations by grounding answers in "
+            "retrieved documents."
+        ),
+    },
+    {
+        "title": "Vector Databases",
+        "source": "Chroma Lesson",
+        "url": "https://www.trychroma.com/",
+        "text": (
+            "Vector databases store embeddings and make similarity search easier to implement. "
+            "They index high-dimensional vectors and compare queries to stored chunks with distance "
+            "metrics such as cosine similarity, L2 distance, or inner product."
+        ),
+    },
+    {
+        "title": "Chunking Strategy",
+        "source": "Chunking Lesson",
+        "url": "https://python.langchain.com/docs/concepts/text_splitters/",
+        "text": (
+            "Document chunking splits long text into smaller passages before retrieval. Overlapping "
+            "chunks preserve important context across boundaries so a search query is less likely to "
+            "miss useful information that sits between two chunks."
+        ),
+    },
+    {
+        "title": "Prompt Design",
+        "source": "Prompt Engineering Lesson",
+        "url": "https://www.codecademy.com/resources/docs/ai/prompt-engineering",
+        "text": (
+            "Good RAG prompts clearly separate instructions, user questions, search results, and the "
+            "desired answer format. Prompts can also require citations so answers include the source "
+            "metadata from the retrieved chunks."
+        ),
+    },
+    {
+        "title": "Streamlit Interface",
+        "source": "Building a RAG App",
+        "url": "https://streamlit.io/",
+        "text": (
+            "Streamlit turns Python scripts into interactive web apps with widgets like sidebars, text "
+            "areas, number inputs, select boxes, buttons, metrics, charts, and dataframes. It is useful "
+            "for quickly sharing machine learning and RAG prototypes."
+        ),
+    },
+]
+
+
+def split_sentences(text):
+    return [sentence.strip() for sentence in re.split(r"(?<=[.!?])\s+", text) if sentence.strip()]
+
+
+@st.cache_data
+def build_index(documents):
+    rows = []
+    for document in documents:
+        for chunk_index, sentence in enumerate(split_sentences(document["text"])):
+            rows.append(
+                {
+                    "title": document["title"],
+                    "source": document["source"],
+                    "url": document["url"],
+                    "chunk_index": chunk_index,
+                    "chunk": sentence,
+                }
+            )
+
+    df = pd.DataFrame(rows)
+    vectorizer = TfidfVectorizer(stop_words="english")
+    matrix = vectorizer.fit_transform(df["chunk"])
+    return df, vectorizer, matrix
+
+
+def search_chunks(query, n_results):
+    df, vectorizer, matrix = build_index(DOCUMENTS)
+    query_vector = vectorizer.transform([query])
+    scores = cosine_similarity(query_vector, matrix).flatten()
+    ranked_indices = scores.argsort()[::-1][:n_results]
+    results = df.iloc[ranked_indices].copy()
+    results["score"] = scores[ranked_indices]
+    return results
+
+
+def synthesize_answer(query, results):
+    if results.empty or results["score"].max() <= 0:
+        return "I don't know based on the available course notes."
+
+    top_rows = results[results["score"] > 0]
+    evidence = " ".join(top_rows["chunk"].tolist())
+    source_url = top_rows.iloc[0]["url"]
+    return f"{evidence} Source: {source_url}"
+
+
+def keyword_summary(results):
+    tokens = []
+    for chunk in results["chunk"]:
+        tokens.extend(re.findall(r"[a-zA-Z]{4,}", chunk.lower()))
+    common = Counter(tokens).most_common(8)
+    return pd.DataFrame(common, columns=["term", "count"])
+
+
+st.title("RAG Search Assistant")
+st.markdown(
+    "Ask a course-style RAG question, retrieve relevant chunks, and inspect the source-backed answer."
+)
+
+st.sidebar.title("Retrieval Settings")
+st.sidebar.markdown("Tune how many chunks the retriever sends into the answer step.")
+n_results = st.sidebar.slider("Number of retrieved chunks", min_value=1, max_value=6, value=3)
+show_prompt = st.sidebar.toggle("Show assembled RAG prompt", value=True)
+
+example = st.selectbox(
+    "Try an example",
+    [
+        "Custom question",
+        "Why do RAG apps use vector databases?",
+        "Why should chunks overlap?",
+        "How does prompt engineering help RAG answers?",
+        "What makes Streamlit useful for AI demos?",
+    ],
+)
+
+default_question = "" if example == "Custom question" else example
+user_question = st.text_area(
+    "Ask a question",
+    value=default_question,
+    height=120,
+    placeholder="Example: Why do RAG apps use chunking?",
+    key="user_question",
+)
+
+if st.button("Get Answer", type="primary"):
+    if not user_question.strip():
+        st.warning("Enter a question first.")
+    else:
+        results = search_chunks(user_question, n_results)
+        answer = synthesize_answer(user_question, results)
+
+        st.subheader("Answer")
+        st.write(answer)
+
+        metric_cols = st.columns(3)
+        metric_cols[0].metric("Chunks searched", len(build_index(DOCUMENTS)[0]))
+        metric_cols[1].metric("Chunks returned", len(results))
+        metric_cols[2].metric("Top score", f"{results['score'].max():.3f}")
+
+        st.subheader("Retrieved Chunks")
+        st.dataframe(
+            results[["score", "title", "source", "chunk_index", "chunk", "url"]],
+            use_container_width=True,
+            hide_index=True,
+        )
+
+        chart_data = keyword_summary(results)
+        if not chart_data.empty:
+            st.subheader("Retrieved Context Keywords")
+            st.bar_chart(chart_data.set_index("term"))
+
+        if show_prompt:
+            st.subheader("Assembled RAG Prompt")
+            context = "\n\n".join(
+                f"[{row.title} | {row.url}] {row.chunk}" for row in results.itertuples()
+            )
+            st.code(
+                f"""Instructions:
+Answer the user question using only the search results. If the search results do not answer the question, say "I don't know." Cite the source URL.
+
+User question:
+{user_question}
+
+Search Results:
+{context}
+
+Your answer:""",
+                language="text",
+            )
+
+else:
+    st.info("Enter a question and click Get Answer to run the retrieval demo.")
+

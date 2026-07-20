@@ -337,6 +337,34 @@ h3 {
   background: rgba(255, 255, 255, 0.78);
 }
 
+.rag-visual {
+  display: grid;
+  gap: 14px;
+  align-content: center;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.94), rgba(201, 131, 43, 0.82)),
+    var(--panel-strong);
+}
+
+.rag-node {
+  width: min(100%, 260px);
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  font-weight: 900;
+}
+
+.rag-node:nth-child(2) {
+  justify-self: center;
+}
+
+.rag-node.answer-node {
+  justify-self: end;
+}
+
 .project-image {
   display: block;
   width: 100%;
