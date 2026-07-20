@@ -47,3 +47,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `best-practices-in-ai-deployment/monitoring-101/` - Deployment lesson calculating chatbot latency, quality, cost, and weekly trend metrics.
 - `best-practices-in-ai-deployment/evaluations-that-matter/` - Deployment lesson comparing chatbot model versions with offline and online evaluation.
 - `langchain-components/mini-quiz-generator/` - LangChain project notes for building a SequentialChain quiz generator with Gemini.
+- `agentic-systems/building-agentic-meal-planner/` - Agentic workflow project for drafting, critiquing, revising, and grocery-listing meal plans with JSON mode.
