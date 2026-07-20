@@ -51,3 +51,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `agentic-systems/augmented-llms-streamlit-chat-ui/` - Streamlit Chat UI lesson using session state, chat messages, chat input, and OpenAI chat completions.
 - `agentic-systems/augmented-llms-function-calling/` - OpenAI function calling lesson defining tools, parsing tool calls, executing local functions, and returning tool results.
 - `agentic-systems/function-calling-in-streamlit/` - Streamlit Chat UI lesson adding tool-call registry support, dice rolling, and rendered tool outputs.
+- `agentic-systems/rag-as-llm-tool/` - Streamlit Chat UI lesson exposing a help-center FAQ lookup as a simple RAG tool for the LLM.
