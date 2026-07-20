@@ -1,6 +1,8 @@
 # Building an Agentic Meal Planner Checkpoints
 
-## Step 1 - Draft Plan
+These snippets map to checklist items 1-14 from the lesson.
+
+## Steps 1-4 - Draft Plan
 
 ```python
 def draft_plan(params):
@@ -36,7 +38,7 @@ exactly this schema:
     return json.loads(raw_json)
 ```
 
-## Step 2 - Critique Plan
+## Steps 5-7 - Critique Plan
 
 ```python
 def critique_plan(plan, params):
@@ -78,7 +80,7 @@ Output ONLY the JSON. No markdown backticks, no comments, no extra text.
     return json.loads(raw)
 ```
 
-## Step 3 - Revise Plan
+## Steps 8-10 - Revise Plan
 
 ```python
 def revise_plan(plan, fixes, suggestions, params):
@@ -110,7 +112,7 @@ exactly this schema:
     return json.loads(raw)
 ```
 
-## Step 4 - Assemble Workflow
+## Steps 11-14 - Assemble Workflow
 
 ```python
 MAX_PASSES = 3
