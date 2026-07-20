@@ -4,6 +4,10 @@ This folder stores lesson work from the AI Engineer course that is important for
 
 The goal is to keep lesson code, task notes, and final snippets organized by course unit instead of leaving everything at the repository root.
 
+## Shared Resources
+
+- `resources.md` - reusable Streamlit, RAG, MLOps, and production monitoring references for course work and later portfolio projects.
+
 ## Lessons
 
 - `openai-python-api/recipe-blog/` - OpenAI Python API lesson for generating recipe blog content with prompt engineering.
