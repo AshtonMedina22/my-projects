@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 from scipy.stats import chi2_contingency
 
 
@@ -7,7 +8,8 @@ def money(value):
 
 
 def main():
-    events = pd.read_csv("ecommerce_recommendation_events.csv")
+    project_dir = Path(__file__).resolve().parent
+    events = pd.read_csv(project_dir / "ecommerce_recommendation_events.csv")
     events["converted"] = events["event_type"] == "purchase"
 
     total_revenue = events[events["converted"]]["revenue"].sum()

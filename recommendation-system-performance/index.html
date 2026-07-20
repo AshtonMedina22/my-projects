@@ -54,6 +54,151 @@
           </div>
         </div>
       </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Business question</p>
+          <h2>Which recommender model should an e-commerce team deploy?</h2>
+        </div>
+        <div class="case-callout">
+          <p>
+            This project evaluates three recommendation system versions across 50,000 synthetic
+            e-commerce events. The analysis compares conversion lift, revenue, product cost,
+            inference cost, profit, ROI, customer segment value, and fairness signals so the model
+            choice is based on business impact instead of accuracy alone.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Model comparison</p>
+          <h2>Performance Summary</h2>
+        </div>
+        <div class="table-wrap">
+          <table class="case-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Conversion</th>
+                <th>Total profit</th>
+                <th>AI ROI</th>
+                <th>Overall ROI</th>
+                <th>Bias flag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>v1.0</td>
+                <td>6.05%</td>
+                <td>$83,152.93</td>
+                <td>405,110%</td>
+                <td>110.75%</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>v1.1</td>
+                <td>6.67%</td>
+                <td>$95,906.73</td>
+                <td>320,073%</td>
+                <td>112.74%</td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td>v2.0</td>
+                <td>6.58%</td>
+                <td>$128,138.43</td>
+                <td>228,166%</td>
+                <td>113.43%</td>
+                <td>Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">Analysis workflow</p>
+          <h2>What the project demonstrates</h2>
+        </div>
+        <div class="evidence-list">
+          <div class="evidence-item">
+            <span>01</span>
+            <p>Built a reproducible pandas analysis pipeline for revenue, product cost, inference cost, profit, conversion rate, and lift.</p>
+          </div>
+          <div class="evidence-item">
+            <span>02</span>
+            <p>Compared model versions with both AI-specific ROI and total business ROI so deployment cost is visible.</p>
+          </div>
+          <div class="evidence-item">
+            <span>03</span>
+            <p>Tested regional and age-group recommendation rates with chi-square tests to surface fairness risk before deployment.</p>
+          </div>
+          <div class="evidence-item">
+            <span>04</span>
+            <p>Segmented the decision by budget, regular, and premium customers to support model routing instead of one-size-fits-all deployment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Deployment decision</p>
+          <h2>Recommended production approach</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-body">
+              <p class="project-type">Default model</p>
+              <h3>Use v1.1 as the controlled rollout candidate</h3>
+              <p>
+                v1.1 produced the highest conversion rate with no 10% threshold bias flag in the
+                summary report. It is the best default option for a conservative production rollout.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-body">
+              <p class="project-type">Advanced routing</p>
+              <h3>Route by segment after monitoring</h3>
+              <p>
+                Segment-level ROI shows v1.0 remains cost-effective for budget and regular users,
+                while premium traffic may justify a more expensive model after fairness checks pass.
+              </p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-body">
+              <p class="project-type">Governance</p>
+              <h3>Do not ship v2.0 blindly</h3>
+              <p>
+                v2.0 generated the most total profit, but the analysis flags region and age
+                recommendation-rate concerns. It needs additional review before broad deployment.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="deploy-card">
+          <div>
+            <p class="eyebrow">Portfolio evidence</p>
+            <h2>Reproducible analysis artifacts</h2>
+            <p>
+              The project includes the dataset, notebook export, Python analysis script, and final
+              results summary so reviewers can inspect the workflow behind the portfolio page.
+            </p>
+          </div>
+          <div class="artifact-links">
+            <a href="RESULTS.md">Results summary</a>
+            <a href="analyze_recommendations.py">Analysis source</a>
+            <a href="solution.ipynb">Notebook</a>
+            <a href="ecommerce_recommendation_events.csv">Dataset</a>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>

@@ -503,6 +503,82 @@ dd {
   color: var(--muted);
 }
 
+.case-callout {
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 250, 241, 0.82);
+  box-shadow: 0 14px 32px rgba(37, 31, 22, 0.07);
+}
+
+.case-callout p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 250, 241, 0.82);
+}
+
+.case-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.case-table th,
+.case-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.case-table th {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-table td {
+  font-weight: 750;
+}
+
+.case-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.artifact-links {
+  display: grid;
+  gap: 12px;
+}
+
+.artifact-links a {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: white;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.artifact-links a::after {
+  content: "Open";
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .deploy-card {
   display: grid;
   grid-template-columns: 1fr 0.72fr;
