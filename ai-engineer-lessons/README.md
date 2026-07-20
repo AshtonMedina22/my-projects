@@ -35,3 +35,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `rag-techniques/setting-up-our-rag-workspace/` - Advanced RAG setup lesson initializing OpenAI, Chroma, textbook chunks, and RAG prompt helpers.
 - `rag-techniques/decoupling/` - Advanced RAG lesson expanding retrieved chunks with neighboring context before generation.
 - `rag-techniques/contextual-query-rewriting/` - Advanced RAG lesson rewriting chat-dependent questions before vector retrieval.
+- `rag-techniques/hypothetical-document-embeddings/` - Advanced RAG lesson using HyDE to retrieve chunks from a hypothetical answer.
