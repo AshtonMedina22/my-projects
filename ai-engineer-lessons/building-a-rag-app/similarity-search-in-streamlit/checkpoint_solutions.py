@@ -1,17 +1,14 @@
 # Checkpoint 1
-client = chromadb.PersistentClient(path="./mycollection")
+client = chromadb.PersistentClient("./mycollection")
 
-collection = client.get_or_create_collection(
-    name="RAG_Assistant",
-    metadata={"hnsw:space": "cosine"}
-)
+collection = client.get_or_create_collection(name="RAG_Assistant", metadata={"hnsw:space": "cosine"})
 
 
 # Checkpoint 2
-st.title("RAG Similarity Search Assistant")
-st.markdown("Ask a question and search the anthropology document collection for relevant chunks.")
-st.sidebar.title("Search Settings")
-st.sidebar.markdown("Adjust how many matching document chunks Chroma should return.")
+st.title("Similarity Search App")
+st.markdown("This app uses Chroma to perform similarity searches on a collection of documents.")
+st.sidebar.title("Configuration")
+st.sidebar.markdown("Adjust the settings for your query.")
 
 
 # Checkpoint 3
@@ -30,15 +27,11 @@ if st.button("Get Answers"):
     st.write(f"Question: {user_question}")
     st.write(f"Number of Results: {n_results}")
 
-    results = collection.query(
-        query_texts=[user_question],
-        n_results=n_results
-    )
+    results = collection.query(query_texts=[user_question], n_results=n_results)
 
     # Checkpoint 5
-    for document_list in results["documents"]:
-        for document in document_list:
-            st.write(document)
+    for res in results["documents"]:
+        for txt in res:
+            st.write(txt)
 
-    # st.json(results)
-
+    #st.json(results)
