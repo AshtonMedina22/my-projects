@@ -1,0 +1,74 @@
+Prompt Engineering in Streamlit
+18 min
+Now that we’ve covered the basics of RAG and Streamlit, we are ready to put it all together in our final application! Streamlit’s interactivity allows us to easily integrate the functions we have created using Chroma database searches and retrieve results using the OpenAI API. Ultimately, we will have our very own smart textbook and Q&A web app!
+
+In this exercise, we will integrate the RAG search to complete the application’s final functionality. Let’s start by reviewing some helper functions from the 
+[prompt engineering](https://www.codecademy.com/resources/docs/ai/prompt-engineering)
+Preview: Docs Loading link description
+ exercise.
+
+Initializing OpenAI client
+First, we will initialize the OpenAI client and define a function get_completion that sends a system prompt and user prompt to the OpenAI API to generate a completion using the specified model. The system prompt specifies the LLM’s role while answering the user prompt. Since we would essentially like it to be an assistant that retrieves information from a textbook, we will set the system prompt to be something like the following statement:
+
+You're a helpful assistant who looks up answers for a user in a textbook and returns the answer to the user's question. If the answer is not in the textbook, you say, 'I'm sorry, I don't have access to that information.'
+
+Copy to Clipboard
+
+The textbook mentioned in the above prompt is nothing but the documents we uploaded to Chromadb a couple of exercises ago!
+
+Set up Streamlit Search App with Chromadb:
+Next, we will pick up the Streamlit app where we left off in the previous exercise. We’ve pretty much reproduced all the 
+[code](https://www.codecademy.com/resources/docs/ai/generative-ai/code)
+Preview: Docs Loading link description
+ we had in our last exercise, but we will modify the final for loop we used. We’re going to include the metadata of the documents as part of the search results so that the Chroma query results are searchable by keyword.
+
+Perform RAG search with OpenAI:
+Finally, we will use OpenAI to answer the user prompt based on the search results. This consists of using a prompt that contains the RAG instructions, the user question, and the search results. Combining these into a single string will help us create a prompt to pass to the get_completion() function, which calls the OpenAI API.
+
+Instructions
+Checkpoint 1 Enabled
+1.
+Initializing OpenAI API:
+
+We have written some code that initializes the OpenAI client and defines a function get_completion. This function sends the OpenAI API a user and system prompt to generate a completion using the specified model.
+
+We’ve already defined the system prompt using a dictionary system prompt that defines the assistant’s role here. The dictionary that pertains to the user input to the model and is incomplete within the function.
+
+Fill in the following missing gaps within the get_completion function:
+
+Model choice: We will use the OpenAI transformer model "gpt-3.5-turbo".
+User prompt: Set the “content” key to the appropriate value.
+Press Run when you’re done.
+
+Checkpoint 2 Step instruction is unavailable until previous steps are completed
+2.
+Set up Streamlit Search App with Chromadb:
+
+To integrate Chromadb, we’ve reproduced all the code from the similarity search app we built in the previous exercise. Recall that collection.query() returns a dictionary of results. We have reformatted results so that when we use the OpenAI API, we can retain the metadata behind each document and quickly reference it by adding to the for loop we had in the previous exercise:
+
+Instead of focusing only on the text within the documents, we use zip to create a list with documents and metadata that we can search through.
+search_results is a list of strings, where the string is formatted as the document content plus the metadata afterward. (Note that the metadata is also a dictionary, so it is formatted as a string of its key-value pairs in metadata_str.)
+Uncomment the relevant lines and scan the code carefully. Make sure the uncommented lines are indented correctly. Run the app from the command line to view the results when you’re done
+
+Checkpoint 3 Step instruction is unavailable until previous steps are completed
+3.
+Prompt using RAG Instructions:
+
+Now, we are ready to use OpenAI to answer user questions based on the search results. This consists of using a prompt that contains the RAG instructions, the user question, and the search results. We have already written the prompt for you by combining these into a single string.
+
+Pass it to the get_completion() function, which calls the OpenAI API and store the result as the variable response.
+Write the prompt response to the Streamlit app.
+Press Run on the code editor when you’re done.
+
+Checkpoint 4 Step instruction is unavailable until previous steps are completed
+4.
+We now have a fully functional app — great job! Test it using a relevant question, like ‘What are the oldest known sports?‘ Or try a question unrelated to the text to see what happens if the answer cannot be found—like ‘What are Lady Gaga’s top hits?‘ or ‘What is your favorite sport?‘
+
+We can still improve and modify things; one obvious way is to include citations in the answer result. Even though we included document metadata in our search_text, our prompt did not specify how we wanted to use the metadata. One way to fix this is to add context to our prompt instructions before calling the OpenAI model.
+
+Here are some tips:
+
+We started with the instructions “Your task is to answer the following user question using the supplied search results.“ We should append to this prompt to include how we saved the metadata information into our search text. This could include a description that might look like: “At the end of each search result will be Metadata.” Lastly, we should specify how we want documents cited in the answers. This could include specific metadata elements or styles, such as “Cite the passages, their chunk index, and their URL in your answer.”
+Try out these additions (or your own) and see how they improve your app’s functionality! Press Run to proceed to the final exercise.
+
+Community Support
