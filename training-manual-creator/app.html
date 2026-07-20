@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Training Manual Creator App | Vercel Native</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Project navigation">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="index.html">Case Study</a>
+          <a href="app.js">Client Source</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="app-shell">
+      <section class="app-header">
+        <div>
+          <p class="eyebrow">Vercel-native LLM app</p>
+          <h1>Training Manual Creator</h1>
+          <p>
+            A production-style browser UI backed by a Vercel serverless API. The demo can call tools for manual
+            sections and contact lookup without requiring Streamlit.
+          </p>
+        </div>
+        <div class="status-panel">
+          <span>Runtime: Vercel Function</span>
+          <span>State: Browser session</span>
+          <span>Tools: 4</span>
+        </div>
+      </section>
+
+      <section class="llm-layout">
+        <aside class="tool-sidebar">
+          <h2>Tools</h2>
+          <button class="prompt-chip" data-prompt="Read section 1 and summarize it.">Read Section 1</button>
+          <button class="prompt-chip" data-prompt="Read section 2 and summarize the IT setup requirements.">Read Section 2</button>
+          <button class="prompt-chip" data-prompt="Look up Sarah Chen.">Lookup Sarah Chen</button>
+          <button class="prompt-chip" data-prompt="Write section 3 about badge access and facilities.">Write Section 3</button>
+          <button class="prompt-chip danger" data-prompt="Delete section 3.">Delete Section 3</button>
+          <button id="resetApp" class="button secondary" type="button">Reset Session</button>
+        </aside>
+
+        <section class="chat-workspace" aria-label="Training manual chat workspace">
+          <div id="chatLog" class="chat-log"></div>
+          <form id="chatForm" class="chat-form">
+            <input id="chatInput" type="text" placeholder="Ask the assistant to read, write, revise, delete, or look up a contact..." />
+            <button class="button primary" type="submit">Send</button>
+          </form>
+        </section>
+
+        <aside class="manual-preview">
+          <h2>Manual Preview</h2>
+          <div id="manualPreview"></div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

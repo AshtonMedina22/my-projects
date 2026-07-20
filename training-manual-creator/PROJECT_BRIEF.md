@@ -10,8 +10,9 @@ Create a Streamlit chatbot that augments an LLM with tools for building and main
 - A clean local tool registry.
 - File read/write/delete operations wrapped behind tool calls.
 - Structured contact lookup from JSON.
-- Streamlit chat UI with rendered tool inputs and outputs.
-- Demo fallback when API credentials are not configured.
+- Vercel-native browser UI with rendered tool inputs and outputs.
+- Serverless API route with deterministic fallback when API credentials are not configured.
+- Original Streamlit course implementation retained for lesson traceability.
 
 ## Suggested Demo Prompts
 

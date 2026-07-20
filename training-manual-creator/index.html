@@ -25,13 +25,13 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">Augmented LLM app</p>
-          <h1>Training Manual Creator with local tool calling.</h1>
+          <h1>Training Manual Creator with Vercel-native tool calling.</h1>
           <p class="hero-text">
-            A Streamlit chatbot that uses OpenAI function calling to read, write, revise, delete,
-            and enrich employee training manual sections with verified contact lookup.
+            A browser-based LLM app backed by a Vercel serverless API. It can read, write, revise,
+            delete, and enrich employee training manual sections with verified contact lookup.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="streamlit_app.py">View source</a>
+            <a class="button primary" href="app.html">Open live app</a>
             <a class="button secondary" href="PROJECT_BRIEF.md">Project brief</a>
           </div>
         </div>
@@ -93,12 +93,16 @@
             </thead>
             <tbody>
               <tr>
-                <td><a href="streamlit_app.py">streamlit_app.py</a></td>
-                <td>Portfolio-ready Streamlit chat UI with tool rendering and demo mode.</td>
+                <td><a href="app.html">app.html</a></td>
+                <td>Vercel-native browser app with chat, tool rendering, and handbook preview.</td>
+              </tr>
+              <tr>
+                <td>api/training-manual-chat.js</td>
+                <td>Serverless API route that runs tool logic and can call OpenAI when configured.</td>
               </tr>
               <tr>
                 <td><a href="tools/handler.py">tools/handler.py</a></td>
-                <td>OpenAI function calling orchestration and local tool execution.</td>
+                <td>Original Streamlit-course OpenAI function calling orchestration.</td>
               </tr>
               <tr>
                 <td><a href="content/team_directory.json">team_directory.json</a></td>
