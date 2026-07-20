@@ -365,6 +365,41 @@ h3 {
   justify-self: end;
 }
 
+.recsys-visual {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding: 24px;
+  background:
+    linear-gradient(135deg, rgba(180, 83, 83, 0.88), rgba(201, 131, 43, 0.9)),
+    var(--panel-strong);
+  color: white;
+}
+
+.recsys-chart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+  gap: 14px;
+  min-height: 140px;
+}
+
+.recsys-chart span {
+  display: block;
+  height: var(--h);
+  min-height: 42px;
+  border-radius: 8px 8px 0 0;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.recsys-labels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  font-weight: 900;
+  text-align: center;
+}
+
 .project-image {
   display: block;
   width: 100%;

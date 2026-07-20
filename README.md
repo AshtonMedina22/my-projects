@@ -51,6 +51,7 @@ Current files:
 - `engineer-neural-networks-portfolio/` - portfolio-ready Banking77 intent classification project with datasets, MLP baseline script, transformer notebook, and PII guardrails.
 - `streamlit-image-classification-dashboard/` - portfolio-ready Streamlit AI image classification dashboard using Hugging Face ViT and ResNet models.
 - `rag-search-assistant/` - deploy-ready Streamlit RAG search assistant scaffold with lightweight retrieval, cited chunks, and prompt preview.
+- `recommendation-system-performance/` - recommendation system model-version analysis covering conversion lift, ROI, segment performance, and fairness checks.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.
