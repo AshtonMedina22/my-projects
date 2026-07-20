@@ -1,0 +1,75 @@
+Monitoring 101
+27 min
+Our AI chatbot is deployed and handling customer conversations. But suddenly, responses start taking longer, requests are failing, and the chatbot starts making up information! Without monitoring, we may not discover these issues until customers complain.
+
+Now, we will dive deeper into the metric types, how to calculate them, and what they mean.
+
+1. Technical Metrics - How Well Does the AI Perform Its Core Task?
+These metrics measure speed and accuracy:
+
+Average latency measures the average time users typically wait for responses. It’s calculated by averaging the response time across all conversations. A system with an average latency of 2.1 seconds means that, on average, users wait about 2 seconds.
+
+p95 latency (95th percentile) tells you the response time that 95% of users experience or better. This is more useful than average because it reveals how bad the experience gets for your slower requests. If p95 is 3.5 seconds, that means 95 out of 100 users receive responses in 3.5 seconds or less, but five users wait longer.
+
+Hallucination rate measures the frequency at which the AI generates false or incorrect information. This is critical for trust—even a 5% error rate means 1 in 20 customers receives incorrect information.
+
+2. Business Metrics - Is the AI Helping the Company?
+These metrics connect AI performance to business value and costs:
+
+Resolution rate measures the percentage of customer issues that are actually solved by the chatbot. A 73% resolution rate means 73 out of 100 customers have their issues resolved without needing human help.
+
+Cost per conversation indicates the cost of each customer interaction in API fees. This helps us understand the cost of our AI.
+
+3. Operational Metrics - Is the System Running Reliably?
+These metrics track system stability:
+
+Uptime measures the percentage of time the system is operational and functioning properly. 99.9% uptime means about 43 minutes of downtime per month—sounds good, but that could be during peak hours when customers need help most.
+
+Error rate refers to technical failures, such as timeouts, crashes, or API errors. Even a 0.4% error rate means that 4 out of every 1,000 customers will encounter a broken system.
+
+4. UX Metrics - Are Users Happy?
+These metrics measure user satisfaction:
+
+Average CSAT (Customer Satisfaction) is the mean rating customers give after interactions, typically on a 1-5 scale. A CSAT of 4.1 means customers are generally satisfied, but there’s room for improvement.
+
+Average conversation length measures the number of back-and-forth messages in a typical conversation. Shorter is often better (more efficient), but too short might mean the bot isn’t thorough enough.
+
+What Makes for Good Monitoring?
+Show Trends, Not Just Numbers: “Resolution rate: 68%” doesn’t tell you much. But “Resolution rate: 68% (down from 73% last week)” reveals a clear problem. Always compare current metrics to previous time periods and your baseline.
+
+Use Percentiles for Latency: Average latency hides outliers. If 90% of responses take 2s but 10% take 30s, the average might look acceptable, but 1 in 10 users has a terrible experience. Percentiles like p95 and p99 catch these edge cases that averages miss.
+
+In the following checkpoints, you’ll build a monitoring system to track the AI chatbot’s performance yourself, helping to catch bugs in the system.
+
+Instructions
+Checkpoint 1 Enabled
+1.
+Your first monitoring task is to measure technical performance, namely speed. Use both averages and percentiles to determine if users are waiting too long for responses.
+
+Calculate the average latency across all conversations
+Calculate the p95 latency (95th percentile) - this tells you the worst experience for 95% of users
+Calculate the p99 latency (99th percentile) - this catches the slowest outliers
+Count how many conversations exceed the 5-second threshold (considered too slow) and the percentage of these slow conversations
+Checkpoint 2 Step instruction is unavailable until previous steps are completed
+2.
+Speed isn’t everything—your chatbot needs to be accurate, helpful, and cost-effective. In this checkpoint, you’ll monitor quality and spending.
+
+Calculate the resolution rate - percentage of conversations where resolved == True
+Calculate the hallucination rate - percentage where hallucinated == True
+Calculate the average CSAT score - mean customer satisfaction
+Calculate the escalation rate - percentage where escalated_to_human == True
+Calculate the total cost across all conversations
+Calculate the average cost per conversation
+Calculate the total tokens used
+Project the yearly cost - assume current data represents 1 month of data
+Checkpoint 3 Step instruction is unavailable until previous steps are completed
+3.
+In this checkpoint, you’ll analyze performance over time and visualize trends.
+
+Group conversations by week number and calculate:
+Average resolution rate per week
+Average CSAT score per week
+Average latency per week
+Create a line plot showing these three metrics over time
+Identify the week with the worst performance (lowest resolution rate)
+Calculate the change from the first week to the last week for each metric

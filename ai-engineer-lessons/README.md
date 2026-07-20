@@ -38,3 +38,4 @@ The goal is to keep lesson code, task notes, and final snippets organized by cou
 - `rag-techniques/hypothetical-document-embeddings/` - Advanced RAG lesson using HyDE to retrieve chunks from a hypothetical answer.
 - `rag-techniques/fusion-search/` - Advanced RAG lesson decomposing complex questions into subquestions before synthesis.
 - `best-practices-in-ai-deployment/data-hygiene-and-privacy-basics/` - Deployment lesson validating data, redacting PII, hashing IDs, and adding private count noise.
+- `best-practices-in-ai-deployment/monitoring-101/` - Deployment lesson calculating chatbot latency, quality, cost, and weekly trend metrics.
