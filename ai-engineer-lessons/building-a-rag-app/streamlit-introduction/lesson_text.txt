@@ -1,0 +1,108 @@
+Streamlit Introduction
+17 min
+Streamlit is an open-source Python library that creates interactive web applications with just a few lines of Python 
+[code](https://www.codecademy.com/resources/docs/ai/generative-ai/code)
+Preview: Docs Loading link description
+ — no need for HTML or expert design skills! Because of its ease of use, it allows data scientists and AI practitioners to quickly build, adapt, and share web applications. We will use Streamlit to create an interactive demo for our Retrieval-Augmented Generation (RAG) prototype.
+
+While we won’t become Streamlit experts overnight, we’ll focus on the essentials to create our app. This includes the basic setup, interactive widgets, and support for various data visualization techniques. For a comprehensive understanding of Streamlit’s capabilities, refer to the official documentation in the following link: [https://streamlit.io/](https://streamlit.io/).
+
+Getting Started with Streamlit
+To install Streamlit on your local device, simply run the following command:
+
+pip install streamlit
+
+Copy to Clipboard
+
+We’ve already installed Streamlit for this exercise.
+
+Broad Description of Widgets and UIs
+Widgets in a Streamlit app are interactive components that allow you to build interactive and dynamic applications. These include buttons, drop-down boxes, sliders, input boxes, and file uploaders for user input. UI components include graphical components, like graphs, charts, and tables created in libraries like Matplotlib, Plotly, Altair, and Pandas.
+
+Running Your Streamlit App
+To run your Streamlit app, navigate to the directory containing your script (e.g., app.py) and execute the following command in your terminal:
+
+streamlit run app.py
+
+Copy to Clipboard
+
+This command will start a local server and open your Streamlit app in the default web browser at http://localhost:8501. We’ll manage most of this for you in this lesson behind the scenes. Of course, if you want to publish your app, you have many options (Streamlit Community Cloud, Heroku, Google Cloud, or AWS). Let’s start and see how easy Streamlit makes creating our first app!
+
+Create Your First Streamlit App
+To get started, we’ve already imported the streamlit library using the default alias st. A Streamlit app is created from a Python script using Streamlit commands. You can think of the script as your design board, where each new feature is added using additional Streamlit commands. For example:
+
+to create a title, use st.title()
+to display a table, use st.dataframe()
+to display a button, use st.button()
+The commands are generally straightforward, clearly named, and integrate nicely with well-known Python libraries (like Pandas and Matplotlib) – for a complete list, see the documentation ([https://docs.streamlit.io/develop/api-reference](https://docs.streamlit.io/develop/api-reference)).
+
+Instructions
+Checkpoint 1 Enabled
+1.
+Add a title and some markdown:
+
+To get started, we’ve written some code in the code editor that passes a text string through st.title() and st.markdown(). Feel free to modify the text strings to the title and markdown rendering you’d like to see. Note that the strings can contain proper markdown syntax! (For instance, _Streamlit_ is **very** cool.). Once you’ve made your edits:
+
+Type the command streamlit run main.py in the terminal and press enter.
+Press Run on the code editor.
+Checkpoint 2 Step instruction is unavailable until previous steps are completed
+2.
+Create a sidebar:
+
+Creating a sidebar in Streamlit is very simple. Use st.sidebar.title() and st.sidebar.markdown() to create a title and some markdown similar to the above, but instead in a sidebar. Press Run to view your results.
+
+Note: To see the changes rendered, refresh the web browser by clicking the little circular arrow at the top left corner.
+
+Checkpoint 3 Step instruction is unavailable until previous steps are completed
+3.
+Create an input text widget:
+
+If we wanted an input text widget to ask questions the way one prompts an LLM, we can use st.text_area() as follows:
+
+question = st.text_area("How was your day?")
+
+Copy to Clipboard
+
+We’ve already written some code that does this in the text editor. Using the key argument, we can add a unique key to the widget, which will help us identify and access it more easily later.
+
+Add another argument key to this command and set the key to "user_question". Uncomment the line that writes this question onto the app. Press Run to view the results.
+
+Note: To see the changes rendered, refresh the web browser by clicking the little circular arrow at the top left corner.
+
+Checkpoint 4 Step instruction is unavailable until previous steps are completed
+4.
+Create containers and dropdowns:
+
+st.columns() creates containers to help organize and tighten space. We’ve written some code that creates 2 containers as follows:
+
+col1, col2 = st.columns(2)
+
+Copy to Clipboard
+
+We’re going to setup the first container to give us the number of results we need while prompting an LLM:
+
+n_results = col1.number_input("Number of results", min_value=1, max_value=10, value=1)
+col1.write(f"Number of results: {n_results}")
+
+Copy to Clipboard
+
+We will set up the second container as a dropdown that offers different LLMs for us to query. We can do this using selectbox() as follows:
+
+model_choice = col2.selectbox("Choose a model", ["gpt-3"])
+col2.write(f"Selected model: {model_choice}")
+
+Copy to Clipboard
+
+First, uncomment the relevant lines and add a second model, "gpt-4", to the array in model_choice. Press Run to view the results.
+
+Note: To see the changes rendered, refresh the web browser by clicking the little circular arrow at the top left corner.
+
+Checkpoint 5 Step instruction is unavailable until previous steps are completed
+5.
+Setup a button to view outputs:
+
+We’re now going to put all of the above together by setting up a button widget first using the st.button(). Clicking the button should give us our model choice, the question we asked the LLM, the number of results, and the RAG output. We’ve already written the code that does this. Uncomment the lines and rename the button as "Get Answers". Press Run to view the results!
+
+(Note: We haven’t connected our app to any GPT model or RAG yet, so we just have placeholder outputs!)
+
+Note: To see the changes rendered, refresh the web browser by clicking the little circular arrow at the top left corner.
