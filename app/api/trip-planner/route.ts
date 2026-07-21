@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import legacyHandler from "../../../api/trip-planner.js";
+import legacyHandler from "../../../lib/server/trip-planner.js";
 
 export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));

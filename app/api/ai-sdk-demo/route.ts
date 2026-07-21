@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import legacyHandler from "../../../api/ai-sdk-demo.js";
+import legacyHandler from "../../../lib/server/ai-sdk-demo.js";
 
 export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));

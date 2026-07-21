@@ -12,6 +12,8 @@ export type Project = {
   proof: string[];
 };
 
+const githubSourceBase = "https://github.com/AshtonMedina22/my-projects/blob/main";
+
 export const projects: Project[] = [
   {
     slug: "trip-planner-ai-agent",
@@ -22,7 +24,7 @@ export const projects: Project[] = [
       "A production-style travel planner with OpenAI-compatible planning, OpenStreetMap POI search, Wikivoyage retrieval, itinerary validation, map visualization, and feedback loops.",
     liveHref: "/trip-planner-ai-agent/app",
     caseHref: "/projects/trip-planner-ai-agent",
-    sourceHref: "/trip-planner-ai-agent/app.py",
+    sourceHref: `${githubSourceBase}/trip-planner-ai-agent/app.py`,
     stats: [
       { label: "External APIs", value: "3" },
       { label: "Agent tools", value: "2" },
@@ -44,7 +46,7 @@ export const projects: Project[] = [
       "A Vercel-native tool-calling chatbot that reads, writes, revises, deletes, and enriches employee training manual sections with a JSON-backed contact lookup.",
     liveHref: "/training-manual-creator/app",
     caseHref: "/projects/training-manual-creator",
-    sourceHref: "/training-manual-creator/streamlit_app.py",
+    sourceHref: `${githubSourceBase}/training-manual-creator/streamlit_app.py`,
     stats: [
       { label: "Tools", value: "4" },
       { label: "Storage", value: "Session" },
@@ -66,7 +68,7 @@ export const projects: Project[] = [
       "End-to-end Banking77 classifier comparing a TF-IDF plus PyTorch MLP baseline against a LoRA-finetuned RoBERTa model with privacy guardrails.",
     liveHref: "/live?project=banking",
     caseHref: "/projects/banking-intent-classifier",
-    sourceHref: "/engineer-neural-networks-portfolio/RESULTS.md",
+    sourceHref: `${githubSourceBase}/engineer-neural-networks-portfolio/RESULTS.md`,
     stats: [
       { label: "Classes", value: "77" },
       { label: "MLP Accuracy", value: "87.73%" },
@@ -88,7 +90,7 @@ export const projects: Project[] = [
       "A dashboard for image upload, prediction-style confidence output, classification history, analytics, and Hugging Face ViT/ResNet source review.",
     liveHref: "/live?project=image-classifier",
     caseHref: "/projects/image-classification-dashboard",
-    sourceHref: "/streamlit-image-classification-dashboard/streamlit_app.py",
+    sourceHref: `${githubSourceBase}/streamlit-image-classification-dashboard/streamlit_app.py`,
     stats: [
       { label: "Models", value: "2" },
       { label: "Classes", value: "1k" },
@@ -110,7 +112,7 @@ export const projects: Project[] = [
       "A retrieval assistant for uploading source documents, chunking with overlap, retrieving cited passages, previewing prompts, estimating costs, and scanning safety risks.",
     liveHref: "/live?project=rag",
     caseHref: "/projects/rag-search-assistant",
-    sourceHref: "/rag-search-assistant/streamlit_app.py",
+    sourceHref: `${githubSourceBase}/rag-search-assistant/streamlit_app.py`,
     stats: [
       { label: "Retrieval", value: "TF-IDF" },
       { label: "Upload", value: "TXT" },
@@ -132,7 +134,7 @@ export const projects: Project[] = [
       "A model-version analysis comparing conversion lift, profit, AI ROI, segment performance, and fairness risk across three recommendation releases.",
     liveHref: "/live?project=recommendations",
     caseHref: "/projects/recommendation-system-performance",
-    sourceHref: "/recommendation-system-performance/analyze_recommendations.py",
+    sourceHref: `${githubSourceBase}/recommendation-system-performance/analyze_recommendations.py`,
     stats: [
       { label: "Lift", value: "2.45x" },
       { label: "Profit", value: "$307k" },
@@ -154,7 +156,7 @@ export const projects: Project[] = [
       "A Gemini/LangChain project using prompt templates, LLMChain output keys, and SequentialChain orchestration to generate quiz questions and answer keys.",
     liveHref: "/live?project=quiz",
     caseHref: "/projects/sequential-quiz-generator",
-    sourceHref: "/langchain-quiz-generator/streamlit_app.py",
+    sourceHref: `${githubSourceBase}/langchain-quiz-generator/streamlit_app.py`,
     stats: [
       { label: "Chains", value: "2" },
       { label: "Model", value: "Gemini" },
@@ -176,7 +178,7 @@ export const projects: Project[] = [
       "A language-model finetuning project with prompt generation, perplexity comparison, and optional GPU QLoRA notebook coverage.",
     liveHref: "/live?project=frankenstein",
     caseHref: "/projects/frankenstein-finetuning",
-    sourceHref: "/frankenstein-finetuning-portfolio/RESULTS.md",
+    sourceHref: `${githubSourceBase}/frankenstein-finetuning-portfolio/RESULTS.md`,
     stats: [
       { label: "Base PPL", value: "66.73" },
       { label: "Fine-tuned PPL", value: "66.53" },
@@ -198,7 +200,7 @@ export const projects: Project[] = [
       "Course project bundle covering CNNs, autoencoders, CLIP-style multimodal ideas, and evaluation notebooks.",
     liveHref: "/live?project=vision-architectures",
     caseHref: "/projects/neural-network-architectures",
-    sourceHref: "/nn-architectures-project2/index.html",
+    sourceHref: `${githubSourceBase}/nn-architectures-project2/index.html`,
     stats: [
       { label: "Patterns", value: "3" },
       { label: "Dataset", value: "CIFAR" },

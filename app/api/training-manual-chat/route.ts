@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import legacyHandler from "../../../api/training-manual-chat.js";
+import legacyHandler from "../../../lib/server/training-manual-chat.js";
 
 export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));
