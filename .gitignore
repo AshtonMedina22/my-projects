@@ -8,6 +8,7 @@ __pycache__/
 
 # Node/Vercel local artifacts
 node_modules/
+.next/
 tsconfig.tsbuildinfo
 
 # Environments

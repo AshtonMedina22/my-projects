@@ -1,18 +1,19 @@
 # Ashton Medina AI Engineering Projects
 
-This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfolio-ready machine learning projects. It now includes a Vercel-first portfolio site where public project CTAs open live browser apps instead of sleeping Streamlit deployments.
+This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfolio-ready machine learning projects. It now includes a Next.js/Vercel portfolio site where public project CTAs open live browser apps instead of sleeping Streamlit deployments.
 
 ## Portfolio Site
 
-- Entry point: `index.html`
-- Styles: `styles.css`
-- Live project hub: `live/index.html`
-- Serverless APIs: `api/`
+- App Router entry: `app/`
+- Project registry: `lib/projects.ts`
+- Live project hub: `/live`
+- Serverless APIs: `app/api/`
+- Legacy API source wrappers: `api/`
 - Netlify publish directory: `.`
 - Vercel root directory: `.`
-- Build command: none
+- Build command: `npm run build`
 
-The homepage highlights Banking77 intent classification, transformer finetuning, neural-network architecture work, computer vision apps, RAG prototypes, LangChain chain composition, tool-calling LLM apps, agentic trip planning, and production AI analysis projects. The main visitor path is Vercel-native; Streamlit files are retained as source/course artifacts where relevant.
+The homepage highlights Banking77 intent classification, transformer finetuning, neural-network architecture work, computer vision apps, RAG prototypes, LangChain chain composition, tool-calling LLM apps, agentic trip planning, and production AI analysis projects. The main visitor path is Vercel-native through Next.js routes; Streamlit files are retained as source/course artifacts where relevant.
 
 Current files:
 

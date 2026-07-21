@@ -42,15 +42,15 @@ current React 19 with Next 16. Do not force-install Tremor as a dependency. Use 
 as design reference and recreate the patterns with React, Tailwind, Recharts, and native
 components until Tremor has a compatible release.
 
-## Migration Priority
+## Migration Status
 
-1. Keep the current static Vercel site stable.
-2. Build a Next.js `app/` version of the homepage and live project shell.
-3. Move the existing `/api` routes into Next route handlers.
-4. Replace static chart demos with Recharts components.
-5. Add Vercel Analytics and Speed Insights after the Next app is serving production traffic.
+The portfolio has been migrated to a Next.js App Router shell:
 
-Default `build` and `dev` scripts are intentionally not enabled yet. The current deployed site is
-still static HTML plus Vercel Functions, so adding a default Next build before the migration could
-break production deployment. Use `npm run next:dev` and `npm run next:build` when actively working
-on the Next migration branch.
+1. Homepage and project detail routes live under `app/`.
+2. Typed project metadata lives in `lib/projects.ts`.
+3. The live demo hub is available at `/live`.
+4. The trip planner and training manual creator have dedicated Next app routes.
+5. Existing Vercel function logic is wrapped by Next route handlers under `app/api/`.
+6. Vercel Analytics and Speed Insights are mounted in `app/layout.tsx`.
+
+Use `npm run dev` for local development and `npm run build` before deployment.
