@@ -1,9 +1,5 @@
 import { notFound } from "next/navigation";
-import { getProject, projects } from "../../../lib/projects";
-
-export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
-}
+import { getProject } from "../../../lib/projects";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
