@@ -1,15 +1,44 @@
 {
   "name": "ashton-ai-projects-portfolio",
+  "version": "0.1.0",
   "private": true,
   "description": "Portfolio site and live AI engineering project demos.",
   "scripts": {
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "check:live": "node --check live/live-apps.js && node --check api/trip-planner.js && node --check api/training-manual-chat.js",
     "check:ai-sdk": "node scripts/check-ai-sdk.mjs",
     "check:ai-sdk:live": "node scripts/check-ai-sdk.mjs --live"
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.17",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "ai": "^7.0.33",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
+    "lucide-react": "^1.25.0",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "recharts": "^3.10.0",
+    "tailwind-merge": "^3.6.0",
     "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.2.10",
+    "postcss": "^8.5.21",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
   }
 }

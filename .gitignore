@@ -8,6 +8,7 @@ __pycache__/
 
 # Node/Vercel local artifacts
 node_modules/
+tsconfig.tsbuildinfo
 
 # Environments
 .venv/
@@ -39,3 +40,4 @@ frankenstein-finetuning-portfolio/gpu-starter/
 Thumbs.db
 
 .vercel
+.env*

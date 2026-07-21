@@ -42,3 +42,12 @@ Reusable references for course checkpoints and future portfolio projects.
 - Use Anthropic's agent-building guide when deciding whether a project should be a simple workflow, routed chain, evaluator loop, orchestrated workflow, or more autonomous agent.
 - Use MLOps references when turning course notebooks into portfolio case studies with monitoring, evaluation, deployment, cost control, safety, and governance sections.
 - Use Google ML monitoring guidance when adding production-readiness language to model evaluation and recommendation-system portfolio projects.
+
+## Frontend Portfolio References
+
+| Resource | Use |
+| --- | --- |
+| [AshtonMedina22/query](https://github.com/AshtonMedina22/query) | Reference repo for reusable project-site patterns, components, or query/data UI ideas from the user's GitHub work. |
+| [Recharts](https://recharts.github.io/) | React charting library for model metrics, ROI dashboards, inference timing, confidence distributions, and portfolio analytics. |
+| [Tremor Blocks](https://blocks.tremor.so/templates) | Dashboard layout inspiration for metrics, tables, cards, command centers, and portfolio-grade admin surfaces. |
+| [AshtonMedina22/tremor](https://github.com/AshtonMedina22/tremor) | User-owned Tremor reference repo for dashboard patterns and component ideas. |
