@@ -8,13 +8,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { featuredProjects, mainProjects, projects } from "../lib/projects";
+import { archiveProjects, getSourceHref, mainProjects, projects, technicalMoatProjects } from "../lib/projects";
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
-  const supportingProjects = projects.filter((project) => project.priority === "supporting");
-
   return (
     <main id="top">
       <section className="portfolio-hero">
@@ -53,7 +51,7 @@ export default function HomePage() {
 
         <div className="main-project-grid">
           {mainProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index + 1} />
+            <ProjectCard key={project.id} project={project} index={index + 1} />
           ))}
         </div>
       </section>
@@ -95,13 +93,8 @@ export default function HomePage() {
           </div>
         </div>
         <div className="project-grid compact-grid">
-          {featuredProjects
-            .filter((project) => project.priority !== "main")
-            .map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          {supportingProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+          {[...technicalMoatProjects, ...archiveProjects].map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </section>
@@ -129,27 +122,27 @@ export default function HomePage() {
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index?: number }) {
   return (
     <article className="project-card">
-      <div className={`project-visual visual-${project.slug}`}>
-        <span>{project.type}</span>
+      <div className={`project-visual visual-${project.id}`}>
+        <span>{project.category}</span>
         {index ? <em>{String(index).padStart(2, "0")}</em> : null}
       </div>
       <div className="project-body">
-        <p className="project-type">{project.type}</p>
+        <p className="project-type">{project.category}</p>
         <h3>{project.title}</h3>
-        <div className="project-metric">{project.metric}</div>
-        <p>{project.summary}</p>
+        <div className="project-metric">{project.metrics[0]}</div>
+        <p>{project.businessPain}</p>
         <dl className="project-stats">
-          {project.stats.map((stat) => (
-            <div key={stat.label}>
-              <dt>{stat.label}</dt>
-              <dd>{stat.value}</dd>
+          {project.metrics.slice(0, 2).map((metric, metricIndex) => (
+            <div key={metric}>
+              <dt>Signal {metricIndex + 1}</dt>
+              <dd>{metric}</dd>
             </div>
           ))}
         </dl>
         <div className="card-actions">
-          <Link href={project.liveHref}>Live app</Link>
-          <Link href={project.caseHref}>Case study</Link>
-          {project.sourceHref ? <a href={project.sourceHref}>Source</a> : null}
+          <Link href={project.href}>Live app</Link>
+          <Link href={`/projects/${project.id}`}>Case study</Link>
+          <a href={getSourceHref(project)}>Source</a>
         </div>
       </div>
     </article>

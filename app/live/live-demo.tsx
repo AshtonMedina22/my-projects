@@ -5,10 +5,12 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 const demoOptions = [
-  { key: "esg", title: "Autonomous ESG Transaction Classifier" },
+  { key: "esg-classifier", title: "Autonomous ESG Transaction Classifier" },
   { key: "payflow", title: "PayFlow Accounts Payable Agent" },
-  { key: "regulatory", title: "Real-Time Regulatory Triage" },
-  { key: "sre", title: "Self-Healing SRE Agentic DevOps" },
+  { key: "reg-triage", title: "Real-Time Regulatory Triage" },
+  { key: "self-healing-sre", title: "Self-Healing SRE Agentic DevOps" },
+  { key: "rbac-graph", title: "RBAC-Secured Enterprise Knowledge Graph" },
+  { key: "slm-edge", title: "SLM Edge Deployment" },
   { key: "corrective-rag", title: "Corrective RAG Pipeline" },
   { key: "mcp", title: "Enterprise MCP Server" },
   { key: "devops-agent", title: "Agentic DevOps Auto-Fixer" },
@@ -24,12 +26,21 @@ const demoOptions = [
   { key: "vision", title: "Neural Network Architecture Explorer" },
 ];
 
+const projectAliases: Record<string, string> = {
+  esg: "esg-classifier",
+  regulatory: "reg-triage",
+  sre: "self-healing-sre",
+  devops: "self-healing-sre",
+  "devops-agent": "self-healing-sre",
+};
+
 export default function LiveDemo() {
   const searchParams = useSearchParams();
-  const requestedProject = searchParams.get("project") ?? "esg";
+  const rawProject = searchParams.get("project") ?? "esg-classifier";
+  const requestedProject = projectAliases[rawProject] ?? rawProject;
   const initialProject = demoOptions.some((option) => option.key === requestedProject)
     ? requestedProject
-    : "esg";
+    : "esg-classifier";
   const [project, setProject] = useState(initialProject);
   const selected = demoOptions.find((option) => option.key === project) ?? demoOptions[0];
 
@@ -48,10 +59,12 @@ export default function LiveDemo() {
           ))}
         </select>
       </div>
-      {project === "esg" ? <EsgDemo /> : null}
+      {project === "esg-classifier" ? <EsgDemo /> : null}
       {project === "payflow" ? <PayFlowDemo /> : null}
-      {project === "regulatory" ? <RegulatoryDemo /> : null}
-      {project === "sre" ? <SelfHealingSreDemo /> : null}
+      {project === "reg-triage" ? <RegulatoryDemo /> : null}
+      {project === "self-healing-sre" ? <SelfHealingSreDemo /> : null}
+      {project === "rbac-graph" ? <RbacGraphDemo /> : null}
+      {project === "slm-edge" ? <SlmEdgeDemo /> : null}
       {project === "corrective-rag" ? <RagDemo /> : null}
       {project === "banking" ? <BankingDemo /> : null}
       {project === "mcp" ? <McpDemo /> : null}
@@ -357,6 +370,73 @@ function McpDemo() {
             </article>
           ))}
         </div>
+      </section>
+    </div>
+  );
+}
+
+function RbacGraphDemo() {
+  const [role, setRole] = useState("Finance Analyst");
+  const allowed = role.toLowerCase().includes("finance");
+  return (
+    <div className="live-two-column">
+      <section className="live-panel">
+        <h2>Access-aware retrieval</h2>
+        <input value={role} onChange={(event) => setRole(event.target.value)} />
+        <div className="prediction-card">
+          <span>Requested corpus</span>
+          <strong>Vendor payment policy graph</strong>
+          <p>ACL metadata is evaluated before chunks can enter the answer context.</p>
+        </div>
+      </section>
+      <section className="live-panel">
+        <h2>Retrieval gate</h2>
+        <pre>
+          {JSON.stringify(
+            {
+              role,
+              graph_node: "policy:vendor-payments",
+              access: allowed ? "allowed" : "blocked",
+              pii_scrub: "verified",
+              response_mode: allowed ? "return cited context" : "refuse with access rationale",
+            },
+            null,
+            2,
+          )}
+        </pre>
+      </section>
+    </div>
+  );
+}
+
+function SlmEdgeDemo() {
+  const [command, setCommand] = useState("Summarize local sensor anomaly as JSON");
+  return (
+    <div className="live-two-column">
+      <section className="live-panel">
+        <h2>Edge prompt</h2>
+        <textarea value={command} onChange={(event) => setCommand(event.target.value)} />
+        <div className="prediction-card">
+          <span>Runtime target</span>
+          <strong>Raspberry Pi 5 / Llama.cpp</strong>
+          <p>Quantized SLM pattern for private, low-latency edge inference.</p>
+        </div>
+      </section>
+      <section className="live-panel">
+        <h2>Schema-enforced output</h2>
+        <pre>
+          {JSON.stringify(
+            {
+              task: command,
+              latency_target: "<50ms",
+              privacy_mode: "on-device",
+              schema_valid: true,
+              output_contract: "{ summary: string, severity: enum, action: string }",
+            },
+            null,
+            2,
+          )}
+        </pre>
       </section>
     </div>
   );

@@ -1,6 +1,6 @@
 import { ArrowUpRight, CheckCircle2, RadioTower } from "lucide-react";
 import Link from "next/link";
-import { featuredProjects, mainProjects, projects } from "../../lib/projects";
+import { archiveProjects, getSourceHref, mainProjects, technicalMoatProjects } from "../../lib/projects";
 
 export const dynamic = "force-dynamic";
 
@@ -10,9 +10,6 @@ export const metadata = {
 };
 
 export default function ProjectsPage() {
-  const secondaryProjects = featuredProjects.filter((project) => project.priority !== "main");
-  const supportingProjects = projects.filter((project) => project.priority === "supporting");
-
   return (
     <main className="app-shell project-os-page">
       <section className="app-header project-os-header">
@@ -43,26 +40,26 @@ export default function ProjectsPage() {
         </div>
         <div className="main-project-grid">
           {mainProjects.map((project, index) => (
-            <article className="project-card os-project-card" key={project.slug}>
-              <div className={`project-visual visual-${project.slug}`}>
-                <span>{project.type}</span>
+            <article className="project-card os-project-card" key={project.id}>
+              <div className={`project-visual visual-${project.id}`}>
+                <span>{project.category}</span>
                 <em>{String(index + 1).padStart(2, "0")}</em>
               </div>
               <div className="project-body">
-                <p className="project-type">{project.type}</p>
+                <p className="project-type">{project.category}</p>
                 <h3>{project.title}</h3>
-                <div className="project-metric">{project.metric}</div>
-                <p>{project.summary}</p>
+                <div className="project-metric">{project.metrics[0]}</div>
+                <p>{project.businessPain}</p>
                 <dl className="project-stats">
-                  {project.stats.map((stat) => (
-                    <div key={stat.label}>
-                      <dt>{stat.label}</dt>
-                      <dd>{stat.value}</dd>
+                  {project.metrics.slice(0, 2).map((metric, metricIndex) => (
+                    <div key={metric}>
+                      <dt>Signal {metricIndex + 1}</dt>
+                      <dd>{metric}</dd>
                     </div>
                   ))}
                 </dl>
                 <ul className="mini-proof-list">
-                  {project.proof.slice(0, 2).map((item) => (
+                  {[project.technicalDepth, `Stack: ${project.stack.join(" / ")}`].map((item) => (
                     <li key={item}>
                       <CheckCircle2 size={15} />
                       <span>{item}</span>
@@ -70,9 +67,9 @@ export default function ProjectsPage() {
                   ))}
                 </ul>
                 <div className="card-actions">
-                  <Link href={project.liveHref}>Live app</Link>
-                  <Link href={project.caseHref}>Case study</Link>
-                  {project.sourceHref ? <a href={project.sourceHref}>Source</a> : null}
+                  <Link href={project.href}>Live app</Link>
+                  <Link href={`/projects/${project.id}`}>Case study</Link>
+                  <a href={getSourceHref(project)}>Source</a>
                 </div>
               </div>
             </article>
@@ -117,20 +114,20 @@ export default function ProjectsPage() {
           </div>
         </div>
         <div className="project-grid compact-grid">
-          {[...secondaryProjects, ...supportingProjects].map((project) => (
-            <article className="project-card" key={project.slug}>
-              <div className={`project-visual visual-${project.slug}`}>
-                <span>{project.type}</span>
+          {[...technicalMoatProjects, ...archiveProjects].map((project) => (
+            <article className="project-card" key={project.id}>
+              <div className={`project-visual visual-${project.id}`}>
+                <span>{project.category}</span>
                 <strong>{project.title}</strong>
               </div>
               <div className="project-body">
-                <p className="project-type">{project.type}</p>
+                <p className="project-type">{project.category}</p>
                 <h3>{project.title}</h3>
-                <div className="project-metric">{project.metric}</div>
-                <p>{project.summary}</p>
+                <div className="project-metric">{project.metrics[0]}</div>
+                <p>{project.businessPain}</p>
                 <div className="card-actions">
-                  <Link href={project.liveHref}>Live app</Link>
-                  <Link href={project.caseHref}>Case study</Link>
+                  <Link href={project.href}>Live app</Link>
+                  <Link href={`/projects/${project.id}`}>Case study</Link>
                 </div>
               </div>
             </article>

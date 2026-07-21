@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { getProject } from "../../../lib/projects";
+import { getProject, getSourceHref } from "../../../lib/projects";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
   return {
     title: `${project.title} | Ashton Medina AI Portfolio`,
-    description: project.summary,
+    description: project.businessPain,
   };
 }
 
@@ -24,26 +24,24 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     <main className="app-shell project-case-page">
       <section className="project-detail-hero">
         <div>
-          <p className="eyebrow">{project.type}</p>
+          <p className="eyebrow">{project.category}</p>
           <h1>{project.title}</h1>
-          <div className="project-metric detail-metric">{project.metric}</div>
-          <p>{project.summary}</p>
+          <div className="project-metric detail-metric">{project.metrics[0]}</div>
+          <p>{project.businessPain}</p>
           <div className="hero-actions">
-            <Link className="button primary" href={project.liveHref}>
+            <Link className="button primary" href={project.href}>
               Open live app <ArrowRight size={17} />
             </Link>
-            {project.sourceHref ? (
-              <a className="button secondary" href={project.sourceHref}>
-                Review source <ExternalLink size={16} />
-              </a>
-            ) : null}
+            <a className="button secondary" href={getSourceHref(project)}>
+              Review source <ExternalLink size={16} />
+            </a>
           </div>
         </div>
         <div className="case-metrics">
-          {project.stats.map((stat) => (
-            <div className="case-metric" key={stat.label}>
-              <strong>{stat.value}</strong>
-              <span>{stat.label}</span>
+          {project.metrics.map((metric, index) => (
+            <div className="case-metric" key={metric}>
+              <strong>{metric}</strong>
+              <span>Metric {index + 1}</span>
             </div>
           ))}
         </div>
@@ -51,9 +49,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
       <section className="section detail-grid">
         <article className="detail-panel">
-          <h2>What It Demonstrates</h2>
+          <h2>Technical Depth</h2>
+          <p>{project.technicalDepth}</p>
+          <h2>Stack</h2>
           <div className="tag-row">
-            {project.skills.map((skill) => (
+            {project.stack.map((skill) => (
               <span key={skill}>{skill}</span>
             ))}
           </div>
@@ -61,7 +61,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <article className="detail-panel">
           <h2>Portfolio Proof</h2>
           <ul className="proof-list">
-            {project.proof.map((item) => (
+            {[
+              project.businessPain,
+              project.technicalDepth,
+              `Repository path: ${project.repoPath}`,
+            ].map((item) => (
               <li key={item}>
                 <CheckCircle2 size={18} />
                 <span>{item}</span>
