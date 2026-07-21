@@ -1,5 +1,7 @@
 import TrainingManualApp from "./training-manual-app";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Training Manual Creator | Live App",
   description: "Use a tool-calling LLM app that reads, writes, revises, deletes, and enriches training manual sections.",
