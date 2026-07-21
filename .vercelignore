@@ -5,6 +5,7 @@ node_modules
 .tmp-*
 
 # Local/course artifacts not needed by the Next.js portfolio runtime.
+labs
 *.ipynb
 notebook*.md
 ai-engineer-lessons
