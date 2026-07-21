@@ -9,6 +9,7 @@ This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfol
 - Live project hub: `/live`
 - Serverless APIs: `app/api/`
 - Legacy API source wrappers: `api/`
+- Legacy static archive: `legacy-static/`
 - Netlify publish directory: `.`
 - Vercel root directory: `.`
 - Build command: `npm run build`
@@ -52,7 +53,7 @@ Current files:
 - `notebook (29).md` - generative model perplexity lesson with completed cross-entropy loss and perplexity checkpoints.
 - `frankenstein-finetuning-portfolio/` - portfolio-ready Frankenstein language model finetuning project with CPU DistilGPT-2 scripts, completed notebooks, dataset, and optional GPU QLoRA notebook.
 - `engineer-neural-networks-portfolio/` - portfolio-ready Banking77 intent classification project with datasets, MLP baseline script, transformer notebook, and PII guardrails.
-- `live/` - Vercel-native interactive project hub for non-sleeping portfolio demos.
+- `legacy-static/live/` - archived pre-Next interactive project hub.
 - `api/` - Vercel serverless functions for live project behavior.
 - `streamlit-image-classification-dashboard/` - portfolio-ready AI image classification dashboard source using Hugging Face ViT and ResNet models, with a Vercel-native public demo in `live/`.
 - `rag-search-assistant/` - RAG search assistant source scaffold with lightweight retrieval, cited chunks, and prompt preview, with a Vercel-native public demo in `live/`.

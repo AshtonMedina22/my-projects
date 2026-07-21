@@ -12,7 +12,7 @@
     "next:start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check:live": "node --check live/live-apps.js && node --check api/trip-planner.js && node --check api/training-manual-chat.js",
+    "check:live": "node --check legacy-static/live/live-apps.js && node --check api/trip-planner.js && node --check api/training-manual-chat.js",
     "check:ai-sdk": "node scripts/check-ai-sdk.mjs",
     "check:ai-sdk:live": "node scripts/check-ai-sdk.mjs --live"
   },
