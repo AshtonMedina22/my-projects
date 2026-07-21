@@ -83,46 +83,8 @@ export default function LiveDemo() {
 }
 
 function EsgDemo() {
-  const [spendType, setSpendType] = useState("Corporate air travel - Dallas to Seattle");
-  const lower = spendType.toLowerCase();
-  const classification = lower.includes("fuel") || lower.includes("travel") || lower.includes("flight")
-    ? {
-        spend_type: "business_travel_air",
-        emission_factor: "0.158 kgCO2e/passenger-km",
-        confidence: 0.91,
-        reviewer_note: "High-emission travel category. Validate route distance and cabin class before audit lock.",
-      }
-    : lower.includes("office") || lower.includes("supplies")
-      ? {
-          spend_type: "office_supplies_general",
-          emission_factor: "0.34 kgCO2e/USD",
-          confidence: 0.84,
-          reviewer_note: "General spend-based factor. Request supplier-specific factor if materiality threshold is met.",
-        }
-      : {
-          spend_type: "uncategorized_procurement",
-          emission_factor: "review_required",
-          confidence: 0.48,
-          reviewer_note: "Insufficient transaction detail. Route to ESG analyst for taxonomy confirmation.",
-        };
-
   return (
-    <div className="live-two-column">
-      <section className="live-panel">
-        <h2>ERP transaction intake</h2>
-        <textarea value={spendType} onChange={(event) => setSpendType(event.target.value)} />
-        <div className="prediction-card">
-          <span>Integration target</span>
-          <strong>Dynamics 365 / SAP via MCP</strong>
-          <p>Maps raw procurement descriptions into ESG reporting categories.</p>
-        </div>
-      </section>
-      <section className="live-panel">
-        <h2>GHG factor mapping</h2>
-        <pre>{JSON.stringify(classification, null, 2)}</pre>
-        <Confidence label="taxonomy confidence" score={classification.confidence} />
-      </section>
-    </div>
+    <Launcher title="Autonomous ESG Transaction Classifier" href="/live/esg-classifier" />
   );
 }
 

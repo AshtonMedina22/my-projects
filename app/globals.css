@@ -1187,6 +1187,226 @@ dd,
   align-items: start;
 }
 
+.esg-app-shell {
+  padding-bottom: 72px;
+}
+
+.esg-hero {
+  align-items: end;
+}
+
+.esg-workspace {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.esg-control-panel,
+.esg-results-panel,
+.esg-summary-card,
+.esg-table-card,
+.esg-materiality-card {
+  border: 1px solid var(--glow-border);
+  border-radius: 14px;
+  background: var(--glass);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(22px) saturate(130%);
+}
+
+.esg-control-panel {
+  position: sticky;
+  top: 92px;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.esg-results-panel {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.esg-form-grid,
+.esg-output-grid,
+.materiality-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.esg-form-grid {
+  grid-template-columns: 1fr 0.55fr;
+}
+
+.esg-output-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+}
+
+.materiality-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.esg-readout-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.esg-readout-grid .signal-card strong {
+  font-size: clamp(1.8rem, 3.4vw, 2.35rem);
+}
+
+.field-label {
+  display: grid;
+  gap: 7px;
+  color: rgba(237, 237, 237, 0.68);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.field-label input,
+.field-label select,
+.field-label textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.field-label textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.field-label input:focus-visible,
+.field-label select:focus-visible,
+.field-label textarea:focus-visible {
+  outline: none;
+  border-color: var(--line-strong);
+  box-shadow: var(--focus-ring);
+}
+
+.mode-pill {
+  width: fit-content;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  border-radius: 999px;
+  background: rgba(96, 165, 250, 0.08);
+  color: rgba(237, 237, 237, 0.74);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.wide-button {
+  width: 100%;
+}
+
+.error-text {
+  margin: 0;
+  color: var(--red);
+  font-weight: 850;
+}
+
+.esg-summary-card,
+.esg-table-card,
+.esg-materiality-card {
+  padding: 18px;
+}
+
+.esg-summary-card p:last-child {
+  max-width: 920px;
+  color: rgba(237, 237, 237, 0.72);
+  font-size: 1.02rem;
+}
+
+.esg-ledger,
+.trace-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.esg-ledger-row {
+  display: grid;
+  grid-template-columns: 0.85fr 1.5fr 1fr 0.55fr;
+  gap: 12px;
+  align-items: start;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--glass-strong);
+}
+
+.esg-ledger-row div {
+  display: grid;
+  gap: 3px;
+}
+
+.esg-ledger-row strong,
+.trace-card strong {
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+}
+
+.esg-ledger-row span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 780;
+}
+
+.empty-state {
+  display: grid;
+  gap: 5px;
+  min-height: 160px;
+  place-content: center;
+  border: 1px dashed var(--line-strong);
+  border-radius: 10px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.trace-card em {
+  width: fit-content;
+  color: var(--green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mini-bars {
+  display: grid;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.mini-bars span {
+  display: block;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.95), rgba(139, 92, 246, 0.95));
+}
+
+.mini-bars span:last-child {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.95), rgba(251, 191, 36, 0.95));
+}
+
 .trip-control-panel,
 .trip-main-panel,
 .trip-trace-panel,
@@ -2011,6 +2231,8 @@ dd,
   .detail-grid,
   .trip-product,
   .llm-product,
+  .esg-workspace,
+  .esg-output-grid,
   .magic-layout {
     grid-template-columns: 1fr;
   }
@@ -2028,6 +2250,10 @@ dd,
   .manual-preview,
   .magic-oracle-panel {
     min-height: auto;
+  }
+
+  .esg-control-panel {
+    position: static;
   }
 }
 
@@ -2058,7 +2284,11 @@ dd,
   .signal-grid,
   .preview-body,
   .preview-grid,
-  .form-grid-two {
+  .form-grid-two,
+  .esg-readout-grid,
+  .materiality-grid,
+  .esg-ledger-row,
+  .esg-form-grid {
     grid-template-columns: 1fr;
   }
 
