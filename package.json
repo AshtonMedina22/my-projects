@@ -4,6 +4,9 @@
   "private": true,
   "description": "Portfolio site and live AI engineering project demos.",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "next:dev": "next dev",
     "next:build": "next build",
     "next:start": "next start",
@@ -15,6 +18,8 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^4.0.17",
+    "@ai-sdk/react": "^4.0.36",
+    "@tailwindcss/postcss": "^4.3.3",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "ai": "^7.0.33",
