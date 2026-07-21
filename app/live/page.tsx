@@ -12,16 +12,16 @@ export default function LivePage() {
     <main className="app-shell">
       <section className="app-header">
         <div>
-          <p className="eyebrow">Live app hub</p>
-          <h1>Working AI project demos</h1>
+          <p className="eyebrow">Live Project OS</p>
+          <h1>Interactive AI system surfaces</h1>
           <p>
-            These are public-facing browser experiences for the course and portfolio projects. The highest-value
-            projects have full app routes; the rest use fast client-side demos that avoid sleeping Streamlit deploys.
+            The Hiring Quad is surfaced first: reliability, integration, operations, and live agent planning. Supporting
+            demos remain available as evidence of the broader course and portfolio buildout.
           </p>
         </div>
         <div className="status-panel">
           <span>Runtime: Next.js</span>
-          <span>Demos: 9</span>
+          <span>Core pillars: 4</span>
           <span>API routes: Vercel Functions</span>
         </div>
       </section>

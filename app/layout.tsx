@@ -42,7 +42,7 @@ function SiteHeader() {
           <span>AI Engineering</span>
         </Link>
         <div className="nav-links">
-          <Link href="/#projects">Projects</Link>
+          <Link href="/projects">Projects</Link>
           <Link href="/live">Live Apps</Link>
           <Link href="/#evidence">Evidence</Link>
           <a href="https://github.com/AshtonMedina22/my-projects">GitHub</a>

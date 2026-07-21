@@ -1,11 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 const demoOptions = [
+  { key: "corrective-rag", title: "Corrective RAG Pipeline" },
+  { key: "mcp", title: "Enterprise MCP Server" },
+  { key: "devops-agent", title: "Agentic DevOps Auto-Fixer" },
+  { key: "trip", title: "Autonomous Trip Planner" },
   { key: "banking", title: "Banking Intent Classifier" },
-  { key: "trip", title: "Trip Planner AI Agent" },
   { key: "training", title: "Training Manual Creator" },
   { key: "magic", title: "All-Knowing Magic 8-Ball" },
   { key: "image-classifier", title: "Image Classification Dashboard" },
@@ -18,8 +22,10 @@ const demoOptions = [
 
 export default function LiveDemo() {
   const searchParams = useSearchParams();
-  const requestedProject = searchParams.get("project") ?? "banking";
-  const initialProject = demoOptions.some((option) => option.key === requestedProject) ? requestedProject : "banking";
+  const requestedProject = searchParams.get("project") ?? "corrective-rag";
+  const initialProject = demoOptions.some((option) => option.key === requestedProject)
+    ? requestedProject
+    : "corrective-rag";
   const [project, setProject] = useState(initialProject);
   const selected = demoOptions.find((option) => option.key === project) ?? demoOptions[0];
 
@@ -38,8 +44,11 @@ export default function LiveDemo() {
           ))}
         </select>
       </div>
+      {project === "corrective-rag" ? <RagDemo /> : null}
       {project === "banking" ? <BankingDemo /> : null}
-      {project === "trip" ? <Launcher title="Trip Planner AI Agent" href="/trip-planner-ai-agent/app" /> : null}
+      {project === "mcp" ? <McpDemo /> : null}
+      {project === "devops-agent" ? <DevOpsDemo /> : null}
+      {project === "trip" ? <Launcher title="Autonomous Trip Planner" href="/trip-planner-ai-agent/app" /> : null}
       {project === "training" ? <Launcher title="Training Manual Creator" href="/training-manual-creator/app" /> : null}
       {project === "magic" ? <Launcher title="All-Knowing Magic 8-Ball" href="/magic-8-ball/app" /> : null}
       {project === "image-classifier" ? <ImageDemo /> : null}
@@ -57,9 +66,9 @@ function Launcher({ title, href }: { title: string; href: string }) {
     <div className="live-panel centered-panel">
       <h2>Full app route</h2>
       <p>{title} has its own Vercel-native app route with serverless API behavior.</p>
-      <a className="button primary" href={href}>
+      <Link className="button primary" href={href}>
         Open {title}
-      </a>
+      </Link>
     </div>
   );
 }
@@ -163,16 +172,83 @@ function RagDemo() {
   return (
     <div className="live-two-column">
       <section className="live-panel">
-        <h2>Source documents</h2>
+        <h2>Corrective retrieval console</h2>
         <textarea value={docs} onChange={(event) => setDocs(event.target.value)} />
         <input value={question} onChange={(event) => setQuestion(event.target.value)} />
       </section>
       <section className="live-panel">
-        <h2>Retrieved answer</h2>
-        <p>{top?.text}</p>
-        <pre>{JSON.stringify(top, null, 2)}</pre>
+        <h2>Evidence gate</h2>
+        <div className="prediction-card">
+          <span>Retrieval status</span>
+          <strong>{top && top.score > 0 ? "Grounded" : "Needs retry"}</strong>
+          <p>{top?.text}</p>
+        </div>
+        <pre>{JSON.stringify({ ...top, corrective_action: top && top.score > 0 ? "synthesize" : "rewrite query" }, null, 2)}</pre>
       </section>
     </div>
+  );
+}
+
+function McpDemo() {
+  const [intent, setIntent] = useState("Create a vendor onboarding task and look up IT Support.");
+  const tools = [
+    { name: "lookup_contact", risk: "read", schema: "contact_name:string", status: "allowed" },
+    { name: "write_section", risk: "write", schema: "section_number:int, content:string", status: "review" },
+    { name: "delete_section", risk: "destructive", schema: "section_number:int", status: "blocked" },
+  ];
+  const selected = intent.toLowerCase().includes("delete") ? tools[2] : intent.toLowerCase().includes("write") || intent.toLowerCase().includes("create") ? tools[1] : tools[0];
+
+  return (
+    <div className="live-two-column">
+      <section className="live-panel">
+        <h2>Connector request</h2>
+        <textarea value={intent} onChange={(event) => setIntent(event.target.value)} />
+        <div className="prediction-card">
+          <span>Routed tool</span>
+          <strong>{selected.name}</strong>
+          <p>Schema: {selected.schema}</p>
+        </div>
+      </section>
+      <section className="live-panel">
+        <h2>Governance registry</h2>
+        <div className="architecture-grid">
+          {tools.map((tool) => (
+            <article className="architecture-card" key={tool.name}>
+              <h3>{tool.name}</h3>
+              <p>Risk: {tool.risk}</p>
+              <p>Contract: {tool.schema}</p>
+              <strong>{tool.status}</strong>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function DevOpsDemo() {
+  const [incident, setIncident] = useState("Vercel deployment failed after a package upgrade.");
+  const stages = [
+    ["Detect", "Build log anomaly found", "complete"],
+    ["Diagnose", incident.toLowerCase().includes("package") ? "Dependency drift likely" : "Route/API mismatch likely", "complete"],
+    ["Patch Plan", "Prepare minimal diff with rollback note", "pending"],
+    ["Verify", "Run typecheck, lint, build, route probes", "blocked until patch approval"],
+  ];
+
+  return (
+    <section className="live-panel">
+      <h2>Agentic incident runbook</h2>
+      <textarea value={incident} onChange={(event) => setIncident(event.target.value)} />
+      <div className="architecture-grid">
+        {stages.map(([stage, result, state]) => (
+          <article className="architecture-card" key={stage}>
+            <h3>{stage}</h3>
+            <p>{result}</p>
+            <strong>{state}</strong>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 

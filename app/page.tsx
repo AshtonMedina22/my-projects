@@ -9,6 +9,7 @@ import {
   TerminalSquare,
   Workflow,
 } from "lucide-react";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { featuredProjects, mainProjects, projects } from "../lib/projects";
 
@@ -21,20 +22,20 @@ export default function HomePage() {
     <main id="top">
       <section className="portfolio-hero">
         <div className="hero-copy">
-          <p className="eyebrow glow-pill">AI engineering portfolio</p>
-          <h1>Live AI systems with product-grade interfaces.</h1>
+          <p className="eyebrow glow-pill">Project OS / AI systems portfolio</p>
+          <h1>Production-shaped AI systems, organized like an operator console.</h1>
           <p className="hero-text">
-            A working portfolio of agentic apps, AI toys, retrieval systems, model evaluation dashboards, NLP classifiers,
-            and deployment-focused AI projects. The strongest projects run directly on Vercel with real app routes,
-            serverless APIs, and visible execution behavior.
+            A focused hiring portfolio for AI systems architecture: corrective retrieval, enterprise tool connectors,
+            agentic operations, and live external-data agents. Every primary build is framed around the behavior an
+            engineering team would evaluate in production.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href="/trip-planner-ai-agent/app">
-              Launch capstone agent <ArrowRight size={17} />
-            </a>
-            <a className="button secondary" href="/live">
+            <Link className="button primary" href="/projects">
+              Open Project OS <ArrowRight size={17} />
+            </Link>
+            <Link className="button secondary" href="/live">
               Browse all live demos
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -52,10 +53,10 @@ export default function HomePage() {
                 <span>AM</span>
               </div>
               {mainProjects.map((project) => (
-                <a key={project.slug} href={project.liveHref}>
+                <Link key={project.slug} href={project.liveHref}>
                   <Play size={14} />
                   {project.title}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="preview-canvas">
@@ -64,10 +65,10 @@ export default function HomePage() {
                 <strong>Ready</strong>
               </div>
               <div className="preview-grid">
-                <Signal value="10" label="Live demos" />
-                <Signal value="3" label="Main apps" />
-                <Signal value="77" label="NLP classes" />
-                <Signal value="93.47%" label="Macro F1" />
+                <Signal value="4" label="Hiring Quad" />
+                <Signal value="13" label="Demo surfaces" />
+                <Signal value="RAG" label="Grounding layer" />
+                <Signal value="Eval" label="Control gate" />
               </div>
               <div className="preview-terminal">
                 <TerminalSquare size={16} />
@@ -94,46 +95,46 @@ export default function HomePage() {
       <section id="projects" className="section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Priority builds</p>
-            <h2>Main Portfolio Projects</h2>
+            <p className="eyebrow">Primary exports</p>
+            <h2>Hiring Quad</h2>
           </div>
-          <a className="text-link" href="/live">
-            Open live hub <ArrowUpRight size={16} />
-          </a>
+          <Link className="text-link" href="/projects">
+            Open project dashboard <ArrowUpRight size={16} />
+          </Link>
         </div>
 
         <div className="main-project-grid">
-          {mainProjects.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} featured={index === 0} />
+          {mainProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </section>
 
       <section className="section portfolio-band">
         <div>
-          <p className="eyebrow">What employers can test</p>
-          <h2>Each featured project exposes a concrete engineering behavior.</h2>
+          <p className="eyebrow">Evaluation surface</p>
+          <h2>Each core pillar exposes a production skill, not a screenshot.</h2>
         </div>
         <div className="proof-grid">
           <Evidence
             icon={<Workflow size={20} />}
-            title="Agentic workflows"
-            text="Tool calling, trace output, validation, deterministic fallback paths, and iterative refinement patterns."
+            title="Reliability"
+            text="Retrieval confidence, source gates, fallback paths, and visibly constrained answer generation."
           />
           <Evidence
             icon={<Map size={20} />}
-            title="External data"
-            text="OpenStreetMap-style POI search, travel-guide retrieval, upload flows, source citation, and data export."
+            title="Integration"
+            text="Schema-first tool registries, controlled function calls, and enterprise-style connector boundaries."
           />
           <Evidence
             icon={<ShieldCheck size={20} />}
-            title="AI controls"
-            text="PII scanning, cost routing, quality checks, fairness testing, and failure handling across projects."
+            title="Operations"
+            text="Agentic diagnosis, staged remediation, verification checks, and human approval for risky actions."
           />
           <Evidence
             icon={<Sparkles size={20} />}
-            title="Portfolio polish"
-            text="Live app routes are designed as product surfaces, not screenshots or writeups hiding behind cards."
+            title="Product proof"
+            text="Live routes use real UI states, interactive controls, technical metrics, and case-study evidence."
           />
         </div>
       </section>
@@ -141,8 +142,8 @@ export default function HomePage() {
       <section className="section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Applied course work</p>
-            <h2>More Live Demos and Analysis Projects</h2>
+            <p className="eyebrow">Supporting systems</p>
+            <h2>Additional Live Demos and Analysis Work</h2>
           </div>
         </div>
         <div className="project-grid compact-grid">
@@ -186,15 +187,9 @@ function Signal({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ProjectCard({
-  project,
-  featured = false,
-}: {
-  project: (typeof projects)[number];
-  featured?: boolean;
-}) {
+function ProjectCard({ project }: { project: (typeof projects)[number] }) {
   return (
-    <article className={`project-card ${featured ? "featured" : ""}`}>
+    <article className="project-card">
       <div className={`project-visual visual-${project.slug}`}>
         <span>{project.type}</span>
         <strong>{project.title}</strong>
@@ -202,6 +197,7 @@ function ProjectCard({
       <div className="project-body">
         <p className="project-type">{project.type}</p>
         <h3>{project.title}</h3>
+        <div className="project-metric">{project.metric}</div>
         <p>{project.summary}</p>
         <dl className="project-stats">
           {project.stats.map((stat) => (
@@ -212,8 +208,8 @@ function ProjectCard({
           ))}
         </dl>
         <div className="card-actions">
-          <a href={project.liveHref}>Live app</a>
-          <a href={project.caseHref}>Case study</a>
+          <Link href={project.liveHref}>Live app</Link>
+          <Link href={project.caseHref}>Case study</Link>
           {project.sourceHref ? <a href={project.sourceHref}>Source</a> : null}
         </div>
       </div>

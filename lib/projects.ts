@@ -7,6 +7,7 @@ export type Project = {
   liveHref: string;
   caseHref: string;
   sourceHref?: string;
+  metric: string;
   stats: { label: string; value: string }[];
   skills: string[];
   proof: string[];
@@ -16,10 +17,80 @@ const githubSourceBase = "https://github.com/AshtonMedina22/my-projects/blob/mai
 
 export const projects: Project[] = [
   {
-    slug: "trip-planner-ai-agent",
-    title: "Trip Planner AI Agent",
-    type: "Main capstone AI agent",
+    slug: "corrective-rag-pipeline",
+    title: "Corrective RAG Pipeline",
+    type: "Hiring Quad: Reliability",
     priority: "main",
+    metric: "Self-checking retrieval",
+    summary:
+      "A reliability-first RAG architecture that evaluates retrieved context before synthesis, then retries or re-ranks when the first pass fails the evidence gate.",
+    liveHref: "/live?project=rag",
+    caseHref: "/projects/corrective-rag-pipeline",
+    sourceHref: `${githubSourceBase}/rag-search-assistant/streamlit_app.py`,
+    stats: [
+      { label: "Pattern", value: "CRAG" },
+      { label: "Gate", value: "Eval" },
+      { label: "Output", value: "Cited" },
+    ],
+    skills: ["Corrective RAG", "Evaluation gates", "Chunk reranking", "Source-grounded synthesis"],
+    proof: [
+      "Uses retrieval confidence and cited chunks as the reliability surface.",
+      "Separates source ingestion, context selection, and answer synthesis into inspectable stages.",
+      "Designed to reduce hallucination risk by treating weak retrieval as a recoverable state.",
+    ],
+  },
+  {
+    slug: "enterprise-mcp-server",
+    title: "Enterprise MCP Server",
+    type: "Hiring Quad: Integration",
+    priority: "main",
+    metric: "Tool-safe integration",
+    summary:
+      "A Model Context Protocol style connector layer for routing LLM requests into controlled internal tools, legacy data sources, and governed enterprise actions.",
+    liveHref: "/live?project=mcp",
+    caseHref: "/projects/enterprise-mcp-server",
+    sourceHref: `${githubSourceBase}/training-manual-creator`,
+    stats: [
+      { label: "Protocol", value: "MCP" },
+      { label: "Access", value: "RBAC" },
+      { label: "Mode", value: "Tools" },
+    ],
+    skills: ["MCP architecture", "Tool registries", "Schema-first actions", "Enterprise integration"],
+    proof: [
+      "Promotes controlled tool execution over direct model access to sensitive systems.",
+      "Maps natural-language intent into typed operations with explicit parameters.",
+      "Uses the Training Manual Creator tool registry as the current working integration base.",
+    ],
+  },
+  {
+    slug: "agentic-devops-auto-fixer",
+    title: "Agentic DevOps Auto-Fixer",
+    type: "Hiring Quad: Orchestration",
+    priority: "main",
+    metric: "Diagnose -> patch -> verify",
+    summary:
+      "A multi-agent DevOps architecture where specialized agents monitor failures, diagnose probable causes, draft safe remediation, and require verification before infrastructure changes.",
+    liveHref: "/live?project=devops",
+    caseHref: "/projects/agentic-devops-auto-fixer",
+    sourceHref: `${githubSourceBase}/scripts`,
+    stats: [
+      { label: "Agents", value: "3" },
+      { label: "Control", value: "HITL" },
+      { label: "Risk", value: "Guarded" },
+    ],
+    skills: ["Agent orchestration", "SRE workflows", "Infrastructure guardrails", "Automated verification"],
+    proof: [
+      "Frames agent autonomy around staged diagnosis, patch planning, and verification.",
+      "Keeps high-risk infrastructure actions behind explicit human approval gates.",
+      "Connects portfolio deployment work to production incident-response patterns.",
+    ],
+  },
+  {
+    slug: "trip-planner-ai-agent",
+    title: "Autonomous Trip Planner",
+    type: "Hiring Quad: Product Agent",
+    priority: "main",
+    metric: "Live grounded itinerary",
     summary:
       "A production-style travel planner with OpenAI-compatible planning, OpenStreetMap POI search, Wikivoyage retrieval, itinerary validation, map visualization, and feedback loops.",
     liveHref: "/trip-planner-ai-agent/app",
@@ -41,7 +112,8 @@ export const projects: Project[] = [
     slug: "training-manual-creator",
     title: "Training Manual Creator",
     type: "Augmented LLM app",
-    priority: "main",
+    priority: "featured",
+    metric: "4 governed tools",
     summary:
       "A Vercel-native tool-calling chatbot that reads, writes, revises, deletes, and enriches employee training manual sections with a JSON-backed contact lookup.",
     liveHref: "/training-manual-creator/app",
@@ -63,7 +135,8 @@ export const projects: Project[] = [
     slug: "banking-intent-classifier",
     title: "Banking Intent Classifier",
     type: "NLP classification capstone",
-    priority: "main",
+    priority: "featured",
+    metric: "93.47% macro F1",
     summary:
       "End-to-end Banking77 classifier comparing a TF-IDF plus PyTorch MLP baseline against a LoRA-finetuned RoBERTa model with privacy guardrails.",
     liveHref: "/live?project=banking",
@@ -86,6 +159,7 @@ export const projects: Project[] = [
     title: "All-Knowing Magic 8-Ball",
     type: "Interactive AI toy",
     priority: "featured",
+    metric: "Server-side AI route",
     summary:
       "A Codecademy Python control-flow project upgraded into a polished Next.js app with an animated 8-Ball, OpenAI-backed fortunes, session history, and fallback behavior for public demos.",
     liveHref: "/magic-8-ball/app",
@@ -108,6 +182,7 @@ export const projects: Project[] = [
     title: "AI Image Classification Dashboard",
     type: "Computer vision app",
     priority: "featured",
+    metric: "1k ImageNet classes",
     summary:
       "A dashboard for image upload, prediction-style confidence output, classification history, analytics, and Hugging Face ViT/ResNet source review.",
     liveHref: "/live?project=image-classifier",
@@ -130,6 +205,7 @@ export const projects: Project[] = [
     title: "RAG Search Assistant",
     type: "RAG app",
     priority: "featured",
+    metric: "Cited chunk retrieval",
     summary:
       "A retrieval assistant for uploading source documents, chunking with overlap, retrieving cited passages, previewing prompts, estimating costs, and scanning safety risks.",
     liveHref: "/live?project=rag",
@@ -152,6 +228,7 @@ export const projects: Project[] = [
     title: "Recommendation System Performance",
     type: "AI deployment analytics",
     priority: "featured",
+    metric: "$307k profit audit",
     summary:
       "A model-version analysis comparing conversion lift, profit, AI ROI, segment performance, and fairness risk across three recommendation releases.",
     liveHref: "/live?project=recommendations",
@@ -174,6 +251,7 @@ export const projects: Project[] = [
     title: "Sequential Quiz Generator",
     type: "LangChain app project",
     priority: "featured",
+    metric: "2-chain composition",
     summary:
       "A Gemini/LangChain project using prompt templates, LLMChain output keys, and SequentialChain orchestration to generate quiz questions and answer keys.",
     liveHref: "/live?project=quiz",
@@ -196,6 +274,7 @@ export const projects: Project[] = [
     title: "Frankenstein Fanfiction Model",
     type: "Generative transformer finetuning",
     priority: "supporting",
+    metric: "LoRA finetuning",
     summary:
       "A language-model finetuning project with prompt generation, perplexity comparison, and optional GPU QLoRA notebook coverage.",
     liveHref: "/live?project=frankenstein",
@@ -218,6 +297,7 @@ export const projects: Project[] = [
     title: "Neural Network Architectures",
     type: "Computer vision architecture work",
     priority: "supporting",
+    metric: "CNN / AE / CLIP",
     summary:
       "Course project bundle covering CNNs, autoencoders, CLIP-style multimodal ideas, and evaluation notebooks.",
     liveHref: "/live?project=vision",
