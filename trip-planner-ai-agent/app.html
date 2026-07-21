@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trip Planner AI Agent App | Vercel Native</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Project navigation">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="index.html">Case Study</a>
+          <a href="app.js">Client Source</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="app-shell trip-app">
+      <section class="app-header">
+        <div>
+          <p class="eyebrow">Live Vercel AI app</p>
+          <h1>Trip Planner AI Agent</h1>
+          <p>
+            Generate a grounded itinerary from live OpenStreetMap POIs and Wikivoyage guide context. If OpenAI
+            is configured on Vercel, the API uses it; otherwise the app still works with deterministic planning.
+          </p>
+        </div>
+        <div class="status-panel">
+          <span>Runtime: Vercel Function</span>
+          <span>Data: OpenStreetMap + Wikivoyage</span>
+          <span>State: Browser session</span>
+        </div>
+      </section>
+
+      <section class="trip-live-layout">
+        <aside class="tool-sidebar">
+          <h2>Trip Inputs</h2>
+          <form id="tripForm" class="stack-form">
+            <label>Destination<input id="destination" value="Santa Fe, NM" /></label>
+            <label>Days<input id="days" type="number" min="1" max="7" value="3" /></label>
+            <label>Pace
+              <select id="pace">
+                <option>relaxed</option>
+                <option selected>balanced</option>
+                <option>packed</option>
+              </select>
+            </label>
+            <fieldset>
+              <legend>Interests</legend>
+              <label><input type="checkbox" name="interests" value="history" checked /> History</label>
+              <label><input type="checkbox" name="interests" value="museums" checked /> Museums</label>
+              <label><input type="checkbox" name="interests" value="food" checked /> Food</label>
+              <label><input type="checkbox" name="interests" value="outdoors" checked /> Outdoors</label>
+              <label><input type="checkbox" name="interests" value="architecture" /> Architecture</label>
+              <label><input type="checkbox" name="interests" value="nightlife" /> Nightlife</label>
+            </fieldset>
+            <label>Constraints<textarea id="constraints">Prefer walkable neighborhoods and one relaxed coffee break each day.</textarea></label>
+            <button class="button primary" type="submit">Generate Itinerary</button>
+          </form>
+        </aside>
+
+        <section class="trip-results">
+          <div id="tripStatus" class="case-callout">
+            <p>Choose a destination and generate a live itinerary.</p>
+          </div>
+          <div id="mapPanel" class="live-map"></div>
+          <div id="itineraryPanel"></div>
+        </section>
+
+        <aside class="manual-preview">
+          <h2>Agent Trace</h2>
+          <div id="tracePanel"></div>
+          <h2>Feedback</h2>
+          <div id="feedbackPanel"></div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

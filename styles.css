@@ -972,6 +972,175 @@ dd {
   line-height: 1.45;
 }
 
+.trip-live-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) minmax(300px, 0.34fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.stack-form {
+  display: grid;
+  gap: 12px;
+}
+
+.stack-form label,
+.stack-form fieldset {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+.stack-form input,
+.stack-form select,
+.stack-form textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+}
+
+.stack-form textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.stack-form fieldset {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.trip-results {
+  display: grid;
+  gap: 16px;
+}
+
+.live-map {
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.live-map-grid {
+  position: relative;
+  min-height: 270px;
+  background:
+    linear-gradient(90deg, rgba(13, 148, 136, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(13, 148, 136, 0.12) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(201, 131, 43, 0.1));
+  background-size: 34px 34px, 34px 34px, auto;
+}
+
+.live-map-pin {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 3px solid white;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 900;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.22);
+}
+
+.live-map-caption {
+  padding: 12px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.trip-day-card {
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.trip-day-card h2 {
+  margin-bottom: 16px;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.trip-block-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.poi-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+}
+
+.poi-card span,
+.poi-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.vote-row {
+  display: flex;
+  gap: 8px;
+}
+
+.vote-row button {
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--accent-dark);
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.sources-list {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.sources-list a {
+  color: var(--accent-dark);
+  font-weight: 850;
+}
+
+.trip-download-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.error-text {
+  color: var(--rose);
+  font-weight: 900;
+}
+
 @media (max-width: 900px) {
   .nav {
     align-items: flex-start;
@@ -984,7 +1153,8 @@ dd {
   .split-section,
   .deploy-card,
   .app-header,
-  .llm-layout {
+  .llm-layout,
+  .trip-live-layout {
     grid-template-columns: 1fr;
   }
 
@@ -996,6 +1166,10 @@ dd {
 
   .chat-workspace {
     min-height: 620px;
+  }
+
+  .trip-block-grid {
+    grid-template-columns: 1fr;
   }
 
   .project-grid {

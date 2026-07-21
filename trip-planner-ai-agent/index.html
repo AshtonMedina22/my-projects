@@ -27,11 +27,12 @@
           <p class="eyebrow">Main capstone project</p>
           <h1>Trip Planner AI Agent with live travel data.</h1>
           <p class="hero-text">
-            A production-style Streamlit agent that calls live OpenStreetMap tools, retrieves Wikivoyage context,
-            validates itinerary JSON, renders interactive maps, persists state, and learns from user feedback.
+            A production-style travel agent with a live Vercel app and a Streamlit implementation. It calls
+            OpenStreetMap tools, retrieves Wikivoyage context, validates itinerary JSON, renders maps, persists
+            state, and learns from user feedback.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="app.py">View source</a>
+            <a class="button primary" href="app.html">Open live app</a>
             <a class="button secondary" href="PROJECT_BRIEF.md">Project brief</a>
           </div>
         </div>
@@ -93,8 +94,16 @@
             </thead>
             <tbody>
               <tr>
+                <td><a href="app.html">app.html</a></td>
+                <td>Vercel-native browser app for generating and reviewing itineraries.</td>
+              </tr>
+              <tr>
+                <td>api/trip-planner.js</td>
+                <td>Serverless route for geocoding, POI search, guide retrieval, and itinerary generation.</td>
+              </tr>
+              <tr>
                 <td><a href="app.py">app.py</a></td>
-                <td>Streamlit app, tools, agent loop, RAG, validation, map, and feedback UI.</td>
+                <td>Streamlit implementation with Responses API tool loop, RAG, validation, map, and feedback UI.</td>
               </tr>
               <tr>
                 <td><a href="README.md">README.md</a></td>

@@ -1,9 +1,10 @@
 # Trip Planner AI Agent
 
-This is a portfolio-ready Streamlit capstone project that combines agentic AI workflows, live travel data, retrieval, interactive maps, persistent state, and feedback loops.
+This is a portfolio-ready capstone project that combines agentic AI workflows, live travel data, retrieval, interactive maps, persistent state, and feedback loops. The project includes both a Vercel-native live app and a Streamlit implementation.
 
 ## Features
 
+- Vercel-native browser app backed by `api/trip-planner.js`.
 - OpenAI Responses API agent loop with strict tool schemas.
 - Live city geocoding through OpenStreetMap Nominatim.
 - Live point-of-interest search through Overpass API.
@@ -14,6 +15,12 @@ This is a portfolio-ready Streamlit capstone project that combines agentic AI wo
 - Local deterministic fallback when no OpenAI API key is configured.
 
 ## Run Locally
+
+### Vercel-Native App
+
+Open `app.html` through the Vercel deployment. The API route is `../api/trip-planner`.
+
+### Streamlit App
 
 ```bash
 pip install -r requirements.txt
