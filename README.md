@@ -1,16 +1,18 @@
 # Ashton Medina AI Engineering Projects
 
-This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfolio-ready machine learning projects. It now also includes a static portfolio landing page that can be deployed from the repository root with Netlify or Vercel.
+This repo keeps Codecademy AI engineering notebooks, lesson exports, and portfolio-ready machine learning projects. It now includes a Vercel-first portfolio site where public project CTAs open live browser apps instead of sleeping Streamlit deployments.
 
 ## Portfolio Site
 
 - Entry point: `index.html`
 - Styles: `styles.css`
+- Live project hub: `live/index.html`
+- Serverless APIs: `api/`
 - Netlify publish directory: `.`
 - Vercel root directory: `.`
 - Build command: none
 
-The homepage highlights Banking77 intent classification, transformer finetuning, neural-network architecture work, Streamlit AI apps, RAG prototypes, LangChain chain composition, tool-calling LLM apps, and production AI analysis projects.
+The homepage highlights Banking77 intent classification, transformer finetuning, neural-network architecture work, computer vision apps, RAG prototypes, LangChain chain composition, tool-calling LLM apps, agentic trip planning, and production AI analysis projects. The main visitor path is Vercel-native; Streamlit files are retained as source/course artifacts where relevant.
 
 Current files:
 
@@ -49,12 +51,14 @@ Current files:
 - `notebook (29).md` - generative model perplexity lesson with completed cross-entropy loss and perplexity checkpoints.
 - `frankenstein-finetuning-portfolio/` - portfolio-ready Frankenstein language model finetuning project with CPU DistilGPT-2 scripts, completed notebooks, dataset, and optional GPU QLoRA notebook.
 - `engineer-neural-networks-portfolio/` - portfolio-ready Banking77 intent classification project with datasets, MLP baseline script, transformer notebook, and PII guardrails.
-- `streamlit-image-classification-dashboard/` - portfolio-ready Streamlit AI image classification dashboard using Hugging Face ViT and ResNet models.
-- `rag-search-assistant/` - deploy-ready Streamlit RAG search assistant scaffold with lightweight retrieval, cited chunks, and prompt preview.
+- `live/` - Vercel-native interactive project hub for non-sleeping portfolio demos.
+- `api/` - Vercel serverless functions for live project behavior.
+- `streamlit-image-classification-dashboard/` - portfolio-ready AI image classification dashboard source using Hugging Face ViT and ResNet models, with a Vercel-native public demo in `live/`.
+- `rag-search-assistant/` - RAG search assistant source scaffold with lightweight retrieval, cited chunks, and prompt preview, with a Vercel-native public demo in `live/`.
 - `recommendation-system-performance/` - recommendation system model-version analysis covering conversion lift, ROI, segment performance, and fairness checks.
-- `langchain-quiz-generator/` - portfolio-ready Streamlit app using LangChain `LLMChain` and `SequentialChain` composition to generate quiz questions and answer keys with Gemini.
-- `training-manual-creator/` - portfolio-ready Streamlit LLM app using OpenAI function calling to read, write, delete, and enrich training manual sections.
-- `trip-planner-ai-agent/` - main capstone Streamlit AI agent integrating OpenAI Responses tool calling, OpenStreetMap POI search, Wikivoyage RAG, maps, persistence, and feedback.
+- `langchain-quiz-generator/` - portfolio-ready LangChain `LLMChain` and `SequentialChain` project to generate quiz questions and answer keys with Gemini, with a Vercel-native public demo in `live/`.
+- `training-manual-creator/` - portfolio-ready augmented LLM app using OpenAI function calling to read, write, delete, and enrich training manual sections; public version runs directly on Vercel.
+- `trip-planner-ai-agent/` - main capstone AI agent integrating OpenAI-compatible planning, OpenStreetMap POI search, Wikivoyage retrieval, maps, persistence, and feedback; public version runs directly on Vercel.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.

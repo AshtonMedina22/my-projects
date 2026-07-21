@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live AI Project Apps | Ashton Medina</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Live app navigation">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">AM</span>
+          <span>AI Engineering</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="../training-manual-creator/app.html">Tool App</a>
+          <a href="../trip-planner-ai-agent/app.html">Trip Agent</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="app-shell">
+      <section class="app-header">
+        <div>
+          <p class="eyebrow">Vercel-native live project apps</p>
+          <h1 id="liveTitle">Live AI Project Lab</h1>
+          <p id="liveSubtitle">
+            Interactive browser implementations for the portfolio projects. These run directly inside the
+            Vercel site instead of relying on Streamlit Community Cloud.
+          </p>
+        </div>
+        <div class="status-panel">
+          <label for="projectSelector">Project</label>
+          <select id="projectSelector" class="live-select" aria-label="Choose live project"></select>
+          <span>Runtime: static app + Vercel functions where needed</span>
+        </div>
+      </section>
+
+      <section id="liveRoot" class="live-project-shell" aria-live="polite"></section>
+    </main>
+
+    <script src="live-apps.js"></script>
+  </body>
+</html>
