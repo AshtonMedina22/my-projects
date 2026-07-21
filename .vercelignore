@@ -1,0 +1,24 @@
+.git
+.next
+.vercel
+node_modules
+
+# Local/course artifacts not needed by the Next.js portfolio runtime.
+*.ipynb
+notebook*.md
+ai-engineer-lessons
+engineer-neural-networks-portfolio/notebooks
+frankenstein-finetuning-portfolio/notebooks
+nn-architectures-project1/datasets
+nn-architectures-project2/datasets
+
+# Large generated/data files used by offline project work.
+**/*.csv
+**/*.gz
+**/*idx*-ubyte
+**/*.pt
+**/*.pth
+**/*.pkl
+**/*.sqlite
+**/*.db
+**/__pycache__
