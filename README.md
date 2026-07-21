@@ -55,10 +55,10 @@ Current files:
 - `engineer-neural-networks-portfolio/` - portfolio-ready Banking77 intent classification project with datasets, MLP baseline script, transformer notebook, and PII guardrails.
 - `legacy-static/live/` - archived pre-Next interactive project hub.
 - `api/` - Vercel serverless functions for live project behavior.
-- `streamlit-image-classification-dashboard/` - portfolio-ready AI image classification dashboard source using Hugging Face ViT and ResNet models, with a Vercel-native public demo in `live/`.
-- `rag-search-assistant/` - RAG search assistant source scaffold with lightweight retrieval, cited chunks, and prompt preview, with a Vercel-native public demo in `live/`.
+- `streamlit-image-classification-dashboard/` - portfolio-ready AI image classification dashboard source using Hugging Face ViT and ResNet models, with a Vercel-native public demo at `/live`.
+- `rag-search-assistant/` - RAG search assistant source scaffold with lightweight retrieval, cited chunks, and prompt preview, with a Vercel-native public demo at `/live`.
 - `recommendation-system-performance/` - recommendation system model-version analysis covering conversion lift, ROI, segment performance, and fairness checks.
-- `langchain-quiz-generator/` - portfolio-ready LangChain `LLMChain` and `SequentialChain` project to generate quiz questions and answer keys with Gemini, with a Vercel-native public demo in `live/`.
+- `langchain-quiz-generator/` - portfolio-ready LangChain `LLMChain` and `SequentialChain` project to generate quiz questions and answer keys with Gemini, with a Vercel-native public demo at `/live`.
 - `training-manual-creator/` - portfolio-ready augmented LLM app using OpenAI function calling to read, write, delete, and enrich training manual sections; public version runs directly on Vercel.
 - `trip-planner-ai-agent/` - main capstone AI agent integrating OpenAI-compatible planning, OpenStreetMap POI search, Wikivoyage retrieval, maps, persistence, and feedback; public version runs directly on Vercel.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
