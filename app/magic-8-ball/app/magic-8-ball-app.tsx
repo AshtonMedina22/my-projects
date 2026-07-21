@@ -26,7 +26,7 @@ const exampleQuestions = [
 export default function Magic8BallApp() {
   const [name, setName] = useState("");
   const [question, setQuestion] = useState(exampleQuestions[0]);
-  const [answer, setAnswer] = useState("Ask, shake, and accept whatever nonsense fate returns.");
+  const [answer, setAnswer] = useState("");
   const [mode, setMode] = useState<"openai" | "fallback" | "idle">("idle");
   const [isLoading, setIsLoading] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
@@ -84,7 +84,7 @@ export default function Magic8BallApp() {
   }
 
   function clearReading() {
-    setAnswer("Ask, shake, and accept whatever nonsense fate returns.");
+    setAnswer("");
     setMode("idle");
     setError("");
     setQuestion("");
@@ -112,7 +112,7 @@ export default function Magic8BallApp() {
           <div className={`magic-ball ${isShaking ? "is-shaking" : ""}`}>
             <div className="magic-ball-glare" />
             <div className="magic-window">
-              <div className={`magic-answer ${answer && !isLoading ? "is-visible" : ""}`}>
+              <div className={`magic-answer ${answer && mode !== "idle" && !isLoading ? "is-visible" : ""}`}>
                 <div className="magic-triangle" />
                 <p>{isLoading ? "Consulting..." : answer}</p>
               </div>
