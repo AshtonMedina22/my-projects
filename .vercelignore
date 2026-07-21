@@ -2,6 +2,7 @@
 .next
 .vercel
 node_modules
+.tmp-*
 
 # Local/course artifacts not needed by the Next.js portfolio runtime.
 *.ipynb

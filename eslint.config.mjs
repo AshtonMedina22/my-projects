@@ -5,6 +5,7 @@ const config = [
   {
     ignores: [
       "node_modules/**",
+      ".tmp-*/**",
       "**/*.ipynb_checkpoints/**",
       "nn-architectures-project1/solutions.html",
       "nn-architectures-project2/solutions.html",

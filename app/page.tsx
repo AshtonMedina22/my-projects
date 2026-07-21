@@ -1,11 +1,12 @@
 import {
   ArrowRight,
   ArrowUpRight,
-  BrainCircuit,
-  Code2,
-  DatabaseZap,
+  Boxes,
   Map,
+  Play,
   ShieldCheck,
+  Sparkles,
+  TerminalSquare,
   Workflow,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -20,8 +21,8 @@ export default function HomePage() {
     <main id="top">
       <section className="portfolio-hero">
         <div className="hero-copy">
-          <p className="eyebrow">AI engineering portfolio</p>
-          <h1>Live AI systems, not static project descriptions.</h1>
+          <p className="eyebrow glow-pill">AI engineering portfolio</p>
+          <h1>Live AI systems with product-grade interfaces.</h1>
           <p className="hero-text">
             A working portfolio of agentic apps, AI toys, retrieval systems, model evaluation dashboards, NLP classifiers,
             and deployment-focused AI projects. The strongest projects run directly on Vercel with real app routes,
@@ -37,29 +38,57 @@ export default function HomePage() {
           </div>
         </div>
 
-        <aside className="hero-command-center" aria-label="Portfolio summary">
-          <div className="command-header">
-            <span>Portfolio Signal</span>
-            <strong>2026</strong>
+        <aside className="hero-product-preview" aria-label="Portfolio operating system preview">
+          <div className="preview-topbar">
+            <span />
+            <span />
+            <span />
+            <strong>project-os</strong>
           </div>
-          <div className="signal-grid">
-            <Signal value="10" label="Deployed project demos" />
-            <Signal value="3" label="Main portfolio apps" />
-            <Signal value="77" label="NLP intent classes" />
-            <Signal value="93.47%" label="RoBERTa macro F1" />
-          </div>
-          <div className="system-stack">
-            <span>
-              <Code2 size={16} /> Next.js App Router
-            </span>
-            <span>
-              <BrainCircuit size={16} /> OpenAI-ready API routes
-            </span>
-            <span>
-              <DatabaseZap size={16} /> Retrieval + tool state
-            </span>
+          <div className="preview-body">
+            <div className="preview-sidebar">
+              <div className="preview-logo">
+                <Boxes size={18} />
+                <span>AM</span>
+              </div>
+              {mainProjects.map((project) => (
+                <a key={project.slug} href={project.liveHref}>
+                  <Play size={14} />
+                  {project.title}
+                </a>
+              ))}
+            </div>
+            <div className="preview-canvas">
+              <div className="preview-status">
+                <span>Live deployment</span>
+                <strong>Ready</strong>
+              </div>
+              <div className="preview-grid">
+                <Signal value="10" label="Live demos" />
+                <Signal value="3" label="Main apps" />
+                <Signal value="77" label="NLP classes" />
+                <Signal value="93.47%" label="Macro F1" />
+              </div>
+              <div className="preview-terminal">
+                <TerminalSquare size={16} />
+                <span>vercel route / api / evidence verified</span>
+              </div>
+            </div>
           </div>
         </aside>
+      </section>
+
+      <section className="stack-marquee" aria-label="Portfolio stack">
+        <div>
+          {["Next.js", "Vercel", "OpenAI", "RAG", "Agents", "Model Evaluation", "Streamlit", "PyTorch"].map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+        <div aria-hidden="true">
+          {["Next.js", "Vercel", "OpenAI", "RAG", "Agents", "Model Evaluation", "Streamlit", "PyTorch"].map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
       </section>
 
       <section id="projects" className="section">
@@ -100,6 +129,11 @@ export default function HomePage() {
             icon={<ShieldCheck size={20} />}
             title="AI controls"
             text="PII scanning, cost routing, quality checks, fairness testing, and failure handling across projects."
+          />
+          <Evidence
+            icon={<Sparkles size={20} />}
+            title="Portfolio polish"
+            text="Live app routes are designed as product surfaces, not screenshots or writeups hiding behind cards."
           />
         </div>
       </section>
