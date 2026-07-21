@@ -18,10 +18,10 @@ export default function ProjectsPage() {
       <section className="app-header project-os-header">
         <div>
           <p className="eyebrow glow-pill">Project OS</p>
-          <h1>Four hiring pillars, live demos, and proof surfaces.</h1>
+          <h1>Four enterprise agents, live demos, and proof surfaces.</h1>
           <p>
-            The portfolio is organized around the systems an AI engineering team would care about first: reliability,
-            enterprise integration, operational agents, and product-grade agent UX.
+            The portfolio is organized around high-value enterprise workflows: ESG classification, accounts payable
+            automation, regulatory triage, and self-healing cloud operations.
           </p>
         </div>
         <div className="status-panel os-status">
@@ -34,10 +34,10 @@ export default function ProjectsPage() {
       <section className="section flush-section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Hiring Quad</p>
+            <p className="eyebrow">Enterprise Agent Quad</p>
             <h2>Primary AI systems</h2>
           </div>
-          <Link className="text-link" href="/live?project=rag">
+          <Link className="text-link" href="/live?project=esg">
             Open live console <ArrowUpRight size={16} />
           </Link>
         </div>
@@ -91,10 +91,10 @@ export default function ProjectsPage() {
         </div>
         <div className="proof-grid">
           {[
-            ["Reliability", "Corrective retrieval and evidence gates."],
-            ["Integration", "Tool schemas and connector boundaries."],
-            ["Operations", "Agent diagnosis, review, and verification."],
-            ["Product UX", "Live workflow surfaces instead of static summaries."],
+            ["ESG Integration", "Spend-type mapping into greenhouse gas factors."],
+            ["Finance Ops", "Invoice, receipt, and supplier-status orchestration."],
+            ["Legal Ops", "Regulatory feed triage and policy impact reporting."],
+            ["SRE Automation", "CloudWatch diagnosis and guarded rollback planning."],
           ].map(([title, text]) => (
             <article className="evidence-item" key={title}>
               <span>

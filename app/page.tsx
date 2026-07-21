@@ -20,10 +20,10 @@ export default function HomePage() {
       <section className="portfolio-hero">
         <div className="hero-copy">
           <p className="eyebrow glow-pill">AM.2026 / AI Systems Architect</p>
-          <h1>Architecting agentic systems.</h1>
+          <h1>Agentic structures for enterprise operations.</h1>
           <p className="hero-text">
-            AI Systems Architect and Solutions Engineer focused on production-grade middleware, corrective retrieval,
-            tool-safe agents, and high-fidelity AI product interfaces.
+            AI Systems Architect and Solutions Engineer building MCP-connected agents for ESG audit, accounts payable,
+            legal compliance, and self-healing cloud operations.
           </p>
           <div className="hero-status">
             <span />
@@ -44,7 +44,7 @@ export default function HomePage() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">Primary exports</p>
-            <h2>Hiring Quad</h2>
+            <h2>Enterprise Agent Quad</h2>
           </div>
           <Link className="text-link" href="/projects">
             Open project dashboard <ArrowUpRight size={16} />
@@ -61,28 +61,28 @@ export default function HomePage() {
       <section className="section portfolio-band">
         <div>
           <p className="eyebrow">Evaluation surface</p>
-          <h2>Each core pillar exposes a production skill, not a screenshot.</h2>
+          <h2>Each core pillar maps to a real enterprise pain point.</h2>
         </div>
         <div className="proof-grid">
           <Evidence
             icon={<Workflow size={20} />}
-            title="Reliability"
-            text="Retrieval confidence, source gates, fallback paths, and visibly constrained answer generation."
+            title="ESG Audit"
+            text="ERP transaction ingestion, spend-type classification, GHG factor mapping, and reviewer-ready evidence."
           />
           <Evidence
             icon={<Map size={20} />}
-            title="Integration"
-            text="Schema-first tool registries, controlled function calls, and enterprise-style connector boundaries."
+            title="Finance Ops"
+            text="Invoice status checks, receipt matching, supplier notifications, and human approval before remittance."
           />
           <Evidence
             icon={<ShieldCheck size={20} />}
-            title="Operations"
-            text="Agentic diagnosis, staged remediation, verification checks, and human approval for risky actions."
+            title="Legal Ops"
+            text="Regulatory feed monitoring, jurisdictional triage, policy impact reports, and Slack escalation."
           />
           <Evidence
             icon={<Sparkles size={20} />}
-            title="Product proof"
-            text="Live routes use real UI states, interactive controls, technical metrics, and case-study evidence."
+            title="SRE Automation"
+            text="CloudWatch monitoring, debate-pattern diagnosis, safe rollback planning, and reasoning audits."
           />
         </div>
       </section>

@@ -15,8 +15,9 @@ export default function LivePage() {
           <p className="eyebrow">Live Project OS</p>
           <h1>Interactive AI system surfaces</h1>
           <p>
-            The Hiring Quad is surfaced first: reliability, integration, operations, and live agent planning. Supporting
-            demos remain available as evidence of the broader course and portfolio buildout.
+            The enterprise agent quad is surfaced first: ESG transaction classification, accounts payable orchestration,
+            regulatory triage, and self-healing SRE automation. Supporting demos remain available as evidence of the
+            broader course and portfolio buildout.
           </p>
         </div>
         <div className="status-panel">

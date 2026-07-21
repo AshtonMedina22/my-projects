@@ -5,6 +5,10 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 const demoOptions = [
+  { key: "esg", title: "Autonomous ESG Transaction Classifier" },
+  { key: "payflow", title: "PayFlow Accounts Payable Agent" },
+  { key: "regulatory", title: "Real-Time Regulatory Triage" },
+  { key: "sre", title: "Self-Healing SRE Agentic DevOps" },
   { key: "corrective-rag", title: "Corrective RAG Pipeline" },
   { key: "mcp", title: "Enterprise MCP Server" },
   { key: "devops-agent", title: "Agentic DevOps Auto-Fixer" },
@@ -22,10 +26,10 @@ const demoOptions = [
 
 export default function LiveDemo() {
   const searchParams = useSearchParams();
-  const requestedProject = searchParams.get("project") ?? "corrective-rag";
+  const requestedProject = searchParams.get("project") ?? "esg";
   const initialProject = demoOptions.some((option) => option.key === requestedProject)
     ? requestedProject
-    : "corrective-rag";
+    : "esg";
   const [project, setProject] = useState(initialProject);
   const selected = demoOptions.find((option) => option.key === project) ?? demoOptions[0];
 
@@ -44,6 +48,10 @@ export default function LiveDemo() {
           ))}
         </select>
       </div>
+      {project === "esg" ? <EsgDemo /> : null}
+      {project === "payflow" ? <PayFlowDemo /> : null}
+      {project === "regulatory" ? <RegulatoryDemo /> : null}
+      {project === "sre" ? <SelfHealingSreDemo /> : null}
       {project === "corrective-rag" ? <RagDemo /> : null}
       {project === "banking" ? <BankingDemo /> : null}
       {project === "mcp" ? <McpDemo /> : null}
@@ -57,6 +65,134 @@ export default function LiveDemo() {
       {project === "recommendations" ? <RecommendationDemo /> : null}
       {project === "frankenstein" ? <FrankensteinDemo /> : null}
       {project === "vision" ? <VisionDemo /> : null}
+    </section>
+  );
+}
+
+function EsgDemo() {
+  const [spendType, setSpendType] = useState("Corporate air travel - Dallas to Seattle");
+  const lower = spendType.toLowerCase();
+  const classification = lower.includes("fuel") || lower.includes("travel") || lower.includes("flight")
+    ? {
+        spend_type: "business_travel_air",
+        emission_factor: "0.158 kgCO2e/passenger-km",
+        confidence: 0.91,
+        reviewer_note: "High-emission travel category. Validate route distance and cabin class before audit lock.",
+      }
+    : lower.includes("office") || lower.includes("supplies")
+      ? {
+          spend_type: "office_supplies_general",
+          emission_factor: "0.34 kgCO2e/USD",
+          confidence: 0.84,
+          reviewer_note: "General spend-based factor. Request supplier-specific factor if materiality threshold is met.",
+        }
+      : {
+          spend_type: "uncategorized_procurement",
+          emission_factor: "review_required",
+          confidence: 0.48,
+          reviewer_note: "Insufficient transaction detail. Route to ESG analyst for taxonomy confirmation.",
+        };
+
+  return (
+    <div className="live-two-column">
+      <section className="live-panel">
+        <h2>ERP transaction intake</h2>
+        <textarea value={spendType} onChange={(event) => setSpendType(event.target.value)} />
+        <div className="prediction-card">
+          <span>Integration target</span>
+          <strong>Dynamics 365 / SAP via MCP</strong>
+          <p>Maps raw procurement descriptions into ESG reporting categories.</p>
+        </div>
+      </section>
+      <section className="live-panel">
+        <h2>GHG factor mapping</h2>
+        <pre>{JSON.stringify(classification, null, 2)}</pre>
+        <Confidence label="taxonomy confidence" score={classification.confidence} />
+      </section>
+    </div>
+  );
+}
+
+function PayFlowDemo() {
+  const [invoice, setInvoice] = useState("INV-1042 matched to PO-8821, receipt missing, supplier asking for ETA.");
+  const needsApproval = invoice.toLowerCase().includes("missing") || invoice.toLowerCase().includes("mismatch");
+  return (
+    <div className="live-two-column">
+      <section className="live-panel">
+        <h2>AP inquiry</h2>
+        <textarea value={invoice} onChange={(event) => setInvoice(event.target.value)} />
+      </section>
+      <section className="live-panel">
+        <h2>Validation loop</h2>
+        <div className="architecture-grid">
+          {[
+            ["Invoice Status", "Fetched from Oracle ERP / Sage Intacct", "complete"],
+            ["Receipt Match", needsApproval ? "Receipt mismatch found" : "Receipt matched", needsApproval ? "review" : "complete"],
+            ["Supplier Notice", "Draft ETA response prepared", "draft"],
+            ["Remittance", needsApproval ? "Blocked until buyer approval" : "Eligible for approval", "guarded"],
+          ].map(([title, text, state]) => (
+            <article className="architecture-card" key={title}>
+              <h3>{title}</h3>
+              <p>{text}</p>
+              <strong>{state}</strong>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function RegulatoryDemo() {
+  const [feedItem, setFeedItem] = useState("New EU supplier due diligence rule requires enhanced documentation for high-risk vendors.");
+  const regions = feedItem.toLowerCase().includes("eu") ? ["EU", "Global suppliers"] : ["US", "General controls"];
+  return (
+    <div className="live-two-column">
+      <section className="live-panel">
+        <h2>Regulatory feed item</h2>
+        <textarea value={feedItem} onChange={(event) => setFeedItem(event.target.value)} />
+      </section>
+      <section className="live-panel">
+        <h2>Policy impact report</h2>
+        <pre>
+          {JSON.stringify(
+            {
+              source: "Regology API",
+              jurisdiction_route: regions,
+              new_requirement: "Update control evidence for impacted vendors.",
+              proposed_control_change: "Add due-diligence document check before vendor approval.",
+              alert_channel: "Slack #compliance-alerts",
+            },
+            null,
+            2,
+          )}
+        </pre>
+      </section>
+    </div>
+  );
+}
+
+function SelfHealingSreDemo() {
+  const [logLine, setLogLine] = useState("CloudWatch alarm: p95 latency above 2.8s after release api-2026.07.21.");
+  const rollbackLikely = logLine.toLowerCase().includes("release") || logLine.toLowerCase().includes("deploy");
+  return (
+    <section className="live-panel">
+      <h2>Agentic SRE runbook</h2>
+      <textarea value={logLine} onChange={(event) => setLogLine(event.target.value)} />
+      <div className="architecture-grid">
+        {[
+          ["Monitor Agent", "CloudWatch anomaly captured", "complete"],
+          ["Diagnosis Agent", rollbackLikely ? "Debate favors bad release hypothesis" : "Debate favors capacity hypothesis", "complete"],
+          ["Executor Agent", rollbackLikely ? "Draft Terraform/CDK rollback plan" : "Draft autoscaling adjustment", "guarded"],
+          ["Audit Gate", "DeepEval reasoning trace required before action", "pending"],
+        ].map(([title, text, state]) => (
+          <article className="architecture-card" key={title}>
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <strong>{state}</strong>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
