@@ -1,12 +1,9 @@
 import {
   ArrowRight,
   ArrowUpRight,
-  Boxes,
   Map,
-  Play,
   ShieldCheck,
   Sparkles,
-  TerminalSquare,
   Workflow,
 } from "lucide-react";
 import Link from "next/link";
@@ -22,13 +19,16 @@ export default function HomePage() {
     <main id="top">
       <section className="portfolio-hero">
         <div className="hero-copy">
-          <p className="eyebrow glow-pill">Project OS / AI systems portfolio</p>
-          <h1>Production-shaped AI systems, organized like an operator console.</h1>
+          <p className="eyebrow glow-pill">AM.2026 / AI Systems Architect</p>
+          <h1>Architecting agentic systems.</h1>
           <p className="hero-text">
-            A focused hiring portfolio for AI systems architecture: corrective retrieval, enterprise tool connectors,
-            agentic operations, and live external-data agents. Every primary build is framed around the behavior an
-            engineering team would evaluate in production.
+            AI Systems Architect and Solutions Engineer focused on production-grade middleware, corrective retrieval,
+            tool-safe agents, and high-fidelity AI product interfaces.
           </p>
+          <div className="hero-status">
+            <span />
+            Available for forward deployed AI engineering roles
+          </div>
           <div className="hero-actions">
             <Link className="button primary" href="/projects">
               Open Project OS <ArrowRight size={17} />
@@ -37,58 +37,6 @@ export default function HomePage() {
               Browse all live demos
             </Link>
           </div>
-        </div>
-
-        <aside className="hero-product-preview" aria-label="Portfolio operating system preview">
-          <div className="preview-topbar">
-            <span />
-            <span />
-            <span />
-            <strong>project-os</strong>
-          </div>
-          <div className="preview-body">
-            <div className="preview-sidebar">
-              <div className="preview-logo">
-                <Boxes size={18} />
-                <span>AM</span>
-              </div>
-              {mainProjects.map((project) => (
-                <Link key={project.slug} href={project.liveHref}>
-                  <Play size={14} />
-                  {project.title}
-                </Link>
-              ))}
-            </div>
-            <div className="preview-canvas">
-              <div className="preview-status">
-                <span>Live deployment</span>
-                <strong>Ready</strong>
-              </div>
-              <div className="preview-grid">
-                <Signal value="4" label="Hiring Quad" />
-                <Signal value="13" label="Demo surfaces" />
-                <Signal value="RAG" label="Grounding layer" />
-                <Signal value="Eval" label="Control gate" />
-              </div>
-              <div className="preview-terminal">
-                <TerminalSquare size={16} />
-                <span>vercel route / api / evidence verified</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section className="stack-marquee" aria-label="Portfolio stack">
-        <div>
-          {["Next.js", "Vercel", "OpenAI", "RAG", "Agents", "Model Evaluation", "Streamlit", "PyTorch"].map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-        <div aria-hidden="true">
-          {["Next.js", "Vercel", "OpenAI", "RAG", "Agents", "Model Evaluation", "Streamlit", "PyTorch"].map((item) => (
-            <span key={item}>{item}</span>
-          ))}
         </div>
       </section>
 
@@ -104,8 +52,8 @@ export default function HomePage() {
         </div>
 
         <div className="main-project-grid">
-          {mainProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+          {mainProjects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index + 1} />
           ))}
         </div>
       </section>
@@ -178,21 +126,12 @@ export default function HomePage() {
   );
 }
 
-function Signal({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="signal-card">
-      <strong>{value}</strong>
-      <span>{label}</span>
-    </div>
-  );
-}
-
-function ProjectCard({ project }: { project: (typeof projects)[number] }) {
+function ProjectCard({ project, index }: { project: (typeof projects)[number]; index?: number }) {
   return (
     <article className="project-card">
       <div className={`project-visual visual-${project.slug}`}>
         <span>{project.type}</span>
-        <strong>{project.title}</strong>
+        {index ? <em>{String(index).padStart(2, "0")}</em> : null}
       </div>
       <div className="project-body">
         <p className="project-type">{project.type}</p>

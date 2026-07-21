@@ -42,11 +42,11 @@ export default function ProjectsPage() {
           </Link>
         </div>
         <div className="main-project-grid">
-          {mainProjects.map((project) => (
+          {mainProjects.map((project, index) => (
             <article className="project-card os-project-card" key={project.slug}>
               <div className={`project-visual visual-${project.slug}`}>
                 <span>{project.type}</span>
-                <strong>{project.title}</strong>
+                <em>{String(index + 1).padStart(2, "0")}</em>
               </div>
               <div className="project-body">
                 <p className="project-type">{project.type}</p>
