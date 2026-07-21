@@ -47,7 +47,24 @@ OPENAI_API_KEY=...
 AI_SDK_MODEL=gpt-4.1-mini
 ```
 
-The demo endpoint at `/api/ai-sdk-demo` returns `setup_required` until `OPENAI_API_KEY` exists in the runtime environment.
+For direct OpenAI billing, use:
+
+```text
+AI_SDK_PROVIDER=openai
+OPENAI_API_KEY=...
+AI_SDK_MODEL=gpt-4.1-mini
+```
+
+For Vercel AI Gateway billing/routing, use:
+
+```text
+AI_SDK_PROVIDER=gateway
+AI_SDK_GATEWAY_MODEL=openai/gpt-5-mini
+```
+
+Locally, Gateway also needs `VERCEL_OIDC_TOKEN` from `vercel env pull .env.local --yes` or a manually created `AI_GATEWAY_API_KEY`.
+
+The demo endpoint at `/api/ai-sdk-demo` returns `setup_required` until the selected provider has its required runtime credentials.
 
 ## Notes
 
