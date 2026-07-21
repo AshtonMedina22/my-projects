@@ -62,7 +62,9 @@ export default function LiveDemo() {
       {project === "esg-classifier" ? <EsgDemo /> : null}
       {project === "payflow" ? <PayFlowDemo /> : null}
       {project === "reg-triage" ? <RegulatoryDemo /> : null}
-      {project === "self-healing-sre" ? <SelfHealingSreDemo /> : null}
+      {project === "self-healing-sre" ? (
+        <Launcher title="Self-Healing SRE (Agentic DevOps)" href="/live/self-healing-sre" />
+      ) : null}
       {project === "rbac-graph" ? <RbacGraphDemo /> : null}
       {project === "slm-edge" ? <SlmEdgeDemo /> : null}
       {project === "corrective-rag" ? <RagDemo /> : null}
@@ -97,31 +99,6 @@ function PayFlowDemo() {
 function RegulatoryDemo() {
   return (
     <Launcher title="Real-Time Regulatory Triage" href="/live/reg-triage" />
-  );
-}
-
-function SelfHealingSreDemo() {
-  const [logLine, setLogLine] = useState("CloudWatch alarm: p95 latency above 2.8s after release api-2026.07.21.");
-  const rollbackLikely = logLine.toLowerCase().includes("release") || logLine.toLowerCase().includes("deploy");
-  return (
-    <section className="live-panel">
-      <h2>Agentic SRE runbook</h2>
-      <textarea value={logLine} onChange={(event) => setLogLine(event.target.value)} />
-      <div className="architecture-grid">
-        {[
-          ["Monitor Agent", "CloudWatch anomaly captured", "complete"],
-          ["Diagnosis Agent", rollbackLikely ? "Debate favors bad release hypothesis" : "Debate favors capacity hypothesis", "complete"],
-          ["Executor Agent", rollbackLikely ? "Draft Terraform/CDK rollback plan" : "Draft autoscaling adjustment", "guarded"],
-          ["Audit Gate", "DeepEval reasoning trace required before action", "pending"],
-        ].map(([title, text, state]) => (
-          <article className="architecture-card" key={title}>
-            <h3>{title}</h3>
-            <p>{text}</p>
-            <strong>{state}</strong>
-          </article>
-        ))}
-      </div>
-    </section>
   );
 }
 
