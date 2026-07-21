@@ -23,7 +23,7 @@ export default function HomePage() {
           <p className="eyebrow">AI engineering portfolio</p>
           <h1>Live AI systems, not static project descriptions.</h1>
           <p className="hero-text">
-            A working portfolio of agentic apps, retrieval systems, model evaluation dashboards, NLP classifiers,
+            A working portfolio of agentic apps, AI toys, retrieval systems, model evaluation dashboards, NLP classifiers,
             and deployment-focused AI projects. The strongest projects run directly on Vercel with real app routes,
             serverless APIs, and visible execution behavior.
           </p>
@@ -43,7 +43,7 @@ export default function HomePage() {
             <strong>2026</strong>
           </div>
           <div className="signal-grid">
-            <Signal value="9" label="Deployed project demos" />
+            <Signal value="10" label="Deployed project demos" />
             <Signal value="3" label="Main portfolio apps" />
             <Signal value="77" label="NLP intent classes" />
             <Signal value="93.47%" label="RoBERTa macro F1" />

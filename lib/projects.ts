@@ -82,6 +82,28 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "magic-8-ball-ai",
+    title: "All-Knowing Magic 8-Ball",
+    type: "Interactive AI toy",
+    priority: "featured",
+    summary:
+      "A Codecademy Python control-flow project upgraded into a polished Next.js app with an animated 8-Ball, OpenAI-backed fortunes, session history, and fallback behavior for public demos.",
+    liveHref: "/magic-8-ball/app",
+    caseHref: "/projects/magic-8-ball-ai",
+    sourceHref: `${githubSourceBase}/app/magic-8-ball/app/magic-8-ball-app.tsx`,
+    stats: [
+      { label: "Runtime", value: "Vercel" },
+      { label: "AI mode", value: "OpenAI" },
+      { label: "Fallback", value: "Built in" },
+    ],
+    skills: ["Next.js App Router", "AI SDK", "Serverless APIs", "Interactive UI"],
+    proof: [
+      "Uses a server-only API route so the OpenAI key never reaches the browser.",
+      "Keeps the app usable without secrets through deterministic fallback fortunes.",
+      "Adds shake and reveal micro-interactions around the original Magic 8-Ball concept.",
+    ],
+  },
+  {
     slug: "image-classification-dashboard",
     title: "AI Image Classification Dashboard",
     type: "Computer vision app",

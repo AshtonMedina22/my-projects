@@ -7,6 +7,7 @@ const demoOptions = [
   { key: "banking", title: "Banking Intent Classifier" },
   { key: "trip", title: "Trip Planner AI Agent" },
   { key: "training", title: "Training Manual Creator" },
+  { key: "magic", title: "All-Knowing Magic 8-Ball" },
   { key: "image-classifier", title: "Image Classification Dashboard" },
   { key: "rag", title: "RAG Search Assistant" },
   { key: "quiz", title: "Sequential Quiz Generator" },
@@ -40,6 +41,7 @@ export default function LiveDemo() {
       {project === "banking" ? <BankingDemo /> : null}
       {project === "trip" ? <Launcher title="Trip Planner AI Agent" href="/trip-planner-ai-agent/app" /> : null}
       {project === "training" ? <Launcher title="Training Manual Creator" href="/training-manual-creator/app" /> : null}
+      {project === "magic" ? <Launcher title="All-Knowing Magic 8-Ball" href="/magic-8-ball/app" /> : null}
       {project === "image-classifier" ? <ImageDemo /> : null}
       {project === "rag" ? <RagDemo /> : null}
       {project === "quiz" ? <QuizDemo /> : null}
