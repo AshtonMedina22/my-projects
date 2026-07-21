@@ -198,7 +198,7 @@ export const projects: Project[] = [
     priority: "supporting",
     summary:
       "Course project bundle covering CNNs, autoencoders, CLIP-style multimodal ideas, and evaluation notebooks.",
-    liveHref: "/live?project=vision-architectures",
+    liveHref: "/live?project=vision",
     caseHref: "/projects/neural-network-architectures",
     sourceHref: `${githubSourceBase}/nn-architectures-project2/index.html`,
     stats: [

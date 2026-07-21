@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
 const demoOptions = [
@@ -15,7 +16,10 @@ const demoOptions = [
 ];
 
 export default function LiveDemo() {
-  const [project, setProject] = useState("banking");
+  const searchParams = useSearchParams();
+  const requestedProject = searchParams.get("project") ?? "banking";
+  const initialProject = demoOptions.some((option) => option.key === requestedProject) ? requestedProject : "banking";
+  const [project, setProject] = useState(initialProject);
   const selected = demoOptions.find((option) => option.key === project) ?? demoOptions[0];
 
   return (
