@@ -95,31 +95,8 @@ function PayFlowDemo() {
 }
 
 function RegulatoryDemo() {
-  const [feedItem, setFeedItem] = useState("New EU supplier due diligence rule requires enhanced documentation for high-risk vendors.");
-  const regions = feedItem.toLowerCase().includes("eu") ? ["EU", "Global suppliers"] : ["US", "General controls"];
   return (
-    <div className="live-two-column">
-      <section className="live-panel">
-        <h2>Regulatory feed item</h2>
-        <textarea value={feedItem} onChange={(event) => setFeedItem(event.target.value)} />
-      </section>
-      <section className="live-panel">
-        <h2>Policy impact report</h2>
-        <pre>
-          {JSON.stringify(
-            {
-              source: "Regology API",
-              jurisdiction_route: regions,
-              new_requirement: "Update control evidence for impacted vendors.",
-              proposed_control_change: "Add due-diligence document check before vendor approval.",
-              alert_channel: "Slack #compliance-alerts",
-            },
-            null,
-            2,
-          )}
-        </pre>
-      </section>
-    </div>
+    <Launcher title="Real-Time Regulatory Triage" href="/live/reg-triage" />
   );
 }
 
