@@ -1,111 +1,154 @@
-import { ArrowUpRight, BrainCircuit, Map, ShieldCheck, Workflow } from "lucide-react";
-import { mainProjects, projects } from "../lib/projects";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BrainCircuit,
+  Code2,
+  DatabaseZap,
+  Map,
+  ShieldCheck,
+  Workflow,
+} from "lucide-react";
+import type { ReactNode } from "react";
+import { featuredProjects, mainProjects, projects } from "../lib/projects";
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
+  const supportingProjects = projects.filter((project) => project.priority === "supporting");
+
   return (
     <main id="top">
-      <section className="hero">
+      <section className="portfolio-hero">
         <div className="hero-copy">
-          <p className="eyebrow">Live AI engineering portfolio</p>
-          <h1>Production-style AI projects people can actually open and use.</h1>
+          <p className="eyebrow">AI engineering portfolio</p>
+          <h1>Live AI systems, not static project descriptions.</h1>
           <p className="hero-text">
-            This site is now moving into a Next.js and Vercel AI SDK stack, with public app routes for
-            agentic workflows, tool-calling LLMs, RAG, computer vision, NLP, and model evaluation projects.
+            A working portfolio of agentic apps, retrieval systems, model evaluation dashboards, NLP classifiers,
+            and deployment-focused AI projects. The strongest projects run directly on Vercel with real app routes,
+            serverless APIs, and visible execution behavior.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href="#projects">
-              View projects
+            <a className="button primary" href="/trip-planner-ai-agent/app">
+              Launch capstone agent <ArrowRight size={17} />
             </a>
             <a className="button secondary" href="/live">
-              Open live hub
+              Browse all live demos
             </a>
           </div>
         </div>
-        <div className="hero-panel" aria-label="Project metrics summary">
-          <div className="metric large">
-            <span className="metric-value">9</span>
-            <span className="metric-label">Portfolio projects on the live site</span>
+
+        <aside className="hero-command-center" aria-label="Portfolio summary">
+          <div className="command-header">
+            <span>Portfolio Signal</span>
+            <strong>2026</strong>
           </div>
-          <div className="metric">
-            <span className="metric-value">3</span>
-            <span className="metric-label">Main app experiences prioritized</span>
+          <div className="signal-grid">
+            <Signal value="9" label="Deployed project demos" />
+            <Signal value="3" label="Main portfolio apps" />
+            <Signal value="77" label="NLP intent classes" />
+            <Signal value="93.47%" label="RoBERTa macro F1" />
           </div>
-          <div className="metric">
-            <span className="metric-value">AI SDK</span>
-            <span className="metric-label">OpenAI-first Vercel runtime setup</span>
+          <div className="system-stack">
+            <span>
+              <Code2 size={16} /> Next.js App Router
+            </span>
+            <span>
+              <BrainCircuit size={16} /> OpenAI-ready API routes
+            </span>
+            <span>
+              <DatabaseZap size={16} /> Retrieval + tool state
+            </span>
           </div>
-          <div className="metric">
-            <span className="metric-value">93.47%</span>
-            <span className="metric-label">LoRA-RoBERTa macro F1 benchmark</span>
-          </div>
-        </div>
+        </aside>
       </section>
 
       <section id="projects" className="section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Featured work</p>
+            <p className="eyebrow">Priority builds</p>
             <h2>Main Portfolio Projects</h2>
           </div>
           <a className="text-link" href="/live">
-            Open all demos <ArrowUpRight size={16} />
+            Open live hub <ArrowUpRight size={16} />
           </a>
         </div>
-        <div className="project-grid">
-          {mainProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} featured />
+
+        <div className="main-project-grid">
+          {mainProjects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} featured={index === 0} />
           ))}
+        </div>
+      </section>
+
+      <section className="section portfolio-band">
+        <div>
+          <p className="eyebrow">What employers can test</p>
+          <h2>Each featured project exposes a concrete engineering behavior.</h2>
+        </div>
+        <div className="proof-grid">
+          <Evidence
+            icon={<Workflow size={20} />}
+            title="Agentic workflows"
+            text="Tool calling, trace output, validation, deterministic fallback paths, and iterative refinement patterns."
+          />
+          <Evidence
+            icon={<Map size={20} />}
+            title="External data"
+            text="OpenStreetMap-style POI search, travel-guide retrieval, upload flows, source citation, and data export."
+          />
+          <Evidence
+            icon={<ShieldCheck size={20} />}
+            title="AI controls"
+            text="PII scanning, cost routing, quality checks, fairness testing, and failure handling across projects."
+          />
         </div>
       </section>
 
       <section className="section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">More evidence</p>
-            <h2>Course Projects and Analysis Apps</h2>
+            <p className="eyebrow">Applied course work</p>
+            <h2>More Live Demos and Analysis Projects</h2>
           </div>
         </div>
         <div className="project-grid compact-grid">
-          {projects
+          {featuredProjects
             .filter((project) => project.priority !== "main")
             .map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
+          {supportingProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </div>
       </section>
 
-      <section id="evidence" className="section split-section">
+      <section id="evidence" className="section deploy-card">
         <div>
-          <p className="eyebrow">What this proves</p>
-          <h2>Evidence for employers</h2>
-        </div>
-        <div className="evidence-list">
-          <Evidence icon={<Workflow size={20} />} text="Agentic app architecture with tool calls, trace visibility, validation, and fallback behavior." />
-          <Evidence icon={<BrainCircuit size={20} />} text="Model comparison work across PyTorch, Hugging Face, LangChain, and OpenAI-backed workflows." />
-          <Evidence icon={<Map size={20} />} text="External API integration through OpenStreetMap, Wikivoyage-style retrieval, and serverless routes." />
-          <Evidence icon={<ShieldCheck size={20} />} text="Responsible AI patterns including PII scanning, safety guardrails, fairness testing, and cost controls." />
-        </div>
-      </section>
-
-      <section className="section deploy-card">
-        <div>
-          <p className="eyebrow">Next.js migration started</p>
-          <h2>Built for Vercel, live demos, and richer AI interfaces.</h2>
+          <p className="eyebrow">Platform direction</p>
+          <h2>Vercel-native portfolio with live app surfaces.</h2>
           <p>
-            The portfolio now has App Router pages, typed project data, Vercel Analytics, Speed Insights,
-            and app routes for the highest-value live projects. Streamlit notebooks remain as source artifacts,
-            while public users get fast browser-accessible demos.
+            The Streamlit and notebook projects remain in the repo as source artifacts, while the public portfolio
+            prioritizes fast browser demos and richer Next.js app routes so reviewers can interact with the work
+            immediately.
           </p>
         </div>
         <div className="deploy-steps">
-          <span>Framework: Next.js App Router</span>
-          <span>AI runtime: OpenAI-first AI SDK setup</span>
-          <span>Live demos: Vercel routes and functions</span>
+          <span>Live apps: trip planner, training manual creator, model demos</span>
+          <span>Runtime: Next.js, serverless APIs, OpenAI-ready environment</span>
+          <span>Evidence: source links, case pages, metrics, and traceable behavior</span>
         </div>
       </section>
     </main>
+  );
+}
+
+function Signal({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="signal-card">
+      <strong>{value}</strong>
+      <span>{label}</span>
+    </div>
   );
 }
 
@@ -136,7 +179,7 @@ function ProjectCard({
         </dl>
         <div className="card-actions">
           <a href={project.liveHref}>Live app</a>
-          <a href={project.caseHref}>Project detail</a>
+          <a href={project.caseHref}>Case study</a>
           {project.sourceHref ? <a href={project.sourceHref}>Source</a> : null}
         </div>
       </div>
@@ -144,11 +187,14 @@ function ProjectCard({
   );
 }
 
-function Evidence({ icon, text }: { icon: React.ReactNode; text: string }) {
+function Evidence({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return (
-    <div className="evidence-item">
+    <article className="evidence-item">
       <span>{icon}</span>
-      <p>{text}</p>
-    </div>
+      <div>
+        <h3>{title}</h3>
+        <p>{text}</p>
+      </div>
+    </article>
   );
 }

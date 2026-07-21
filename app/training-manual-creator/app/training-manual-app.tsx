@@ -1,5 +1,6 @@
 "use client";
 
+import { FileText, RotateCcw, Send, Wrench } from "lucide-react";
 import { useState } from "react";
 
 type ChatMessage = {
@@ -61,9 +62,15 @@ export default function TrainingManualApp() {
   }
 
   return (
-    <section className="llm-layout">
-      <aside className="tool-sidebar">
-        <h2>Tools</h2>
+    <section className="llm-product">
+      <aside className="llm-tools-panel">
+        <div className="panel-title-row">
+          <Wrench size={19} />
+          <div>
+            <p className="eyebrow">Tool Library</p>
+            <h2>Actions</h2>
+          </div>
+        </div>
         {prompts.map((prompt) => (
           <button
             className={`prompt-chip ${prompt.toLowerCase().includes("delete") ? "danger" : ""}`}
@@ -75,7 +82,7 @@ export default function TrainingManualApp() {
           </button>
         ))}
         <button
-          className="button secondary"
+          className="button secondary wide-button"
           type="button"
           onClick={() => {
             setMessages([]);
@@ -83,6 +90,7 @@ export default function TrainingManualApp() {
             setToolCalls({});
           }}
         >
+          <RotateCcw size={16} />
           Reset Session
         </button>
       </aside>
@@ -91,6 +99,7 @@ export default function TrainingManualApp() {
         <div className="chat-log">
           {!messages.length ? (
             <div className="empty-chat">
+              <FileText size={32} />
               <h2>Ask the assistant to work on the manual.</h2>
               <p>Try reading a section, writing section 3, or looking up Sarah Chen.</p>
             </div>
@@ -121,13 +130,20 @@ export default function TrainingManualApp() {
             placeholder="Ask to read, write, revise, delete, or look up a contact..."
           />
           <button className="button primary" type="submit" disabled={loading}>
+            <Send size={16} />
             {loading ? "Working..." : "Send"}
           </button>
         </form>
       </section>
 
       <aside className="manual-preview">
-        <h2>Manual Preview</h2>
+        <div className="panel-title-row">
+          <FileText size={19} />
+          <div>
+            <p className="eyebrow">Document State</p>
+            <h2>Manual Preview</h2>
+          </div>
+        </div>
         {Object.entries(sections).map(([number, content]) => (
           <div className="manual-section" key={number}>
             <h3>Section {number}</h3>

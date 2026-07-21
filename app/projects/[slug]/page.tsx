@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { getProject } from "../../../lib/projects";
 
 export const dynamic = "force-dynamic";
@@ -19,7 +20,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   if (!project) notFound();
 
   return (
-    <main className="app-shell">
+    <main className="app-shell project-case-page">
       <section className="project-detail-hero">
         <div>
           <p className="eyebrow">{project.type}</p>
@@ -27,20 +28,20 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <p>{project.summary}</p>
           <div className="hero-actions">
             <a className="button primary" href={project.liveHref}>
-              Open live app
+              Open live app <ArrowRight size={17} />
             </a>
             {project.sourceHref ? (
               <a className="button secondary" href={project.sourceHref}>
-                Review source
+                Review source <ExternalLink size={16} />
               </a>
             ) : null}
           </div>
         </div>
-        <div className="hero-panel compact-panel">
+        <div className="case-metrics">
           {project.stats.map((stat) => (
-            <div className="metric" key={stat.label}>
-              <span className="metric-value">{stat.value}</span>
-              <span className="metric-label">{stat.label}</span>
+            <div className="case-metric" key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
             </div>
           ))}
         </div>
@@ -57,9 +58,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </article>
         <article className="detail-panel">
           <h2>Portfolio Proof</h2>
-          <ul className="clean-list">
+          <ul className="proof-list">
             {project.proof.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <CheckCircle2 size={18} />
+                <span>{item}</span>
+              </li>
             ))}
           </ul>
         </article>
