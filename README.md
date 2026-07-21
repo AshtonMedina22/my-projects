@@ -61,5 +61,22 @@ Current files:
 - `trip-planner-ai-agent/` - main capstone AI agent integrating OpenAI-compatible planning, OpenStreetMap POI search, Wikivoyage retrieval, maps, persistence, and feedback; public version runs directly on Vercel.
 - `nn-architectures-project1/` - full Codecademy neural network architectures project bundle with datasets, working notebook, and reference solutions.
 - `nn-architectures-project2/` - full Codecademy CLIP vs autoencoder reconstruction project bundle with working notebook, pretrained weights, and reference solutions.
+
+## Vercel AI SDK
+
+The workspace is configured with the Vercel AI SDK package from `ai-sdk.dev` for future Node/Vercel AI features:
+
+```bash
+npm install
+npm run check:ai-sdk
+```
+
+For live OpenAI-backed checks, set `OPENAI_API_KEY` in your shell or Vercel environment first, then run:
+
+```bash
+npm run check:ai-sdk:live
+```
+
+Setup details are in `docs/ai-sdk-setup.md`.
 - `custom_torchinfo.py` - local helper used by Codecademy notebooks that import `custom_torchinfo`.
 - `codecademy-requirements.txt` - optional local dependencies for running course notebooks.

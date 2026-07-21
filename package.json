@@ -1,0 +1,15 @@
+{
+  "name": "ashton-ai-projects-portfolio",
+  "private": true,
+  "description": "Portfolio site and live AI engineering project demos.",
+  "scripts": {
+    "check:ai-sdk": "node scripts/check-ai-sdk.mjs",
+    "check:ai-sdk:live": "node scripts/check-ai-sdk.mjs --live"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.17",
+    "ai": "^7.0.33",
+    "dotenv": "^17.4.2",
+    "zod": "^4.4.3"
+  }
+}

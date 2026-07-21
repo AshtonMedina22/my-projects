@@ -8,8 +8,6 @@ __pycache__/
 
 # Node/Vercel local artifacts
 node_modules/
-package-lock.json
-package.json
 
 # Environments
 .venv/
