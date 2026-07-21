@@ -6,6 +6,11 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
+# Node/Vercel local artifacts
+node_modules/
+package-lock.json
+package.json
+
 # Environments
 .venv/
 venv/
