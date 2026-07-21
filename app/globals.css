@@ -1407,6 +1407,245 @@ dd,
   background: linear-gradient(90deg, rgba(34, 197, 94, 0.95), rgba(251, 191, 36, 0.95));
 }
 
+.payflow-app-shell {
+  padding-bottom: 72px;
+}
+
+.payflow-hero {
+  align-items: end;
+}
+
+.payflow-workspace {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.payflow-queue-panel,
+.payflow-main-panel,
+.payflow-decision-card,
+.payflow-card {
+  border: 1px solid var(--glow-border);
+  border-radius: 14px;
+  background: var(--glass);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(22px) saturate(130%);
+}
+
+.payflow-queue-panel {
+  position: sticky;
+  top: 92px;
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.payflow-main-panel {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.payflow-invoice-list,
+.payflow-trace-list,
+.control-list {
+  display: grid;
+  gap: 10px;
+}
+
+.payflow-invoice-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--glass-strong);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    background 0.2s ease-in-out;
+}
+
+.payflow-invoice-card:hover,
+.payflow-invoice-card:focus-visible,
+.payflow-invoice-card.active {
+  transform: translateY(-2px);
+  border-color: rgba(96, 165, 250, 0.42);
+  background: rgba(96, 165, 250, 0.08);
+  outline: none;
+}
+
+.payflow-invoice-card span {
+  display: grid;
+  gap: 4px;
+}
+
+.payflow-invoice-card span:last-child {
+  justify-items: end;
+}
+
+.payflow-invoice-card strong {
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.payflow-invoice-card em {
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.payflow-readout-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.payflow-readout-grid .signal-card strong {
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+}
+
+.payflow-decision-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 18px;
+  align-items: stretch;
+  padding: 18px;
+}
+
+.payflow-decision-card p {
+  max-width: 820px;
+  color: rgba(237, 237, 237, 0.72);
+}
+
+.payflow-approval-box {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--glass-strong);
+}
+
+.payflow-approval-box span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.payflow-approval-box strong {
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 1.15rem;
+}
+
+.payflow-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 16px;
+}
+
+.payflow-card {
+  padding: 18px;
+}
+
+.payflow-trace-step,
+.control-card,
+.supplier-notice {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--glass-strong);
+}
+
+.payflow-trace-step > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.payflow-trace-step strong,
+.payflow-trace-step span,
+.control-card strong,
+.control-card span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.payflow-trace-step h3,
+.control-card h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.payflow-trace-step p,
+.control-card p,
+.supplier-notice p {
+  margin: 0;
+}
+
+.payflow-trace-step pre {
+  max-height: 170px;
+  overflow: auto;
+  margin: 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--navy);
+  color: rgba(237, 237, 237, 0.76);
+  font-size: 0.76rem;
+  white-space: pre-wrap;
+}
+
+.payflow-trace-step.complete,
+.control-card.pass {
+  border-color: rgba(34, 197, 94, 0.22);
+}
+
+.payflow-trace-step.warning,
+.control-card.review {
+  border-color: rgba(251, 191, 36, 0.24);
+}
+
+.payflow-trace-step.blocked,
+.control-card.fail {
+  border-color: rgba(251, 113, 133, 0.28);
+}
+
+.control-card span {
+  width: fit-content;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.control-card.review span {
+  color: #fbbf24;
+}
+
+.control-card.fail span {
+  color: var(--red);
+}
+
+.supplier-notice {
+  margin-top: 12px;
+  border-color: rgba(96, 165, 250, 0.22);
+}
+
 .trip-control-panel,
 .trip-main-panel,
 .trip-trace-panel,
@@ -2233,6 +2472,8 @@ dd,
   .llm-product,
   .esg-workspace,
   .esg-output-grid,
+  .payflow-workspace,
+  .payflow-grid,
   .magic-layout {
     grid-template-columns: 1fr;
   }
@@ -2253,6 +2494,10 @@ dd,
   }
 
   .esg-control-panel {
+    position: static;
+  }
+
+  .payflow-queue-panel {
     position: static;
   }
 }
@@ -2288,8 +2533,15 @@ dd,
   .esg-readout-grid,
   .materiality-grid,
   .esg-ledger-row,
-  .esg-form-grid {
+  .esg-form-grid,
+  .payflow-readout-grid,
+  .payflow-decision-card,
+  .payflow-invoice-card {
     grid-template-columns: 1fr;
+  }
+
+  .payflow-invoice-card span:last-child {
+    justify-items: start;
   }
 
   .hero-product-preview {

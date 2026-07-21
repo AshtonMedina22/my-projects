@@ -89,32 +89,8 @@ function EsgDemo() {
 }
 
 function PayFlowDemo() {
-  const [invoice, setInvoice] = useState("INV-1042 matched to PO-8821, receipt missing, supplier asking for ETA.");
-  const needsApproval = invoice.toLowerCase().includes("missing") || invoice.toLowerCase().includes("mismatch");
   return (
-    <div className="live-two-column">
-      <section className="live-panel">
-        <h2>AP inquiry</h2>
-        <textarea value={invoice} onChange={(event) => setInvoice(event.target.value)} />
-      </section>
-      <section className="live-panel">
-        <h2>Validation loop</h2>
-        <div className="architecture-grid">
-          {[
-            ["Invoice Status", "Fetched from Oracle ERP / Sage Intacct", "complete"],
-            ["Receipt Match", needsApproval ? "Receipt mismatch found" : "Receipt matched", needsApproval ? "review" : "complete"],
-            ["Supplier Notice", "Draft ETA response prepared", "draft"],
-            ["Remittance", needsApproval ? "Blocked until buyer approval" : "Eligible for approval", "guarded"],
-          ].map(([title, text, state]) => (
-            <article className="architecture-card" key={title}>
-              <h3>{title}</h3>
-              <p>{text}</p>
-              <strong>{state}</strong>
-            </article>
-          ))}
-        </div>
-      </section>
-    </div>
+    <Launcher title="PayFlow Accounts Payable Agent" href="/live/payflow" />
   );
 }
 
