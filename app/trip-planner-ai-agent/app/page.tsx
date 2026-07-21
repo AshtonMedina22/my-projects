@@ -1,7 +1,5 @@
 import TripPlannerApp from "./trip-planner-app";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Trip Planner AI Agent | Live App",
   description: "Generate a grounded itinerary using live OpenStreetMap data, guide retrieval, and agent trace output.",

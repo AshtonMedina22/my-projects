@@ -1,7 +1,5 @@
 import LiveDemo from "./live-demo";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Live AI Apps | Ashton Medina",
   description: "Open and test the live AI engineering portfolio demos.",

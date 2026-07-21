@@ -1,8 +1,6 @@
 import { ArrowUpRight, BrainCircuit, Map, ShieldCheck, Workflow } from "lucide-react";
 import { mainProjects, projects } from "../lib/projects";
 
-export const dynamic = "force-dynamic";
-
 export default function HomePage() {
   return (
     <main id="top">
